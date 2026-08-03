@@ -1,0 +1,994 @@
+{
+  "item_definition": {
+    "item_id": "ITEM-DRIVER-SAFETY-CRITICAL-PATH",
+    "item_name": "Driver Physical Safety During Automated Driving",
+    "asset": "Driver Physical Safety During Automated Driving"
+  },
+  "trust_zones": [
+    {
+      "id": "TZ-ADAS",
+      "trust_level": 3
+    },
+    {
+      "id": "TZ-BRAKE",
+      "trust_level": 3
+    },
+    {
+      "id": "TZ-STEERING",
+      "trust_level": 3
+    },
+    {
+      "id": "TZ-POWERTRAIN",
+      "trust_level": 3
+    },
+    {
+      "id": "TZ-SRS",
+      "trust_level": 3
+    },
+    {
+      "id": "TZ-BODY",
+      "trust_level": 2
+    },
+    {
+      "id": "TZ-SENSOR",
+      "trust_level": 2
+    },
+    {
+      "id": "TZ-VNET",
+      "trust_level": 1
+    }
+  ],
+  "ecus": [
+    {
+      "id": "AUTOPILOT",
+      "trust_zone": "TZ-ADAS",
+      "technology_context": {
+        "software_technologies": [
+          {
+            "type": "build_system",
+            "component": "Buildroot",
+            "detail": "buildroot-2019.02 branch; defconfigs: ap-hw3_defconfig, ap-hw3i_defconfig (initramfs)",
+            "source": "https://github.com/teslamotors/buildroot/blob/buildroot-2019.02/README.Tesla"
+          },
+          {
+            "type": "operating_system",
+            "component": "Linux kernel",
+            "detail": "Tesla GPL repository branch: amd-5.4. Branch name confirmed; version not pinned per vehicle production run.",
+            "source": "https://github.com/teslamotors/linux"
+          }
+        ],
+        "hardware_technologies": [
+          {
+            "type": "hardware_generation",
+            "component": "Autopilot HW3 / HW4",
+            "detail": "Hardware generation confirmed in OEM service manual sections 1720-1724",
+            "source": "https://service.tesla.com/docs/ModelY/ServiceManual/en-us/index.html"
+          },
+          {
+            "type": "platform_note",
+            "component": "AMD Ryzen platform (vehicle infotainment/ICE compute board)",
+            "detail": "The Pwn2Own Automotive 2024 contest target is described as an AMD Ryzen-based Model 3/Y benchtop unit. This refers to the vehicle's infotainment compute platform, NOT the Autopilot HW3/HW4 neural processing chip, which is a separate dedicated SoC. Scoped to ICE/infotainment subsystem only.",
+            "source": "https://www.bleepingcomputer.com/news/security/tesla-hacked-24-zero-days-demoed-at-pwn2own-automotive-2024/"
+          }
+        ],
+        "update_technologies": [
+          {
+            "type": "ota_update",
+            "component": "OTA firmware update",
+            "detail": "Firmware updatable via OTA (cellular / touchscreen) and Toolbox3",
+            "source": "https://service.tesla.com/docs/ModelY/ServiceManual/en-us/GUID-612A9F70-C8F3-4E31-92F0-1C978BE4C968.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": "RADAR",
+      "trust_zone": "TZ-ADAS",
+      "technology_context": {
+        "communication_technologies": [
+          {
+            "type": "protocol",
+            "component": "CAN-FD",
+            "detail": "RADAR_TO_AUTOPILOT data flow via CAN-FD confirmed in architecture",
+            "source_note": "Protocol defined in vehicle architecture model; no external documentary source"
+          }
+        ],
+        "technology_evidence": "none_available",
+        "evidence_note": "No OS, chipset, firmware technology, or identifiable hardware platform found in any OEM, NHTSA, or GPL source. CAN-FD interface retained as it defines the protocol attack surface."
+      }
+    },
+    {
+      "id": "BRAKE_CONTROLLER",
+      "trust_zone": "TZ-BRAKE",
+      "technology_context": {
+        "hardware_technologies": [
+          {
+            "type": "ecu_family",
+            "component": "ABS ECU",
+            "detail": "ABS ECU confirmed; two hardware variants present (Non-Structural Pack and Structural Pack) with associated Hydraulic Control Unit (HCU)",
+            "source": "https://service.tesla.com/docs/ModelY/ServiceManual/en-us/"
+          },
+          {
+            "type": "ecu_family",
+            "component": "iBooster ECU (IBST)",
+            "detail": "Electromechanical brake booster ECU confirmed; CAN-connected to Autopilot ECU and Yaw Rate Sensor",
+            "source": "https://static.nhtsa.gov/odi/tsbs/2014/SB-10052449-4313.pdf"
+          },
+          {
+            "type": "ecu_family",
+            "component": "ABS/ESP ECU",
+            "detail": "ABS/Stability ECU (ESP) confirmed; CAN-connected to Autopilot ECU, EPAS, and RCM",
+            "source": "https://service.tesla.com/docs/ModelX/ElectricalReference2015/x-lhd-sop8/2019_ModelX-SOP8_2020_01_22.pdf"
+          }
+        ],
+        "technology_evidence": "partial",
+        "evidence_note": "ECU families confirmed from OEM and NHTSA sources. No OS, firmware technology, chipset, or software stack documented in any authoritative source."
+      }
+    },
+    {
+      "id": "STEERING_CONTROLLER",
+      "trust_zone": "TZ-STEERING",
+      "technology_context": {
+        "hardware_technologies": [
+          {
+            "type": "ecu_family",
+            "component": "EPAS (Electric Power Assist Steering)",
+            "detail": "EPAS ECU confirmed on Model Y 2023",
+            "source": "https://static.nhtsa.gov/odi/rcl/2025/RMISC-25V092-3513.pdf"
+          },
+          {
+            "type": "firmware_version",
+            "component": "EPAS firmware version",
+            "detail": "Firmware version 2023.38.4 documented in NHTSA recall RMISC-25V092",
+            "source": "https://static.nhtsa.gov/odi/rcl/2025/RMISC-25V092-3513.pdf"
+          }
+        ],
+        "update_technologies": [
+          {
+            "type": "ota_update",
+            "component": "OTA firmware update",
+            "detail": "OTA updateable confirmed: software release 2023.38.4 delivered OTA to affected vehicles starting October 2023",
+            "source": "https://static.nhtsa.gov/odi/rcl/2025/RMISC-25V092-3513.pdf"
+          }
+        ],
+        "evidence_note": "ASIL-D was NOT present in NHTSA RMISC-25V092 source text. Removed per evidence audit \u2014 claim was inferred, not cited. EPAS is commonly ASIL-D by ISO 26262 industry convention but this is not an OEM-stated fact in the cited document."
+      }
+    },
+    {
+      "id": "DRIVE_INVERTER_FRONT",
+      "trust_zone": "TZ-POWERTRAIN",
+      "technology_context": {
+        "communication_technologies": [
+          {
+            "type": "protocol",
+            "component": "CAN",
+            "detail": "CAN-connected ECU confirmed; present on VEHICLE_CAN and PARTY_CAN per architecture",
+            "source_note": "Protocol defined in vehicle architecture model; no external documentary source"
+          }
+        ],
+        "technology_evidence": "none_available",
+        "evidence_note": "No OS, chipset, firmware technology, or identifiable hardware platform found in any OEM, NHTSA, or GPL source."
+      }
+    },
+    {
+      "id": "DRIVE_INVERTER_REAR",
+      "trust_zone": "TZ-POWERTRAIN",
+      "technology_context": {
+        "communication_technologies": [
+          {
+            "type": "protocol",
+            "component": "CAN",
+            "detail": "CAN-connected ECU confirmed; present on VEHICLE_CAN and PARTY_CAN per architecture",
+            "source_note": "Protocol defined in vehicle architecture model; no external documentary source"
+          }
+        ],
+        "technology_evidence": "none_available",
+        "evidence_note": "No OS, chipset, firmware technology, or identifiable hardware platform found in any OEM, NHTSA, or GPL source."
+      }
+    },
+    {
+      "id": "RESTRAINTS_CONTROLLER",
+      "trust_zone": "TZ-SRS",
+      "technology_context": {
+        "hardware_technologies": [
+          {
+            "type": "ecu_family",
+            "component": "Restraint Control Module (RCM)",
+            "detail": "RCM confirmed as distinct ECU; connected via dedicated Private CAN (PARTY_CAN per architecture). Post-replacement requires Toolbox3 service task (PROC_RCM_X_SERVICE-TASKS) running firmware 2024.8 or later.",
+            "source": "https://service.tesla.com/docs/ModelY/ServiceManual/2025/en-us/GUID-F03DD1C4-3440-4ECA-A817-434BB8341F75.html"
+          }
+        ],
+        "technology_evidence": "partial",
+        "evidence_note": "ECU family confirmed. No OS, chipset, firmware technology, or software stack documented in any authoritative source. ASIL-D classification was removed from this entry: while RCM/airbag systems are assigned ASIL-D by ISO 26262 industry convention, this is NOT explicitly stated in the cited Tesla OEM service manual. The claim was inferred and has been removed per evidence audit."
+      }
+    },
+    {
+      "id": "BODY_CONTROLLER",
+      "trust_zone": "TZ-BODY",
+      "technology_context": {
+        "hardware_technologies": [
+          {
+            "type": "ecu_topology",
+            "component": "Body Controller \u2014 3 submodules",
+            "detail": "Three distinct ECU submodules: Front Body Controller, LH Body Controller, RH Body Controller",
+            "source": "https://service.tesla.com/docs/ModelY/ServiceManual/en-us/GUID-87284A5F-098B-41C9-BB79-CB23C47D18FE.html"
+          }
+        ],
+        "technology_evidence": "partial",
+        "evidence_note": "ECU topology confirmed. No OS, chipset, firmware technology, or software stack documented in any authoritative source."
+      }
+    },
+    {
+      "id": "SECURITY_CONTROLLER",
+      "trust_zone": "TZ-BODY",
+      "technology_context": {
+        "software_technologies": [
+          {
+            "type": "firmware_module",
+            "component": "VCSEC (Vehicle Controller Security)",
+            "detail": "VCSEC module confirmed as dedicated SoC embedded within VCLe ECU. Previously a standalone ECU; now integrated. VCSEC firmware is present on the infotainment filesystem for multiple board revisions (vcsec/7, vcsec/23, vcsec/24). Firmware files in unencrypted .bhx format. Version analyzed at Hexacon 2024: hw-id 134217729 (VCSEC_ConfigID_24), used in recent Model 3 'Highland' variant since October 2023.",
+            "source": "https://www.synacktiv.com/sites/default/files/2024-10/hexacon_0_click_rce_on_tesla_model_3_through_tpms_sensors_light.pdf"
+          },
+          {
+            "type": "operating_system",
+            "component": "FreeRTOS",
+            "detail": "FreeRTOS confirmed as VCSEC operating system via direct firmware reverse engineering",
+            "source": "https://www.synacktiv.com/sites/default/files/2024-10/hexacon_0_click_rce_on_tesla_model_3_through_tpms_sensors_light.pdf"
+          },
+          {
+            "type": "library",
+            "component": "Mbed-TLS",
+            "detail": "Mbed-TLS library confirmed in VCSEC firmware. Used in certificate handling code path \u2014 directly relevant to the CVE-2025-2082 integer overflow in certificate reassembly.",
+            "source": "https://www.synacktiv.com/sites/default/files/2024-10/hexacon_0_click_rce_on_tesla_model_3_through_tpms_sensors_light.pdf"
+          },
+          {
+            "type": "library",
+            "component": "nanopb (Protocol Buffer)",
+            "detail": "nanopb confirmed in VCSEC firmware for Protobuf message deserialization. Used on BLE and UWB interfaces. .proto shared between TPMS and Tesla App features.",
+            "source": "https://www.synacktiv.com/sites/default/files/2024-10/hexacon_0_click_rce_on_tesla_model_3_through_tpms_sensors_light.pdf"
+          }
+        ],
+        "hardware_technologies": [
+          {
+            "type": "chipset",
+            "component": "ST SPC56 PowerPC SoC",
+            "detail": "VCSEC runs on a dedicated PowerPC SoC: SPC56 family from STMicroelectronics, operating in VLE (Variable Length Encoding) mode. Confirmed via firmware reverse engineering on IDA Pro with PPC VLE decompiler.",
+            "source": "https://www.synacktiv.com/sites/default/files/2024-10/hexacon_0_click_rce_on_tesla_model_3_through_tpms_sensors_light.pdf"
+          }
+        ],
+        "communication_technologies": [
+          {
+            "type": "protocol",
+            "component": "BLE (Bluetooth Low Energy)",
+            "detail": "BLE confirmed on SECURITY_CONTROLLER/VCSEC. Multiple BLE endpoints (Center/Left/Right/Rear/Rear Left) connected via UART-to-CAN transceivers. BLE GATT service UUID 00000211-b2d1-43f0-9b88-960cebf8b91e. Messages serialized with Protocol Buffer (nanopb). Supports Tesla Mobile App, TPMS sensors.",
+            "source": "https://www.synacktiv.com/sites/default/files/2024-10/hexacon_0_click_rce_on_tesla_model_3_through_tpms_sensors_light.pdf"
+          },
+          {
+            "type": "protocol",
+            "component": "UWB (Ultra-Wideband)",
+            "detail": "UWB interface confirmed on SECURITY_CONTROLLER. Used for Tesla App proximity features. Protobuf message protocol shared with BLE stack.",
+            "source": "https://www.zerodayinitiative.com/advisories/ZDI-25-265/"
+          },
+          {
+            "type": "protocol",
+            "component": "UDS (Unified Diagnostic Services)",
+            "detail": "UDS present on VCSEC for maintenance and provisioning (CAN-connected)",
+            "source": "https://www.synacktiv.com/sites/default/files/2024-10/hexacon_0_click_rce_on_tesla_model_3_through_tpms_sensors_light.pdf"
+          }
+        ],
+        "update_technologies": [
+          {
+            "type": "firmware_update_path",
+            "component": "Security Gateway \u2192 infotainment filesystem",
+            "detail": "VCSEC firmware is updated by the Security Gateway, which fetches firmware images from the infotainment system filesystem. Firmware present in infotainment rootfs for multiple board revisions. This makes infotainment compromise a prerequisite for VCSEC firmware tampering.",
+            "source": "https://www.synacktiv.com/sites/default/files/2024-10/hexacon_0_click_rce_on_tesla_model_3_through_tpms_sensors_light.pdf"
+          }
+        ]
+      }
+    },
+    {
+      "id": "INTERIOR_CAMERA",
+      "trust_zone": "TZ-SENSOR",
+      "technology_context": {
+        "communication_technologies": [
+          {
+            "type": "protocol",
+            "component": "Ethernet",
+            "detail": "Camera data flows via Ethernet to SECURITY_CONTROLLER per architecture (CAMERA_TO_SECURITY data flow)",
+            "source_note": "Protocol defined in vehicle architecture model; no external documentary source"
+          }
+        ],
+        "update_technologies": [
+          {
+            "type": "service_tool_update",
+            "component": "Non-standard firmware update path",
+            "detail": "DAS cameras are NOT updated via standard CAN firmware reinstall or Part Replacement Deploy; requires dedicated Service Mode / Toolbox routine",
+            "source": "https://service.tesla.com/docs/ModelY/ServiceManual/en-us/GUID-E2662953-7263-4626-848D-425B4B60134B.html"
+          }
+        ],
+        "technology_evidence": "none_available",
+        "evidence_note": "No OS, chipset, firmware technology, or identifiable hardware platform found in any OEM, NHTSA, or GPL source."
+      }
+    },
+    {
+      "id": "INTERIOR_RADAR",
+      "trust_zone": "TZ-SENSOR",
+      "technology_context": {
+        "communication_technologies": [
+          {
+            "type": "protocol",
+            "component": "CAN",
+            "detail": "CAN-connected sensor ECU on VEHICLE_CAN per architecture",
+            "source_note": "Protocol defined in vehicle architecture model; no external documentary source"
+          }
+        ],
+        "technology_evidence": "none_available",
+        "evidence_note": "No OS, chipset, firmware technology, or identifiable hardware platform found in any OEM, NHTSA, or GPL source."
+      }
+    },
+    {
+      "id": "STEERING_ANGLE_ECU",
+      "trust_zone": "TZ-STEERING",
+      "technology_context": {
+        "communication_technologies": [
+          {
+            "type": "protocol",
+            "component": "CAN",
+            "detail": "CAN-connected sensor ECU; STEERING_FEEDBACK data flow to AUTOPILOT confirmed in architecture",
+            "source_note": "Protocol defined in vehicle architecture model; no external documentary source"
+          }
+        ],
+        "technology_evidence": "none_available",
+        "evidence_note": "No OS, chipset, firmware technology, or identifiable hardware platform found in any OEM, NHTSA, or GPL source."
+      }
+    },
+    {
+      "id": "HV_BATTERY",
+      "trust_zone": "TZ-POWERTRAIN",
+      "technology_context": {
+        "communication_technologies": [
+          {
+            "type": "protocol",
+            "component": "CAN",
+            "detail": "CAN-connected; BATTERY_TO_INVERTER_FRONT and BATTERY_TO_INVERTER_REAR data flows confirmed in architecture",
+            "source_note": "Protocol defined in vehicle architecture model; no external documentary source"
+          }
+        ],
+        "technology_evidence": "none_available",
+        "evidence_note": "No OS, chipset, firmware technology, or identifiable hardware platform found in any OEM, NHTSA, or GPL source."
+      }
+    },
+    {
+      "id": "CHARGE_PORT_ECU",
+      "trust_zone": "TZ-POWERTRAIN",
+      "technology_context": {
+        "hardware_technologies": [
+          {
+            "type": "protocol_variants",
+            "component": "Charge Port protocol variants",
+            "detail": "Hardware variants confirmed: CCS, NACS, GB-T, GEN4 \u2014 relevant for charging protocol CVE scoping",
+            "source": "https://service.tesla.com/docs/ModelY/ServiceManual/en-us/"
+          }
+        ],
+        "update_technologies": [
+          {
+            "type": "firmware_reinstall",
+            "component": "Firmware reinstall required post-replacement",
+            "detail": "firmware_reinstall_required: true; separate from OTA update path",
+            "source": "https://service.tesla.com/docs/ModelY/ServiceManual/en-us/"
+          }
+        ],
+        "technology_evidence": "partial",
+        "evidence_note": "Protocol variants and firmware reinstall mechanism confirmed. No OS, chipset, or software stack documented in any authoritative source."
+      }
+    }
+  ],
+  "external_interfaces": [
+    {
+      "id": "ADAS_SENSORS",
+      "trust_zone": "TZ-SENSOR",
+      "type": "sensor",
+      "attacker_profile": "physical",
+      "exposed": false,
+      "security_properties": [],
+      "assessment_status": "unassessed"
+    },
+    {
+      "id": "SPEED_SENSORS",
+      "trust_zone": "TZ-SENSOR",
+      "type": "sensor",
+      "attacker_profile": "physical",
+      "exposed": false,
+      "security_properties": [],
+      "assessment_status": "unassessed"
+    },
+    {
+      "id": "IMPACT_SENSORS",
+      "trust_zone": "TZ-SRS",
+      "type": "sensor",
+      "attacker_profile": "physical",
+      "exposed": false,
+      "security_properties": [],
+      "assessment_status": "unassessed"
+    },
+    {
+      "id": "PRESSURE_SENSORS",
+      "trust_zone": "TZ-SRS",
+      "type": "sensor",
+      "attacker_profile": "physical",
+      "exposed": false,
+      "security_properties": [],
+      "assessment_status": "unassessed"
+    },
+    {
+      "id": "ACCEL_SENSOR",
+      "trust_zone": "TZ-SENSOR",
+      "type": "sensor",
+      "attacker_profile": "physical",
+      "exposed": false,
+      "security_properties": [],
+      "assessment_status": "unassessed"
+    },
+    {
+      "id": "RESTRAINT_ACTUATORS",
+      "trust_zone": "TZ-SRS",
+      "type": "actuator",
+      "attacker_profile": "physical",
+      "exposed": false,
+      "security_properties": [],
+      "assessment_status": "unassessed"
+    },
+    {
+      "id": "VEHICLE_NETWORK",
+      "trust_zone": "TZ-VNET",
+      "type": "network",
+      "attacker_profile": "remote",
+      "exposed": true,
+      "security_properties": [],
+      "technology_context": {
+        "communication_technologies": [
+          {
+            "type": "protocol",
+            "component": "CAN bus",
+            "detail": "Broadcast semantics confirmed; three CAN buses present: VEHICLE_CAN, CHASSIS_CAN, PARTY_CAN",
+            "source": "https://keenlab.tencent.com/en/2016/09/19/Keen-Security-Lab-of-Tencent-Car-Hacking-Research-Remote-Attack-to-Tesla-Cars/"
+          },
+          {
+            "type": "protocol_stack",
+            "component": "SocketCAN",
+            "detail": "Linux CAN networking subsystem referenced in Tesla Autopilot security research",
+            "source": "https://keenlab.tencent.com/en/whitepapers/Experimental_Security_Research_of_Tesla_Autopilot.pdf"
+          }
+        ]
+      },
+      "assessment_status": "explicitly_insecure"
+    },
+    {
+      "id": "OBD_INTERFACE",
+      "trust_zone": "TZ-VNET",
+      "type": "diagnostic",
+      "attacker_profile": "physical",
+      "exposed": true,
+      "security_properties": [],
+      "technology_context": {
+        "communication_technologies": [
+          {
+            "type": "protocol",
+            "component": "UDS (Unified Diagnostic Services)",
+            "detail": "UDS present on OBD interface; bidirectional access to AUTOPILOT, BRAKE_CONTROLLER, STEERING_CONTROLLER, BODY_CONTROLLER confirmed in architecture data flows OBD_UDS_TO_AUTOPILOT, OBD_UDS_TO_BRAKE, OBD_UDS_TO_STEERING, OBD_UDS_TO_BODY",
+            "source_note": "Protocol defined in vehicle architecture model data flows"
+          }
+        ]
+      },
+      "assessment_status": "explicitly_insecure"
+    },
+    {
+      "id": "BLE_INTERFACES",
+      "trust_zone": "TZ-VNET",
+      "type": "wireless",
+      "attacker_profile": "local",
+      "exposed": true,
+      "security_properties": [],
+      "technology_context": {
+        "communication_technologies": [
+          {
+            "type": "protocol",
+            "component": "BLE (Bluetooth Low Energy)",
+            "detail": "BLE interface on SECURITY_CONTROLLER confirmed; bidirectional flow BLE_TO_SECURITY in architecture. Multiple BLE endpoints connected via UART-to-CAN transceivers. GATT service UUID 00000211-b2d1-43f0-9b88-960cebf8b91e.",
+            "source": "https://www.synacktiv.com/sites/default/files/2024-10/hexacon_0_click_rce_on_tesla_model_3_through_tpms_sensors_light.pdf"
+          },
+          {
+            "type": "protocol",
+            "component": "UWB (Ultra-Wideband)",
+            "detail": "UWB interface confirmed on SECURITY_CONTROLLER alongside BLE",
+            "source": "https://www.zerodayinitiative.com/advisories/ZDI-25-265/"
+          }
+        ]
+      },
+      "assessment_status": "explicitly_insecure"
+    },
+    {
+      "id": "HV_DISCONNECT",
+      "trust_zone": "TZ-POWERTRAIN",
+      "type": "actuator",
+      "attacker_profile": "physical",
+      "exposed": false,
+      "security_properties": [],
+      "assessment_status": "unassessed"
+    },
+    {
+      "id": "DIAG_ETHERNET",
+      "trust_zone": "TZ-VNET",
+      "type": "diagnostic",
+      "attacker_profile": "physical",
+      "exposed": true,
+      "security_properties": [
+        "authenticated"
+      ],
+      "technology_context": {
+        "communication_technologies": [
+          {
+            "type": "interface",
+            "component": "Ethernet \u2014 Toolbox3 diagnostic interface",
+            "detail": "Toolbox3 Ethernet diagnostic interface confirmed; gateway unlock required via security-restricted Toolbox action",
+            "source": "https://service.tesla.com/docs/ModelY/ServiceManual/en-us/GUID-0FB23E2E-E673-49A8-B282-04C01D6F3530.html"
+          },
+          {
+            "type": "protocol",
+            "component": "UDS (Unified Diagnostic Services)",
+            "detail": "UDS present on DIAG_ETHERNET; bidirectional access to AUTOPILOT and BODY_CONTROLLER confirmed in architecture data flows ETH_TO_AUTOPILOT and ETH_UDS_TO_BODY",
+            "source_note": "Protocol defined in vehicle architecture model data flows"
+          }
+        ]
+      },
+      "assessment_status": "assessed"
+    }
+  ],
+  "communication_buses": [
+    {
+      "id": "VEHICLE_CAN",
+      "protocol": {
+        "transport": "CAN",
+        "application": "NONE"
+      },
+      "connected_ecus": [
+        "AUTOPILOT",
+        "BODY_CONTROLLER",
+        "DRIVE_INVERTER_FRONT",
+        "DRIVE_INVERTER_REAR",
+        "SECURITY_CONTROLLER",
+        "STEERING_ANGLE_ECU",
+        "HV_BATTERY",
+        "INTERIOR_RADAR"
+      ],
+      "connected_external_interfaces": [],
+      "technology_context": {
+        "communication_technologies": [
+          {
+            "type": "protocol",
+            "component": "CAN bus",
+            "detail": "Broadcast semantics confirmed; three CAN buses present: VEHICLE_CAN, CHASSIS_CAN, PARTY_CAN",
+            "source": "https://keenlab.tencent.com/en/2016/09/19/Keen-Security-Lab-of-Tencent-Car-Hacking-Research-Remote-Attack-to-Tesla-Cars/"
+          },
+          {
+            "type": "protocol_stack",
+            "component": "SocketCAN",
+            "detail": "Linux CAN networking subsystem referenced in Tesla Autopilot security research",
+            "source": "https://keenlab.tencent.com/en/whitepapers/Experimental_Security_Research_of_Tesla_Autopilot.pdf"
+          }
+        ]
+      }
+    },
+    {
+      "id": "CHASSIS_CAN",
+      "protocol": {
+        "transport": "CAN",
+        "application": "NONE"
+      },
+      "connected_ecus": [
+        "AUTOPILOT",
+        "BODY_CONTROLLER",
+        "BRAKE_CONTROLLER",
+        "STEERING_CONTROLLER",
+        "RESTRAINTS_CONTROLLER"
+      ],
+      "connected_external_interfaces": [],
+      "technology_context": {
+        "communication_technologies": [
+          {
+            "type": "protocol",
+            "component": "CAN bus",
+            "detail": "Broadcast semantics confirmed; part of the three-bus CAN topology",
+            "source": "https://keenlab.tencent.com/en/2016/09/19/Keen-Security-Lab-of-Tencent-Car-Hacking-Research-Remote-Attack-to-Tesla-Cars/"
+          }
+        ]
+      }
+    },
+    {
+      "id": "PARTY_CAN",
+      "protocol": {
+        "transport": "CAN",
+        "application": "NONE"
+      },
+      "connected_ecus": [
+        "AUTOPILOT",
+        "BODY_CONTROLLER",
+        "BRAKE_CONTROLLER",
+        "STEERING_CONTROLLER",
+        "DRIVE_INVERTER_FRONT",
+        "DRIVE_INVERTER_REAR",
+        "RESTRAINTS_CONTROLLER"
+      ],
+      "connected_external_interfaces": [],
+      "technology_context": {
+        "communication_technologies": [
+          {
+            "type": "protocol",
+            "component": "CAN bus",
+            "detail": "Broadcast semantics confirmed; part of the three-bus CAN topology",
+            "source": "https://keenlab.tencent.com/en/2016/09/19/Keen-Security-Lab-of-Tencent-Car-Hacking-Research-Remote-Attack-to-Tesla-Cars/"
+          }
+        ]
+      }
+    }
+  ],
+  "data_flows": [
+    {
+      "id": "ADAS_INPUT",
+      "source": "ADAS_SENSORS",
+      "destination": "AUTOPILOT",
+      "protocol": {
+        "transport": "CAN",
+        "application": "NONE"
+      },
+      "direction": "oneway"
+    },
+    {
+      "id": "RADAR_TO_AUTOPILOT",
+      "source": "RADAR",
+      "destination": "AUTOPILOT",
+      "protocol": {
+        "transport": "CAN-FD",
+        "application": "NONE"
+      },
+      "direction": "oneway"
+    },
+    {
+      "id": "AUTOPILOT_TO_VEHICLE_NETWORK",
+      "source": "AUTOPILOT",
+      "destination": "VEHICLE_NETWORK",
+      "protocol": {
+        "transport": "CAN",
+        "application": "NONE"
+      },
+      "direction": "oneway"
+    },
+    {
+      "id": "CAN_TO_BODY",
+      "source": "VEHICLE_NETWORK",
+      "destination": "BODY_CONTROLLER",
+      "protocol": {
+        "transport": "CAN",
+        "application": "NONE"
+      },
+      "direction": "oneway"
+    },
+    {
+      "id": "SPEED_TO_BRAKE",
+      "source": "SPEED_SENSORS",
+      "destination": "BRAKE_CONTROLLER",
+      "protocol": {
+        "transport": "DIGITAL",
+        "application": "NONE"
+      },
+      "direction": "oneway"
+    },
+    {
+      "id": "ACCEL_TO_REAR_INVERTER",
+      "source": "ACCEL_SENSOR",
+      "destination": "DRIVE_INVERTER_REAR",
+      "protocol": {
+        "transport": "ANALOG",
+        "application": "NONE"
+      },
+      "direction": "oneway"
+    },
+    {
+      "id": "BODY_TO_FRONT_INVERTER",
+      "source": "BODY_CONTROLLER",
+      "destination": "DRIVE_INVERTER_FRONT",
+      "protocol": {
+        "transport": "PWR",
+        "application": "NONE"
+      },
+      "direction": "oneway"
+    },
+    {
+      "id": "BODY_TO_REAR_INVERTER",
+      "source": "BODY_CONTROLLER",
+      "destination": "DRIVE_INVERTER_REAR",
+      "protocol": {
+        "transport": "PWR",
+        "application": "NONE"
+      },
+      "direction": "oneway"
+    },
+    {
+      "id": "IMPACT_TO_RCM",
+      "source": "IMPACT_SENSORS",
+      "destination": "RESTRAINTS_CONTROLLER",
+      "protocol": {
+        "transport": "DIGITAL",
+        "application": "NONE"
+      },
+      "direction": "oneway"
+    },
+    {
+      "id": "PRESSURE_TO_RCM",
+      "source": "PRESSURE_SENSORS",
+      "destination": "RESTRAINTS_CONTROLLER",
+      "protocol": {
+        "transport": "DIGITAL",
+        "application": "NONE"
+      },
+      "direction": "oneway"
+    },
+    {
+      "id": "RCM_TO_ACTUATORS",
+      "source": "RESTRAINTS_CONTROLLER",
+      "destination": "RESTRAINT_ACTUATORS",
+      "protocol": {
+        "transport": "PWR",
+        "application": "NONE"
+      },
+      "direction": "oneway"
+    },
+    {
+      "id": "BLE_TO_SECURITY",
+      "source": "BLE_INTERFACES",
+      "destination": "SECURITY_CONTROLLER",
+      "protocol": {
+        "transport": "BLE",
+        "application": "NONE"
+      },
+      "direction": "bidirectional"
+    },
+    {
+      "id": "SECURITY_TO_VEHICLE_NETWORK",
+      "source": "SECURITY_CONTROLLER",
+      "destination": "VEHICLE_NETWORK",
+      "protocol": {
+        "transport": "CAN",
+        "application": "NONE"
+      },
+      "direction": "oneway"
+    },
+    {
+      "id": "OBD_TO_VEHICLE_NETWORK",
+      "source": "OBD_INTERFACE",
+      "destination": "VEHICLE_NETWORK",
+      "protocol": {
+        "transport": "ETH",
+        "application": "NONE"
+      },
+      "direction": "bidirectional"
+    },
+    {
+      "id": "OBD_UDS_TO_AUTOPILOT",
+      "source": "OBD_INTERFACE",
+      "destination": "AUTOPILOT",
+      "protocol": {
+        "transport": "ETH",
+        "application": "UDS"
+      },
+      "direction": "bidirectional"
+    },
+    {
+      "id": "OBD_UDS_TO_BRAKE",
+      "source": "OBD_INTERFACE",
+      "destination": "BRAKE_CONTROLLER",
+      "protocol": {
+        "transport": "CAN",
+        "application": "UDS"
+      },
+      "direction": "bidirectional"
+    },
+    {
+      "id": "OBD_UDS_TO_STEERING",
+      "source": "OBD_INTERFACE",
+      "destination": "STEERING_CONTROLLER",
+      "protocol": {
+        "transport": "CAN",
+        "application": "UDS"
+      },
+      "direction": "bidirectional"
+    },
+    {
+      "id": "OBD_UDS_TO_BODY",
+      "source": "OBD_INTERFACE",
+      "destination": "BODY_CONTROLLER",
+      "protocol": {
+        "transport": "ETH",
+        "application": "UDS"
+      },
+      "direction": "bidirectional"
+    },
+    {
+      "id": "ETH_TO_AUTOPILOT",
+      "source": "DIAG_ETHERNET",
+      "destination": "AUTOPILOT",
+      "protocol": {
+        "transport": "ETH",
+        "application": "UDS"
+      },
+      "direction": "bidirectional"
+    },
+    {
+      "id": "ETH_UDS_TO_BODY",
+      "source": "DIAG_ETHERNET",
+      "destination": "BODY_CONTROLLER",
+      "protocol": {
+        "transport": "ETH",
+        "application": "UDS"
+      },
+      "direction": "bidirectional"
+    },
+    {
+      "id": "CAMERA_TO_SECURITY",
+      "source": "INTERIOR_CAMERA",
+      "destination": "SECURITY_CONTROLLER",
+      "protocol": {
+        "transport": "ETH",
+        "application": "NONE"
+      },
+      "direction": "oneway"
+    },
+    {
+      "id": "STEERING_FEEDBACK",
+      "source": "STEERING_ANGLE_ECU",
+      "destination": "AUTOPILOT",
+      "protocol": {
+        "transport": "CAN",
+        "application": "NONE"
+      },
+      "direction": "oneway"
+    },
+    {
+      "id": "BATTERY_TO_INVERTER_FRONT",
+      "source": "HV_BATTERY",
+      "destination": "DRIVE_INVERTER_FRONT",
+      "protocol": {
+        "transport": "CAN",
+        "application": "NONE"
+      },
+      "direction": "oneway"
+    },
+    {
+      "id": "BATTERY_TO_INVERTER_REAR",
+      "source": "HV_BATTERY",
+      "destination": "DRIVE_INVERTER_REAR",
+      "protocol": {
+        "transport": "CAN",
+        "application": "NONE"
+      },
+      "direction": "oneway"
+    },
+    {
+      "id": "HVIL_LOOP",
+      "source": "HV_BATTERY",
+      "destination": "HV_DISCONNECT",
+      "protocol": {
+        "transport": "PWR",
+        "application": "NONE"
+      },
+      "direction": "oneway"
+    },
+    {
+      "id": "BODY_TO_CHARGE_PORT_ECU",
+      "source": "BODY_CONTROLLER",
+      "destination": "CHARGE_PORT_ECU",
+      "protocol": {
+        "transport": "PWR",
+        "application": "NONE"
+      },
+      "direction": "oneway"
+    },
+    {
+      "id": "INTERIOR_RADAR_TO_AUTOPILOT",
+      "source": "INTERIOR_RADAR",
+      "destination": "AUTOPILOT",
+      "protocol": {
+        "transport": "CAN",
+        "application": "NONE"
+      },
+      "direction": "oneway"
+    }
+  ],
+  "supplemental_technology_nodes": [
+    {
+      "id": "CENTRAL_GATEWAY",
+      "trust_zone": "TZ-VNET",
+      "architecture_note": "Technology inventory node supported by peer-reviewed and OEM sources. Not declared in architecture.json ecus[] array \u2014 implicit via DIAG_ETHERNET and VEHICLE_NETWORK external interfaces. Do NOT add to architecture.json.",
+      "software_technologies": [
+        {
+          "type": "operating_system",
+          "component": "FreeRTOS",
+          "detail": "OS confirmed on CENTRAL_GATEWAY",
+          "source": "https://dl.acm.org/doi/10.1145/3708821.3710820"
+        },
+        {
+          "type": "security_posture",
+          "component": "Firmware signing in unprotected flash",
+          "detail": "Gateway firmware signing stored in unprotected flash \u2014 HSM not enforcing signing",
+          "source": "https://dl.acm.org/doi/10.1145/3708821.3710820"
+        },
+        {
+          "type": "security_posture",
+          "component": "HSM",
+          "detail": "hsm_active: false",
+          "source": "https://dl.acm.org/doi/10.1145/3708821.3710820"
+        },
+        {
+          "type": "protocol_stack",
+          "component": "TFTP",
+          "detail": "TFTP protocol present on gateway",
+          "source": "https://dl.acm.org/doi/10.1145/3708821.3710820"
+        },
+        {
+          "type": "protocol_stack",
+          "component": "UDS (Unified Diagnostic Services)",
+          "detail": "UDS protocol present on gateway",
+          "source": "https://dl.acm.org/doi/10.1145/3708821.3710820"
+        }
+      ],
+      "hardware_technologies": [
+        {
+          "type": "chipset",
+          "component": "NXP MPC5748G",
+          "detail": "Chipset confirmed on CENTRAL_GATEWAY",
+          "source": "https://dl.acm.org/doi/10.1145/3708821.3710820"
+        }
+      ],
+      "communication_technologies": [
+        {
+          "type": "interface",
+          "component": "Ethernet Toolbox3 diagnostic interface",
+          "detail": "Toolbox3 Ethernet diagnostic interface confirmed; gateway unlock required via security-restricted Toolbox action",
+          "source": "https://service.tesla.com/docs/ModelY/ServiceManual/en-us/GUID-0FB23E2E-E673-49A8-B282-04C01D6F3530.html"
+        }
+      ]
+    }
+  ],
+  "technology_groups": [
+    {
+      "logical_grouping_id": "OTA_INTERFACE",
+      "grouping_note": "Logical technology grouping for OTA delivery, LTE, and update mechanisms. Not an ECU in architecture.json. Retained for CVE contextualization of update-path attack surface.",
+      "technologies": [
+        {
+          "type": "update_mechanism",
+          "component": "Cellular OTA",
+          "detail": "OTA firmware delivery via cellular \u2014 confirmed primary update pathway",
+          "source": "https://service.tesla.com/docs/ModelY/ServiceManual/en-us/GUID-612A9F70-C8F3-4E31-92F0-1C978BE4C968.html"
+        },
+        {
+          "type": "update_mechanism",
+          "component": "Toolbox3",
+          "detail": "Toolbox3 service-tool firmware update pathway",
+          "source": "https://service.tesla.com/docs/ModelY/ServiceManual/en-us/GUID-612A9F70-C8F3-4E31-92F0-1C978BE4C968.html"
+        },
+        {
+          "type": "update_mechanism",
+          "component": "Software Update URL",
+          "detail": "Software Update URL documented as distinct update mechanism in service manual",
+          "source": "https://service.tesla.com/docs/ModelY/ServiceManual/en-us/GUID-612A9F70-C8F3-4E31-92F0-1C978BE4C968.html"
+        },
+        {
+          "type": "hardware_module",
+          "component": "LTE modem",
+          "detail": "Cellular hardware module used for OTA firmware delivery",
+          "source": "https://www.bleepingcomputer.com/news/security/tesla-hacked-24-zero-days-demoed-at-pwn2own-automotive-2024/"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,247 @@
+{
+  "version": "2.0",
+  "description": "Projection rules mapping CAPEC XML fields to ThreatSurf attack feasibility dimensions. All scoring logic lives here; capec_enricher.py contains no embedded knowledge.",
+  "skills_required_level_map": {
+    "Low": 6,
+    "Medium": 3,
+    "High": 0,
+    "Unknown": 3
+  },
+  "resources_required_keywords": {
+    "Eq_6": [
+      "specialized hardware",
+      "custom hardware",
+      "hardware implant",
+      "hardware modification",
+      "proprietary equipment",
+      "oscilloscope",
+      "logic analyzer",
+      "jtag debugger",
+      "soldering",
+      "chip-off"
+    ],
+    "Eq_3": [
+      "commercial tool",
+      "commercial software",
+      "specialized software",
+      "vulnerability scanner",
+      "fuzzer",
+      "debugger",
+      "disassembler",
+      "network sniffer",
+      "hardware tool",
+      "bus analyzer",
+      "tool capable",
+      "packets from",
+      "packet injection",
+      "scanner or",
+      "language packet",
+      "receiving packets",
+      "or scanner",
+      "middle proxy",
+      "to intercept",
+      "scanners or",
+      "port scanner",
+      "datagram packets"
+    ],
+    "Eq_1": [
+      "standard tool",
+      "publicly available tool",
+      "free tool",
+      "open source tool",
+      "common tool",
+      "internet access",
+      "web browser",
+      "scripting language",
+      "a scripting",
+      "custom script",
+      "script that"
+    ],
+    "Eq_0": [
+      "no specialized equipment",
+      "no equipment",
+      "no special",
+      "none required",
+      "any device",
+      "none no"
+    ]
+  },
+  "execution_flow_phase_weights": {
+    "Exploit": 2,
+    "Experiment": 1,
+    "Explore": 0
+  },
+  "elapsed_time_step_thresholds": [
+    {
+      "max_weighted_steps": 2,
+      "ET": 1
+    },
+    {
+      "max_weighted_steps": 5,
+      "ET": 2
+    },
+    {
+      "max_weighted_steps": 10,
+      "ET": 3
+    },
+    {
+      "max_weighted_steps": 18,
+      "ET": 4
+    },
+    {
+      "max_weighted_steps": 30,
+      "ET": 5
+    },
+    {
+      "max_weighted_steps": 999,
+      "ET": 6
+    }
+  ],
+  "prerequisites_koic_keywords": {
+    "KoIC_6": [
+      "knowledge of target system",
+      "access to source code",
+      "internal knowledge",
+      "insider knowledge",
+      "detailed knowledge of implementation",
+      "knowledge of proprietary protocol",
+      "knowledge of encryption key",
+      "access to signing key",
+      "via insider",
+      "insider access"
+    ],
+    "KoIC_3": [
+      "knowledge of the target",
+      "knowledge of vulnerability",
+      "familiarity with",
+      "understanding of",
+      "knowledge of network topology",
+      "knowledge of authentication mechanism",
+      "adversary must",
+      "ability to",
+      "must be able",
+      "attacker must",
+      "adversary requires",
+      "physical access",
+      "advanced knowledge",
+      "and knowledge of",
+      "knowledge of how",
+      "must have gained",
+      "requires knowledge of",
+      "application must have",
+      "must have knowledge",
+      "have knowledge of",
+      "knowledge of popular"
+    ],
+    "KoIC_1": [
+      "publicly available information",
+      "basic knowledge",
+      "general knowledge",
+      "common knowledge",
+      "standard knowledge",
+      "target application",
+      "target must",
+      "application does not",
+      "open source"
+    ],
+    "KoIC_0": [
+      "no prior knowledge",
+      "no knowledge required",
+      "no specific knowledge"
+    ]
+  },
+  "channel_woo_map": {
+    "Remote": 1,
+    "Network": 1,
+    "Internet": 1,
+    "Adjacent": 2,
+    "Local": 3,
+    "Physical": 4,
+    "Unknown": 2
+  },
+  "likelihood_et_signal": {
+    "High": 1,
+    "Medium": 3,
+    "Low": 5,
+    "Unknown": null
+  },
+  "fallback_defaults": {
+    "ET": 3,
+    "SE": 3,
+    "KoIC": 2,
+    "WoO": 2,
+    "Eq": 1
+  },
+  "interface_assessment_woo_policy": {
+    "assessed": {
+      "woo_modifier": 0.0,
+      "rationale": "security_properties are verified; apply WoO score as computed from channel"
+    },
+    "unassessed": {
+      "woo_modifier": -1,
+      "rationale": "security_properties unknown; reduce WoO by 1 step to reflect epistemic uncertainty without assuming worst-case"
+    },
+    "explicitly_insecure": {
+      "woo_modifier": 0.0,
+      "rationale": "confirmed no authentication or encryption; apply WoO score as computed from channel without modifier"
+    }
+  },
+  "derivation_metadata": {
+    "generated_at": "2026-06-09",
+    "capec_version": "3.9",
+    "xml_source": "capec_latest.xml",
+    "derivation_method": {
+      "skills_required_level_map": "HEAVENS_2.0_table_direct",
+      "channel_woo_map": "HEAVENS_2.0_table_direct",
+      "execution_flow_phase_weights": "CAPEC_taxonomy_direct",
+      "elapsed_time_step_thresholds": "HEAVENS_2.0_ET_grid_direct",
+      "likelihood_et_signal": "CAPEC_Typical_Likelihood_Of_Exploit_field",
+      "prerequisites_koic_keywords": "empirical_ngram_extraction_from_corpus",
+      "resources_required_keywords": "empirical_ngram_extraction_from_corpus",
+      "fallback_defaults": "engineering_decision_explicit",
+      "interface_assessment_woo_policy": "engineering_decision_explicit"
+    },
+    "coverage": {
+      "corpus_size": 558,
+      "KoIC": {
+        "field_present": 489,
+        "field_coverage_pct": 87.6,
+        "keyword_match": 242,
+        "keyword_coverage_pct": 49.5,
+        "by_level": {
+          "KoIC_6": 4,
+          "KoIC_3": 183,
+          "KoIC_1": 74,
+          "KoIC_0": 0
+        }
+      },
+      "Eq": {
+        "field_present": 271,
+        "field_coverage_pct": 48.6,
+        "keyword_match": 132,
+        "keyword_coverage_pct": 48.7,
+        "by_level": {
+          "Eq_6": 0,
+          "Eq_3": 48,
+          "Eq_1": 22,
+          "Eq_0": 73
+        }
+      },
+      "SE": {
+        "field_present": 295,
+        "field_coverage_pct": 52.9,
+        "derivation": "direct_xml_attribute"
+      },
+      "ET": {
+        "field_present": 239,
+        "field_coverage_pct": 42.8,
+        "derivation": "weighted_phase_count"
+      },
+      "WoO": {
+        "field_present": 0,
+        "field_coverage_pct": 0.0,
+        "derivation": "channel_field_absent_in_xml_v3.9_cwe_fallback_active"
+      }
+    }
+  }
+}

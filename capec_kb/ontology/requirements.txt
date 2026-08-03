@@ -1,0 +1,10 @@
+requests
+lxml
+beautifulsoup4
+anthropic
+numpy
+networkx
+sentence-transformers
+pdfminer.six
+PyMuPDF
+tqdm

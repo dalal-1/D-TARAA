@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+capec_kb/output/outputs/
+capec_kb/nvd_trrigering/results/
+capec_kb/nvd_trrigering/.nvd_poll_state.json
+*_state.json
+llm_cache*.json
+llm_reassessment_cache.json
+.vscode/
