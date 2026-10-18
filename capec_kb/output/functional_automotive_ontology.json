@@ -1,0 +1,4394 @@
+{
+  "ontology_version": "1.6",
+  "inference_method": "weighted_evidence_convergence_v2",
+  "item_id": "ITEM-DRIVER-SAFETY-CRITICAL-PATH",
+  "item_name": "Driver Physical Safety During Automated Driving",
+  "node_count": 14,
+  "nodes": [
+    {
+      "ontology_id": "FUNC-001",
+      "functional_domain": "NETWORK_GATEWAYING",
+      "subdomains": [
+        "domain_routing"
+      ],
+      "confidence": 0.95,
+      "dual_domain": "AUTOMATED_DRIVING_CONTROL",
+      "mapped_ecus": [
+        "AUTOPILOT"
+      ],
+      "mapped_interfaces": [
+        "ADAS_SENSORS",
+        "DIAG_ETHERNET",
+        "OBD_INTERFACE",
+        "VEHICLE_NETWORK"
+      ],
+      "inference_evidence": {
+        "trust_zone_signal": {
+          "zone_id": "TZ-ADAS",
+          "trust_level": 3,
+          "contributed_domain": "AUTOMATED_DRIVING_CONTROL",
+          "weight": 0.25
+        },
+        "data_flow_role": {
+          "role": "bus_bridge",
+          "contributed_domain": "NETWORK_GATEWAYING",
+          "weight": 0.25
+        },
+        "interface_proximity": {
+          "adjacent_interfaces": [
+            "ADAS_SENSORS",
+            "VEHICLE_NETWORK",
+            "OBD_INTERFACE",
+            "DIAG_ETHERNET"
+          ],
+          "contributed_domain": "PERCEPTION_AND_SENSING",
+          "weight": 0.2
+        },
+        "protocol_signal": {
+          "protocols": [
+            "CAN/NONE",
+            "CAN-FD/NONE",
+            "ETH/UDS"
+          ],
+          "contributed_domain": "DIAGNOSTIC_AND_SERVICE",
+          "weight": 0.15
+        },
+        "bus_membership": {
+          "buses": [
+            "VEHICLE_CAN",
+            "CHASSIS_CAN",
+            "PARTY_CAN"
+          ],
+          "contributed_domain": "NETWORK_GATEWAYING",
+          "weight": 0.1
+        },
+        "lexical_tokens": {
+          "tokens": [
+            "autopilot"
+          ],
+          "matched_vocabulary": [
+            "autopilot\u2192AUTOMATED_DRIVING_CONTROL"
+          ],
+          "weight": 0.03
+        },
+        "actuator_sensor_role": {
+          "role": "sensor_consumer",
+          "contributed_domain": "PERCEPTION_AND_SENSING",
+          "weight": 0.02
+        }
+      },
+      "cybersecurity_properties": {
+        "primary": [
+          "Integrity",
+          "Availability",
+          "Authorization"
+        ],
+        "secondary": [
+          "Authenticity"
+        ],
+        "derivation": "Cross-domain boundary enforcement; compromise enables lateral movement to safety-critical domains"
+      },
+      "functional_consequences": [
+        "cross_domain_lateral_movement",
+        "routing_manipulation",
+        "integrity_loss_in_network_gatewaying",
+        "unauthorized_privileged_access"
+      ],
+      "damage_scenario_seeds": [
+        "Safety harm to vehicle occupants through gateway-mediated attack on motion control or occupant safety systems",
+        "Injection of malicious commands into chassis or powertrain domain via routing manipulation causing physical harm"
+      ],
+      "attack_surface_classes": [
+        "in_vehicle_network",
+        "diagnostic_interface",
+        "physical_access",
+        "remote_network"
+      ],
+      "asset_target_properties": {
+        "Integrity": [
+          "routing_rules",
+          "firewall_policy",
+          "messages"
+        ],
+        "Availability": [
+          "service"
+        ],
+        "Authorization": [
+          "cross_domain_sessions",
+          "policy_rules"
+        ],
+        "Authenticity": [
+          "messages"
+        ]
+      },
+      "reachable_threat_actor_classes": [
+        "insider_attacker",
+        "supply_chain_attacker",
+        "service_technician",
+        "physical_attacker",
+        "remote_attacker"
+      ],
+      "entry_point": {
+        "is_entry_point": true,
+        "entry_point_types": [
+          "physical_diagnostic",
+          "physical_hardware",
+          "remote_ip"
+        ],
+        "externally_reachable": true,
+        "transitive_remote_reachable": true,
+        "reachability_derivation": "attack_surface:diagnostic_interface + attack_surface:physical_access + attack_surface:remote_network + trust_zone:TZ-ADAS"
+      },
+      "provenance": {
+        "source": [
+          "R155 Annex 5 Threat 3.2",
+          "R155 Annex 5 Threat 7.3",
+          "ISO/SAE 21434 Clause 8.3"
+        ],
+        "reference_standards": [
+          "ISO 26262-3:2018",
+          "SAE J3061",
+          "ISO/SAE 21434:2021",
+          "UNECE R155"
+        ],
+        "justification": "Rule P2 (BUS_BRIDGE): domain=NETWORK_GATEWAYING, trust_zone=TZ-ADAS (level 3) [deployment annotation], buses=VEHICLE_CAN+CHASSIS_CAN+PARTY_CAN [communication annotation], adjacent_interfaces=ADAS_SENSORS+VEHICLE_NETWORK+OBD_INTERFACE, lexical_tokens=autopilot",
+        "inference_method": "weighted_evidence_convergence_v2",
+        "deterministic": true
+      },
+      "capec_cwe_refs": [
+        {
+          "capec_id": "1",
+          "capec_name": "Accessing Functionality Not Properly Constrained by ACLs",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:diagnostic_interface",
+            "attack_surface:remote_network",
+            "r155:3.2"
+          ],
+          "cwe_ids": [
+            "CWE-276",
+            "CWE-285",
+            "CWE-434",
+            "CWE-693",
+            "CWE-732",
+            "CWE-1191",
+            "CWE-1193",
+            "CWE-1220",
+            "CWE-1297",
+            "CWE-1311",
+            "CWE-1314",
+            "CWE-1315",
+            "CWE-1318",
+            "CWE-1320",
+            "CWE-1321",
+            "CWE-1327"
+          ],
+          "severity": "High",
+          "likelihood": "High"
+        },
+        {
+          "capec_id": "141",
+          "capec_name": "Cache Poisoning",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:diagnostic_interface",
+            "attack_surface:remote_network"
+          ],
+          "cwe_ids": [
+            "CWE-348",
+            "CWE-345",
+            "CWE-349",
+            "CWE-346"
+          ],
+          "severity": "High",
+          "likelihood": "High"
+        },
+        {
+          "capec_id": "180",
+          "capec_name": "Exploiting Incorrectly Configured Access Control Security Levels",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:diagnostic_interface",
+            "attack_surface:physical_access",
+            "attack_surface:remote_network",
+            "r155:3.2"
+          ],
+          "cwe_ids": [
+            "CWE-732",
+            "CWE-1190",
+            "CWE-1191",
+            "CWE-1193",
+            "CWE-1220",
+            "CWE-1268",
+            "CWE-1280",
+            "CWE-1297",
+            "CWE-1311",
+            "CWE-1315",
+            "CWE-1318",
+            "CWE-1320",
+            "CWE-1321"
+          ],
+          "severity": "Medium",
+          "likelihood": "High"
+        },
+        {
+          "capec_id": "276",
+          "capec_name": "Inter-component Protocol Manipulation",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:diagnostic_interface",
+            "attack_surface:remote_network"
+          ],
+          "cwe_ids": [
+            "CWE-707"
+          ],
+          "severity": "Unknown",
+          "likelihood": "Unknown"
+        },
+        {
+          "capec_id": "277",
+          "capec_name": "Data Interchange Protocol Manipulation",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:diagnostic_interface",
+            "attack_surface:remote_network"
+          ],
+          "cwe_ids": [
+            "CWE-707"
+          ],
+          "severity": "Unknown",
+          "likelihood": "Unknown"
+        },
+        {
+          "capec_id": "384",
+          "capec_name": "Application API Message Manipulation via Man-in-the-Middle",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:remote_network"
+          ],
+          "cwe_ids": [
+            "CWE-471",
+            "CWE-345",
+            "CWE-346",
+            "CWE-602",
+            "CWE-311"
+          ],
+          "severity": "Low",
+          "likelihood": "Unknown"
+        },
+        {
+          "capec_id": "523",
+          "capec_name": "Malicious Software Implanted",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:diagnostic_interface",
+            "attack_surface:physical_access",
+            "attack_surface:remote_network",
+            "r155:7.3"
+          ],
+          "cwe_ids": [],
+          "severity": "High",
+          "likelihood": "Low"
+        },
+        {
+          "capec_id": "638",
+          "capec_name": "Altered Component Firmware",
+          "abstraction": "Detailed",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:diagnostic_interface",
+            "attack_surface:physical_access",
+            "attack_surface:remote_network",
+            "r155:7.3"
+          ],
+          "cwe_ids": [],
+          "severity": "Very High",
+          "likelihood": "Low"
+        }
+      ],
+      "topology": {
+        "connected_ecus": [
+          "BODY_CONTROLLER",
+          "BRAKE_CONTROLLER",
+          "DRIVE_INVERTER_FRONT",
+          "DRIVE_INVERTER_REAR",
+          "HV_BATTERY",
+          "INTERIOR_RADAR",
+          "RADAR",
+          "RESTRAINTS_CONTROLLER",
+          "SECURITY_CONTROLLER",
+          "STEERING_ANGLE_ECU",
+          "STEERING_CONTROLLER"
+        ],
+        "via_buses": [
+          "CHASSIS_CAN",
+          "PARTY_CAN",
+          "VEHICLE_CAN"
+        ],
+        "via_flows": [
+          "BODY_CONTROLLER",
+          "INTERIOR_RADAR",
+          "RADAR",
+          "SECURITY_CONTROLLER",
+          "STEERING_ANGLE_ECU"
+        ],
+        "trust_boundary_crossings": [
+          {
+            "src_ecu": "AUTOPILOT",
+            "dst_ecu": "BODY_CONTROLLER",
+            "src_trust_level": 3,
+            "dst_trust_level": 2,
+            "direction": "HIGH_TO_LOW"
+          },
+          {
+            "src_ecu": "AUTOPILOT",
+            "dst_ecu": "INTERIOR_RADAR",
+            "src_trust_level": 3,
+            "dst_trust_level": 2,
+            "direction": "HIGH_TO_LOW"
+          },
+          {
+            "src_ecu": "AUTOPILOT",
+            "dst_ecu": "SECURITY_CONTROLLER",
+            "src_trust_level": 3,
+            "dst_trust_level": 2,
+            "direction": "HIGH_TO_LOW"
+          }
+        ]
+      }
+    },
+    {
+      "ontology_id": "FUNC-002",
+      "functional_domain": "PERCEPTION_AND_SENSING",
+      "subdomains": [
+        "environmental_sensing"
+      ],
+      "confidence": 0.95,
+      "dual_domain": null,
+      "mapped_ecus": [
+        "RADAR"
+      ],
+      "mapped_interfaces": [],
+      "inference_evidence": {
+        "trust_zone_signal": {
+          "zone_id": "TZ-ADAS",
+          "trust_level": 3,
+          "contributed_domain": "AUTOMATED_DRIVING_CONTROL",
+          "weight": 0.25
+        },
+        "data_flow_role": {
+          "role": "sensor_producer",
+          "contributed_domain": "PERCEPTION_AND_SENSING",
+          "weight": 0.25
+        },
+        "interface_proximity": {
+          "adjacent_interfaces": [],
+          "contributed_domain": "NONE",
+          "weight": 0.2
+        },
+        "protocol_signal": {
+          "protocols": [
+            "CAN-FD/NONE"
+          ],
+          "contributed_domain": "NONE",
+          "weight": 0.15
+        },
+        "bus_membership": {
+          "buses": [],
+          "contributed_domain": "NONE",
+          "weight": 0.1
+        },
+        "lexical_tokens": {
+          "tokens": [
+            "radar"
+          ],
+          "matched_vocabulary": [
+            "radar\u2192PERCEPTION_AND_SENSING"
+          ],
+          "weight": 0.03
+        },
+        "actuator_sensor_role": {
+          "role": "sensor_producer",
+          "contributed_domain": "PERCEPTION_AND_SENSING",
+          "weight": 0.02
+        }
+      },
+      "cybersecurity_properties": {
+        "primary": [
+          "Integrity",
+          "Authenticity",
+          "Availability"
+        ],
+        "secondary": [],
+        "derivation": "Sensor spoofing corrupts situational awareness; sensor blinding disables ADAS safety functions"
+      },
+      "functional_consequences": [
+        "sensor_data_spoofing",
+        "false_object_injection",
+        "sensor_blinding",
+        "integrity_loss_in_perception_and_sensing",
+        "safety_function_unavailability"
+      ],
+      "damage_scenario_seeds": [
+        "Vehicle collision due to corrupted environmental sensor data fed to ADAS",
+        "Physical harm from failure to detect obstacles or road users from sensor blinding or spoofing"
+      ],
+      "attack_surface_classes": [
+        "in_vehicle_network",
+        "physical_access",
+        "wireless_interface"
+      ],
+      "asset_target_properties": {
+        "Integrity": [
+          "sensor_data",
+          "object_detection_output"
+        ],
+        "Availability": [
+          "service"
+        ],
+        "Authenticity": [
+          "sensor_data",
+          "messages"
+        ]
+      },
+      "reachable_threat_actor_classes": [
+        "insider_attacker",
+        "supply_chain_attacker",
+        "physical_attacker",
+        "remote_attacker",
+        "nearby_attacker"
+      ],
+      "entry_point": {
+        "is_entry_point": true,
+        "entry_point_types": [
+          "physical_hardware",
+          "wireless_rf",
+          "remote_ip"
+        ],
+        "externally_reachable": true,
+        "transitive_remote_reachable": true,
+        "reachability_derivation": "attack_surface:physical_access + attack_surface:wireless_interface + trust_zone:TZ-ADAS + transitive_network_exposure"
+      },
+      "provenance": {
+        "source": [
+          "R155 Annex 5 Threat 3.3",
+          "R155 Annex 5 Threat 6.1",
+          "ISO/SAE 21434 Clause 8.3"
+        ],
+        "reference_standards": [
+          "ISO 26262-3:2018",
+          "SAE J3061",
+          "ISO/SAE 21434:2021",
+          "UNECE R155"
+        ],
+        "justification": "Rule P1 (PURE_SENSOR_PRODUCER): domain=PERCEPTION_AND_SENSING, trust_zone=TZ-ADAS (level 3) [deployment annotation], lexical_tokens=radar",
+        "inference_method": "weighted_evidence_convergence_v2",
+        "deterministic": true
+      },
+      "capec_cwe_refs": [
+        {
+          "capec_id": "141",
+          "capec_name": "Cache Poisoning",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:wireless_interface",
+            "r155:3.3"
+          ],
+          "cwe_ids": [
+            "CWE-348",
+            "CWE-345",
+            "CWE-349",
+            "CWE-346"
+          ],
+          "severity": "High",
+          "likelihood": "High"
+        },
+        {
+          "capec_id": "194",
+          "capec_name": "Fake the Source of Data",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:wireless_interface",
+            "r155:3.3"
+          ],
+          "cwe_ids": [
+            "CWE-287"
+          ],
+          "severity": "Medium",
+          "likelihood": "Unknown"
+        },
+        {
+          "capec_id": "195",
+          "capec_name": "Principal Spoof",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:wireless_interface",
+            "r155:3.3"
+          ],
+          "cwe_ids": [],
+          "severity": "Medium",
+          "likelihood": "Unknown"
+        },
+        {
+          "capec_id": "196",
+          "capec_name": "Session Credential Falsification through Forging",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:wireless_interface",
+            "r155:6.1"
+          ],
+          "cwe_ids": [
+            "CWE-384",
+            "CWE-664"
+          ],
+          "severity": "Medium",
+          "likelihood": "Medium"
+        },
+        {
+          "capec_id": "276",
+          "capec_name": "Inter-component Protocol Manipulation",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:wireless_interface"
+          ],
+          "cwe_ids": [
+            "CWE-707"
+          ],
+          "severity": "Unknown",
+          "likelihood": "Unknown"
+        },
+        {
+          "capec_id": "277",
+          "capec_name": "Data Interchange Protocol Manipulation",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:wireless_interface"
+          ],
+          "cwe_ids": [
+            "CWE-707"
+          ],
+          "severity": "Unknown",
+          "likelihood": "Unknown"
+        },
+        {
+          "capec_id": "547",
+          "capec_name": "Physical Destruction of Device or Component",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:physical_access"
+          ],
+          "cwe_ids": [],
+          "severity": "Unknown",
+          "likelihood": "Unknown"
+        },
+        {
+          "capec_id": "583",
+          "capec_name": "Disabling Network Hardware",
+          "abstraction": "Detailed",
+          "join_dimensions": [
+            "attack_surface:physical_access"
+          ],
+          "cwe_ids": [],
+          "severity": "Unknown",
+          "likelihood": "Unknown"
+        },
+        {
+          "capec_id": "599",
+          "capec_name": "Terrestrial Jamming",
+          "abstraction": "Detailed",
+          "join_dimensions": [
+            "attack_surface:wireless_interface"
+          ],
+          "cwe_ids": [],
+          "severity": "High",
+          "likelihood": "Low"
+        },
+        {
+          "capec_id": "604",
+          "capec_name": "Wi-Fi Jamming",
+          "abstraction": "Detailed",
+          "join_dimensions": [
+            "attack_surface:wireless_interface"
+          ],
+          "cwe_ids": [],
+          "severity": "High",
+          "likelihood": "Medium"
+        },
+        {
+          "capec_id": "627",
+          "capec_name": "Counterfeit GPS Signals",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:wireless_interface",
+            "r155:3.3"
+          ],
+          "cwe_ids": [],
+          "severity": "High",
+          "likelihood": "Low"
+        },
+        {
+          "capec_id": "628",
+          "capec_name": "Carry-Off GPS Attack",
+          "abstraction": "Detailed",
+          "join_dimensions": [
+            "attack_surface:wireless_interface"
+          ],
+          "cwe_ids": [],
+          "severity": "High",
+          "likelihood": "Low"
+        }
+      ],
+      "topology": {
+        "connected_ecus": [
+          "AUTOPILOT"
+        ],
+        "via_buses": [],
+        "via_flows": [
+          "AUTOPILOT"
+        ],
+        "trust_boundary_crossings": []
+      }
+    },
+    {
+      "ontology_id": "FUNC-003",
+      "functional_domain": "VEHICLE_MOTION_CONTROL",
+      "subdomains": [
+        "deceleration_control"
+      ],
+      "confidence": 0.95,
+      "dual_domain": null,
+      "mapped_ecus": [
+        "BRAKE_CONTROLLER"
+      ],
+      "mapped_interfaces": [
+        "OBD_INTERFACE",
+        "SPEED_SENSORS"
+      ],
+      "inference_evidence": {
+        "trust_zone_signal": {
+          "zone_id": "TZ-BRAKE",
+          "trust_level": 3,
+          "contributed_domain": "VEHICLE_MOTION_CONTROL",
+          "weight": 0.25
+        },
+        "data_flow_role": {
+          "role": "bus_bridge",
+          "contributed_domain": "NETWORK_GATEWAYING",
+          "weight": 0.25
+        },
+        "interface_proximity": {
+          "adjacent_interfaces": [
+            "SPEED_SENSORS",
+            "OBD_INTERFACE"
+          ],
+          "contributed_domain": "VEHICLE_MOTION_CONTROL",
+          "weight": 0.2
+        },
+        "protocol_signal": {
+          "protocols": [
+            "CAN/UDS",
+            "DIGITAL/NONE"
+          ],
+          "contributed_domain": "DIAGNOSTIC_AND_SERVICE",
+          "weight": 0.15
+        },
+        "bus_membership": {
+          "buses": [
+            "CHASSIS_CAN",
+            "PARTY_CAN"
+          ],
+          "contributed_domain": "NETWORK_GATEWAYING",
+          "weight": 0.1
+        },
+        "lexical_tokens": {
+          "tokens": [
+            "brake",
+            "controller"
+          ],
+          "matched_vocabulary": [
+            "brake\u2192VEHICLE_MOTION_CONTROL"
+          ],
+          "weight": 0.03
+        },
+        "actuator_sensor_role": {
+          "role": "sensor_consumer",
+          "contributed_domain": "PERCEPTION_AND_SENSING",
+          "weight": 0.02
+        }
+      },
+      "cybersecurity_properties": {
+        "primary": [
+          "Integrity",
+          "Availability",
+          "Authenticity"
+        ],
+        "secondary": [
+          "Non-repudiation"
+        ],
+        "derivation": "Safety-critical control function; integrity loss enables command injection; availability loss disables safety function"
+      },
+      "functional_consequences": [
+        "unintended_braking",
+        "loss_of_deceleration_control",
+        "integrity_loss_in_vehicle_motion_control",
+        "safety_function_unavailability"
+      ],
+      "damage_scenario_seeds": [
+        "Physical harm to vehicle occupants from unintended braking or loss of deceleration control",
+        "Rear-end collision caused by brake command injection"
+      ],
+      "attack_surface_classes": [
+        "in_vehicle_network",
+        "diagnostic_interface",
+        "physical_access"
+      ],
+      "asset_target_properties": {
+        "Integrity": [
+          "commands",
+          "control_signals",
+          "configuration"
+        ],
+        "Availability": [
+          "service",
+          "safety_function"
+        ],
+        "Authenticity": [
+          "messages",
+          "command_sources"
+        ]
+      },
+      "reachable_threat_actor_classes": [
+        "insider_attacker",
+        "supply_chain_attacker",
+        "service_technician",
+        "physical_attacker"
+      ],
+      "entry_point": {
+        "is_entry_point": true,
+        "entry_point_types": [
+          "physical_diagnostic",
+          "physical_hardware"
+        ],
+        "externally_reachable": true,
+        "transitive_remote_reachable": false,
+        "reachability_derivation": "attack_surface:diagnostic_interface + attack_surface:physical_access + trust_zone:TZ-BRAKE"
+      },
+      "provenance": {
+        "source": [
+          "R155 Annex 5 Threat 3.1",
+          "R155 Annex 5 Threat 6.1",
+          "ISO/SAE 21434 Clause 8.3"
+        ],
+        "reference_standards": [
+          "ISO 26262-3:2018",
+          "SAE J3061",
+          "ISO/SAE 21434:2021",
+          "UNECE R155"
+        ],
+        "justification": "Rule P8 (AMBIGUOUS): domain=VEHICLE_MOTION_CONTROL, trust_zone=TZ-BRAKE (level 3) [deployment annotation], buses=CHASSIS_CAN+PARTY_CAN [communication annotation], adjacent_interfaces=SPEED_SENSORS+OBD_INTERFACE, lexical_tokens=brake+controller",
+        "inference_method": "weighted_evidence_convergence_v2",
+        "deterministic": true
+      },
+      "capec_cwe_refs": [
+        {
+          "capec_id": "141",
+          "capec_name": "Cache Poisoning",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:diagnostic_interface",
+            "r155:3.1"
+          ],
+          "cwe_ids": [
+            "CWE-348",
+            "CWE-345",
+            "CWE-349",
+            "CWE-346"
+          ],
+          "severity": "High",
+          "likelihood": "High"
+        },
+        {
+          "capec_id": "166",
+          "capec_name": "Force the System to Reset Values",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:diagnostic_interface",
+            "attack_surface:physical_access"
+          ],
+          "cwe_ids": [
+            "CWE-306",
+            "CWE-1221",
+            "CWE-1232"
+          ],
+          "severity": "Medium",
+          "likelihood": "Unknown"
+        },
+        {
+          "capec_id": "194",
+          "capec_name": "Fake the Source of Data",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:diagnostic_interface",
+            "r155:3.1"
+          ],
+          "cwe_ids": [
+            "CWE-287"
+          ],
+          "severity": "Medium",
+          "likelihood": "Unknown"
+        },
+        {
+          "capec_id": "196",
+          "capec_name": "Session Credential Falsification through Forging",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:diagnostic_interface",
+            "r155:6.1"
+          ],
+          "cwe_ids": [
+            "CWE-384",
+            "CWE-664"
+          ],
+          "severity": "Medium",
+          "likelihood": "Medium"
+        },
+        {
+          "capec_id": "276",
+          "capec_name": "Inter-component Protocol Manipulation",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:diagnostic_interface",
+            "r155:3.1"
+          ],
+          "cwe_ids": [
+            "CWE-707"
+          ],
+          "severity": "Unknown",
+          "likelihood": "Unknown"
+        },
+        {
+          "capec_id": "578",
+          "capec_name": "Disable Security Software",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:diagnostic_interface",
+            "attack_surface:physical_access"
+          ],
+          "cwe_ids": [
+            "CWE-284"
+          ],
+          "severity": "Medium",
+          "likelihood": "Medium",
+          "known_false_positive_note": "CAPEC-578 (Disable Security Software) is conceptually thin for CAN-connected safety ECUs with no traditional security software stack. Applied as defeating any monitoring mechanism. Attack path generator must not use as a concrete attack step on VEHICLE_MOTION_CONTROL, OCCUPANT_SAFETY_SYSTEMS, or PERCEPTION_AND_SENSING nodes without additional evidence of a software security monitor being present."
+        }
+      ],
+      "topology": {
+        "connected_ecus": [
+          "AUTOPILOT",
+          "BODY_CONTROLLER",
+          "DRIVE_INVERTER_FRONT",
+          "DRIVE_INVERTER_REAR",
+          "RESTRAINTS_CONTROLLER",
+          "STEERING_CONTROLLER"
+        ],
+        "via_buses": [
+          "CHASSIS_CAN",
+          "PARTY_CAN"
+        ],
+        "via_flows": [],
+        "trust_boundary_crossings": [
+          {
+            "src_ecu": "BRAKE_CONTROLLER",
+            "dst_ecu": "BODY_CONTROLLER",
+            "src_trust_level": 3,
+            "dst_trust_level": 2,
+            "direction": "HIGH_TO_LOW"
+          }
+        ]
+      }
+    },
+    {
+      "ontology_id": "FUNC-004",
+      "functional_domain": "VEHICLE_MOTION_CONTROL",
+      "subdomains": [
+        "lateral_control"
+      ],
+      "confidence": 0.95,
+      "dual_domain": null,
+      "mapped_ecus": [
+        "STEERING_CONTROLLER"
+      ],
+      "mapped_interfaces": [
+        "OBD_INTERFACE"
+      ],
+      "inference_evidence": {
+        "trust_zone_signal": {
+          "zone_id": "TZ-STEERING",
+          "trust_level": 3,
+          "contributed_domain": "VEHICLE_MOTION_CONTROL",
+          "weight": 0.25
+        },
+        "data_flow_role": {
+          "role": "bus_bridge",
+          "contributed_domain": "NETWORK_GATEWAYING",
+          "weight": 0.25
+        },
+        "interface_proximity": {
+          "adjacent_interfaces": [
+            "OBD_INTERFACE"
+          ],
+          "contributed_domain": "DIAGNOSTIC_AND_SERVICE",
+          "weight": 0.2
+        },
+        "protocol_signal": {
+          "protocols": [
+            "CAN/UDS"
+          ],
+          "contributed_domain": "DIAGNOSTIC_AND_SERVICE",
+          "weight": 0.15
+        },
+        "bus_membership": {
+          "buses": [
+            "CHASSIS_CAN",
+            "PARTY_CAN"
+          ],
+          "contributed_domain": "NETWORK_GATEWAYING",
+          "weight": 0.1
+        },
+        "lexical_tokens": {
+          "tokens": [
+            "steering",
+            "controller"
+          ],
+          "matched_vocabulary": [
+            "steering\u2192VEHICLE_MOTION_CONTROL"
+          ],
+          "weight": 0.03
+        },
+        "actuator_sensor_role": {
+          "role": "diagnostic_node",
+          "contributed_domain": "DIAGNOSTIC_AND_SERVICE",
+          "weight": 0.02
+        }
+      },
+      "cybersecurity_properties": {
+        "primary": [
+          "Integrity",
+          "Availability",
+          "Authenticity"
+        ],
+        "secondary": [
+          "Non-repudiation"
+        ],
+        "derivation": "Safety-critical control function; integrity loss enables command injection; availability loss disables safety function"
+      },
+      "functional_consequences": [
+        "unintended_steering",
+        "uncontrolled_lateral_motion",
+        "integrity_loss_in_vehicle_motion_control",
+        "safety_function_unavailability"
+      ],
+      "damage_scenario_seeds": [
+        "Vehicle lane departure or rollover causing physical harm from steering actuator uncontrolled lateral motion",
+        "Collision with road users due to steering command injection (steering actuator)"
+      ],
+      "attack_surface_classes": [
+        "in_vehicle_network",
+        "diagnostic_interface",
+        "physical_access"
+      ],
+      "asset_target_properties": {
+        "Integrity": [
+          "commands",
+          "control_signals",
+          "configuration"
+        ],
+        "Availability": [
+          "service",
+          "safety_function"
+        ],
+        "Authenticity": [
+          "messages",
+          "command_sources"
+        ]
+      },
+      "reachable_threat_actor_classes": [
+        "insider_attacker",
+        "supply_chain_attacker",
+        "service_technician",
+        "physical_attacker"
+      ],
+      "entry_point": {
+        "is_entry_point": true,
+        "entry_point_types": [
+          "physical_diagnostic",
+          "physical_hardware"
+        ],
+        "externally_reachable": true,
+        "transitive_remote_reachable": false,
+        "reachability_derivation": "attack_surface:diagnostic_interface + attack_surface:physical_access + trust_zone:TZ-STEERING"
+      },
+      "provenance": {
+        "source": [
+          "R155 Annex 5 Threat 3.1",
+          "R155 Annex 5 Threat 6.1",
+          "ISO/SAE 21434 Clause 8.3"
+        ],
+        "reference_standards": [
+          "ISO 26262-3:2018",
+          "SAE J3061",
+          "ISO/SAE 21434:2021",
+          "UNECE R155"
+        ],
+        "justification": "Rule P8 (AMBIGUOUS): domain=VEHICLE_MOTION_CONTROL, trust_zone=TZ-STEERING (level 3) [deployment annotation], buses=CHASSIS_CAN+PARTY_CAN [communication annotation], adjacent_interfaces=OBD_INTERFACE, lexical_tokens=steering+controller",
+        "inference_method": "weighted_evidence_convergence_v2",
+        "deterministic": true
+      },
+      "capec_cwe_refs": [
+        {
+          "capec_id": "141",
+          "capec_name": "Cache Poisoning",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:diagnostic_interface",
+            "r155:3.1"
+          ],
+          "cwe_ids": [
+            "CWE-348",
+            "CWE-345",
+            "CWE-349",
+            "CWE-346"
+          ],
+          "severity": "High",
+          "likelihood": "High"
+        },
+        {
+          "capec_id": "166",
+          "capec_name": "Force the System to Reset Values",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:diagnostic_interface",
+            "attack_surface:physical_access"
+          ],
+          "cwe_ids": [
+            "CWE-306",
+            "CWE-1221",
+            "CWE-1232"
+          ],
+          "severity": "Medium",
+          "likelihood": "Unknown"
+        },
+        {
+          "capec_id": "194",
+          "capec_name": "Fake the Source of Data",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:diagnostic_interface",
+            "r155:3.1"
+          ],
+          "cwe_ids": [
+            "CWE-287"
+          ],
+          "severity": "Medium",
+          "likelihood": "Unknown"
+        },
+        {
+          "capec_id": "196",
+          "capec_name": "Session Credential Falsification through Forging",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:diagnostic_interface",
+            "r155:6.1"
+          ],
+          "cwe_ids": [
+            "CWE-384",
+            "CWE-664"
+          ],
+          "severity": "Medium",
+          "likelihood": "Medium"
+        },
+        {
+          "capec_id": "276",
+          "capec_name": "Inter-component Protocol Manipulation",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:diagnostic_interface",
+            "r155:3.1"
+          ],
+          "cwe_ids": [
+            "CWE-707"
+          ],
+          "severity": "Unknown",
+          "likelihood": "Unknown"
+        },
+        {
+          "capec_id": "578",
+          "capec_name": "Disable Security Software",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:diagnostic_interface",
+            "attack_surface:physical_access"
+          ],
+          "cwe_ids": [
+            "CWE-284"
+          ],
+          "severity": "Medium",
+          "likelihood": "Medium",
+          "known_false_positive_note": "CAPEC-578 (Disable Security Software) is conceptually thin for CAN-connected safety ECUs with no traditional security software stack. Applied as defeating any monitoring mechanism. Attack path generator must not use as a concrete attack step on VEHICLE_MOTION_CONTROL, OCCUPANT_SAFETY_SYSTEMS, or PERCEPTION_AND_SENSING nodes without additional evidence of a software security monitor being present."
+        }
+      ],
+      "topology": {
+        "connected_ecus": [
+          "AUTOPILOT",
+          "BODY_CONTROLLER",
+          "BRAKE_CONTROLLER",
+          "DRIVE_INVERTER_FRONT",
+          "DRIVE_INVERTER_REAR",
+          "RESTRAINTS_CONTROLLER"
+        ],
+        "via_buses": [
+          "CHASSIS_CAN",
+          "PARTY_CAN"
+        ],
+        "via_flows": [],
+        "trust_boundary_crossings": [
+          {
+            "src_ecu": "STEERING_CONTROLLER",
+            "dst_ecu": "BODY_CONTROLLER",
+            "src_trust_level": 3,
+            "dst_trust_level": 2,
+            "direction": "HIGH_TO_LOW"
+          }
+        ]
+      }
+    },
+    {
+      "ontology_id": "FUNC-005",
+      "functional_domain": "POWERTRAIN_MANAGEMENT",
+      "subdomains": [
+        "energy_conversion"
+      ],
+      "confidence": 0.95,
+      "dual_domain": null,
+      "mapped_ecus": [
+        "DRIVE_INVERTER_FRONT"
+      ],
+      "mapped_interfaces": [],
+      "inference_evidence": {
+        "trust_zone_signal": {
+          "zone_id": "TZ-POWERTRAIN",
+          "trust_level": 3,
+          "contributed_domain": "POWERTRAIN_MANAGEMENT",
+          "weight": 0.25
+        },
+        "data_flow_role": {
+          "role": "bus_bridge",
+          "contributed_domain": "NETWORK_GATEWAYING",
+          "weight": 0.25
+        },
+        "interface_proximity": {
+          "adjacent_interfaces": [],
+          "contributed_domain": "NONE",
+          "weight": 0.2
+        },
+        "protocol_signal": {
+          "protocols": [
+            "CAN/NONE",
+            "PWR/NONE"
+          ],
+          "contributed_domain": "NONE",
+          "weight": 0.15
+        },
+        "bus_membership": {
+          "buses": [
+            "VEHICLE_CAN",
+            "PARTY_CAN"
+          ],
+          "contributed_domain": "NETWORK_GATEWAYING",
+          "weight": 0.1
+        },
+        "lexical_tokens": {
+          "tokens": [
+            "drive",
+            "inverter",
+            "front"
+          ],
+          "matched_vocabulary": [
+            "drive\u2192POWERTRAIN_MANAGEMENT",
+            "inverter\u2192POWERTRAIN_MANAGEMENT"
+          ],
+          "weight": 0.03
+        },
+        "actuator_sensor_role": {
+          "role": "unknown",
+          "contributed_domain": "NONE",
+          "weight": 0.02
+        }
+      },
+      "cybersecurity_properties": {
+        "primary": [
+          "Integrity",
+          "Availability",
+          "Authenticity"
+        ],
+        "secondary": [
+          "Confidentiality"
+        ],
+        "derivation": "Safety-critical energy conversion and storage; unauthenticated CAN commands are the primary attack vector for torque/HV manipulation; BMS state data and charging session data carry commercial and privacy sensitivity"
+      },
+      "functional_consequences": [
+        "uncontrolled_torque_output",
+        "loss_of_propulsion",
+        "integrity_loss_in_powertrain_management",
+        "safety_function_unavailability"
+      ],
+      "damage_scenario_seeds": [
+        "Physical harm from front drive unit unintended acceleration due to uncontrolled torque output",
+        "Loss of drive torque causing secondary collision in traffic (front drive unit)"
+      ],
+      "attack_surface_classes": [
+        "in_vehicle_network",
+        "diagnostic_interface",
+        "physical_access"
+      ],
+      "asset_target_properties": {
+        "Integrity": [
+          "torque_commands",
+          "energy_parameters",
+          "configuration"
+        ],
+        "Availability": [
+          "service",
+          "safety_function"
+        ],
+        "Authenticity": [
+          "messages",
+          "command_sources"
+        ],
+        "Confidentiality": [
+          "battery_state_data",
+          "charging_session_data"
+        ]
+      },
+      "reachable_threat_actor_classes": [
+        "insider_attacker",
+        "supply_chain_attacker",
+        "service_technician",
+        "physical_attacker"
+      ],
+      "entry_point": {
+        "is_entry_point": true,
+        "entry_point_types": [
+          "physical_diagnostic",
+          "physical_hardware"
+        ],
+        "externally_reachable": true,
+        "transitive_remote_reachable": false,
+        "reachability_derivation": "attack_surface:diagnostic_interface + attack_surface:physical_access + trust_zone:TZ-POWERTRAIN"
+      },
+      "provenance": {
+        "source": [
+          "R155 Annex 5 Threat 3.1",
+          "R155 Annex 5 Threat 6.2",
+          "ISO/SAE 21434 Clause 8.3"
+        ],
+        "reference_standards": [
+          "ISO 26262-3:2018",
+          "SAE J3061",
+          "ISO/SAE 21434:2021",
+          "UNECE R155"
+        ],
+        "justification": "Rule P6 (ENERGY_MANAGER): domain=POWERTRAIN_MANAGEMENT, trust_zone=TZ-POWERTRAIN (level 3) [deployment annotation], buses=VEHICLE_CAN+PARTY_CAN [communication annotation], lexical_tokens=drive+inverter+front",
+        "inference_method": "weighted_evidence_convergence_v2",
+        "deterministic": true
+      },
+      "capec_cwe_refs": [
+        {
+          "capec_id": "141",
+          "capec_name": "Cache Poisoning",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:diagnostic_interface",
+            "r155:3.1"
+          ],
+          "cwe_ids": [
+            "CWE-348",
+            "CWE-345",
+            "CWE-349",
+            "CWE-346"
+          ],
+          "severity": "High",
+          "likelihood": "High"
+        },
+        {
+          "capec_id": "194",
+          "capec_name": "Fake the Source of Data",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:diagnostic_interface",
+            "r155:3.1"
+          ],
+          "cwe_ids": [
+            "CWE-287"
+          ],
+          "severity": "Medium",
+          "likelihood": "Unknown"
+        },
+        {
+          "capec_id": "276",
+          "capec_name": "Inter-component Protocol Manipulation",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:diagnostic_interface",
+            "r155:3.1"
+          ],
+          "cwe_ids": [
+            "CWE-707"
+          ],
+          "severity": "Unknown",
+          "likelihood": "Unknown"
+        },
+        {
+          "capec_id": "664",
+          "capec_name": "Server Side Request Forgery",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:physical_access",
+            "r155:6.2"
+          ],
+          "cwe_ids": [
+            "CWE-918",
+            "CWE-20"
+          ],
+          "severity": "High",
+          "likelihood": "High"
+        }
+      ],
+      "topology": {
+        "connected_ecus": [
+          "AUTOPILOT",
+          "BODY_CONTROLLER",
+          "BRAKE_CONTROLLER",
+          "DRIVE_INVERTER_REAR",
+          "HV_BATTERY",
+          "INTERIOR_RADAR",
+          "RESTRAINTS_CONTROLLER",
+          "SECURITY_CONTROLLER",
+          "STEERING_ANGLE_ECU",
+          "STEERING_CONTROLLER"
+        ],
+        "via_buses": [
+          "PARTY_CAN",
+          "VEHICLE_CAN"
+        ],
+        "via_flows": [
+          "BODY_CONTROLLER",
+          "HV_BATTERY"
+        ],
+        "trust_boundary_crossings": [
+          {
+            "src_ecu": "DRIVE_INVERTER_FRONT",
+            "dst_ecu": "BODY_CONTROLLER",
+            "src_trust_level": 3,
+            "dst_trust_level": 2,
+            "direction": "HIGH_TO_LOW"
+          },
+          {
+            "src_ecu": "DRIVE_INVERTER_FRONT",
+            "dst_ecu": "INTERIOR_RADAR",
+            "src_trust_level": 3,
+            "dst_trust_level": 2,
+            "direction": "HIGH_TO_LOW"
+          },
+          {
+            "src_ecu": "DRIVE_INVERTER_FRONT",
+            "dst_ecu": "SECURITY_CONTROLLER",
+            "src_trust_level": 3,
+            "dst_trust_level": 2,
+            "direction": "HIGH_TO_LOW"
+          }
+        ]
+      }
+    },
+    {
+      "ontology_id": "FUNC-006",
+      "functional_domain": "POWERTRAIN_MANAGEMENT",
+      "subdomains": [
+        "energy_conversion"
+      ],
+      "confidence": 0.95,
+      "dual_domain": null,
+      "mapped_ecus": [
+        "DRIVE_INVERTER_REAR"
+      ],
+      "mapped_interfaces": [
+        "ACCEL_SENSOR"
+      ],
+      "inference_evidence": {
+        "trust_zone_signal": {
+          "zone_id": "TZ-POWERTRAIN",
+          "trust_level": 3,
+          "contributed_domain": "POWERTRAIN_MANAGEMENT",
+          "weight": 0.25
+        },
+        "data_flow_role": {
+          "role": "bus_bridge",
+          "contributed_domain": "NETWORK_GATEWAYING",
+          "weight": 0.25
+        },
+        "interface_proximity": {
+          "adjacent_interfaces": [
+            "ACCEL_SENSOR"
+          ],
+          "contributed_domain": "VEHICLE_MOTION_CONTROL",
+          "weight": 0.2
+        },
+        "protocol_signal": {
+          "protocols": [
+            "CAN/NONE",
+            "ANALOG/NONE",
+            "PWR/NONE"
+          ],
+          "contributed_domain": "NONE",
+          "weight": 0.15
+        },
+        "bus_membership": {
+          "buses": [
+            "VEHICLE_CAN",
+            "PARTY_CAN"
+          ],
+          "contributed_domain": "NETWORK_GATEWAYING",
+          "weight": 0.1
+        },
+        "lexical_tokens": {
+          "tokens": [
+            "drive",
+            "inverter",
+            "rear"
+          ],
+          "matched_vocabulary": [
+            "drive\u2192POWERTRAIN_MANAGEMENT",
+            "inverter\u2192POWERTRAIN_MANAGEMENT"
+          ],
+          "weight": 0.03
+        },
+        "actuator_sensor_role": {
+          "role": "sensor_consumer",
+          "contributed_domain": "PERCEPTION_AND_SENSING",
+          "weight": 0.02
+        }
+      },
+      "cybersecurity_properties": {
+        "primary": [
+          "Integrity",
+          "Availability",
+          "Authenticity"
+        ],
+        "secondary": [
+          "Confidentiality"
+        ],
+        "derivation": "Safety-critical energy conversion and storage; unauthenticated CAN commands are the primary attack vector for torque/HV manipulation; BMS state data and charging session data carry commercial and privacy sensitivity"
+      },
+      "functional_consequences": [
+        "uncontrolled_torque_output",
+        "loss_of_propulsion",
+        "integrity_loss_in_powertrain_management",
+        "safety_function_unavailability"
+      ],
+      "damage_scenario_seeds": [
+        "Physical harm from rear drive unit unintended acceleration due to uncontrolled torque output",
+        "Loss of drive torque causing secondary collision in traffic (rear drive unit)"
+      ],
+      "attack_surface_classes": [
+        "in_vehicle_network",
+        "diagnostic_interface",
+        "physical_access"
+      ],
+      "asset_target_properties": {
+        "Integrity": [
+          "torque_commands",
+          "energy_parameters",
+          "configuration"
+        ],
+        "Availability": [
+          "service",
+          "safety_function"
+        ],
+        "Authenticity": [
+          "messages",
+          "command_sources"
+        ],
+        "Confidentiality": [
+          "battery_state_data",
+          "charging_session_data"
+        ]
+      },
+      "reachable_threat_actor_classes": [
+        "insider_attacker",
+        "supply_chain_attacker",
+        "service_technician",
+        "physical_attacker"
+      ],
+      "entry_point": {
+        "is_entry_point": true,
+        "entry_point_types": [
+          "physical_diagnostic",
+          "physical_hardware"
+        ],
+        "externally_reachable": true,
+        "transitive_remote_reachable": false,
+        "reachability_derivation": "attack_surface:diagnostic_interface + attack_surface:physical_access + trust_zone:TZ-POWERTRAIN"
+      },
+      "provenance": {
+        "source": [
+          "R155 Annex 5 Threat 3.1",
+          "R155 Annex 5 Threat 6.2",
+          "ISO/SAE 21434 Clause 8.3"
+        ],
+        "reference_standards": [
+          "ISO 26262-3:2018",
+          "SAE J3061",
+          "ISO/SAE 21434:2021",
+          "UNECE R155"
+        ],
+        "justification": "Rule P6 (ENERGY_MANAGER): domain=POWERTRAIN_MANAGEMENT, trust_zone=TZ-POWERTRAIN (level 3) [deployment annotation], buses=VEHICLE_CAN+PARTY_CAN [communication annotation], adjacent_interfaces=ACCEL_SENSOR, lexical_tokens=drive+inverter+rear",
+        "inference_method": "weighted_evidence_convergence_v2",
+        "deterministic": true
+      },
+      "capec_cwe_refs": [
+        {
+          "capec_id": "141",
+          "capec_name": "Cache Poisoning",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:diagnostic_interface",
+            "r155:3.1"
+          ],
+          "cwe_ids": [
+            "CWE-348",
+            "CWE-345",
+            "CWE-349",
+            "CWE-346"
+          ],
+          "severity": "High",
+          "likelihood": "High"
+        },
+        {
+          "capec_id": "194",
+          "capec_name": "Fake the Source of Data",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:diagnostic_interface",
+            "r155:3.1"
+          ],
+          "cwe_ids": [
+            "CWE-287"
+          ],
+          "severity": "Medium",
+          "likelihood": "Unknown"
+        },
+        {
+          "capec_id": "276",
+          "capec_name": "Inter-component Protocol Manipulation",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:diagnostic_interface",
+            "r155:3.1"
+          ],
+          "cwe_ids": [
+            "CWE-707"
+          ],
+          "severity": "Unknown",
+          "likelihood": "Unknown"
+        },
+        {
+          "capec_id": "664",
+          "capec_name": "Server Side Request Forgery",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:physical_access",
+            "r155:6.2"
+          ],
+          "cwe_ids": [
+            "CWE-918",
+            "CWE-20"
+          ],
+          "severity": "High",
+          "likelihood": "High"
+        }
+      ],
+      "topology": {
+        "connected_ecus": [
+          "AUTOPILOT",
+          "BODY_CONTROLLER",
+          "BRAKE_CONTROLLER",
+          "DRIVE_INVERTER_FRONT",
+          "HV_BATTERY",
+          "INTERIOR_RADAR",
+          "RESTRAINTS_CONTROLLER",
+          "SECURITY_CONTROLLER",
+          "STEERING_ANGLE_ECU",
+          "STEERING_CONTROLLER"
+        ],
+        "via_buses": [
+          "PARTY_CAN",
+          "VEHICLE_CAN"
+        ],
+        "via_flows": [
+          "BODY_CONTROLLER",
+          "HV_BATTERY"
+        ],
+        "trust_boundary_crossings": [
+          {
+            "src_ecu": "DRIVE_INVERTER_REAR",
+            "dst_ecu": "BODY_CONTROLLER",
+            "src_trust_level": 3,
+            "dst_trust_level": 2,
+            "direction": "HIGH_TO_LOW"
+          },
+          {
+            "src_ecu": "DRIVE_INVERTER_REAR",
+            "dst_ecu": "INTERIOR_RADAR",
+            "src_trust_level": 3,
+            "dst_trust_level": 2,
+            "direction": "HIGH_TO_LOW"
+          },
+          {
+            "src_ecu": "DRIVE_INVERTER_REAR",
+            "dst_ecu": "SECURITY_CONTROLLER",
+            "src_trust_level": 3,
+            "dst_trust_level": 2,
+            "direction": "HIGH_TO_LOW"
+          }
+        ]
+      }
+    },
+    {
+      "ontology_id": "FUNC-007",
+      "functional_domain": "OCCUPANT_SAFETY_SYSTEMS",
+      "subdomains": [
+        "passive_safety"
+      ],
+      "confidence": 0.5882,
+      "dual_domain": null,
+      "mapped_ecus": [
+        "RESTRAINTS_CONTROLLER"
+      ],
+      "mapped_interfaces": [
+        "IMPACT_SENSORS",
+        "PRESSURE_SENSORS",
+        "RESTRAINT_ACTUATORS"
+      ],
+      "inference_evidence": {
+        "trust_zone_signal": {
+          "zone_id": "TZ-SRS",
+          "trust_level": 3,
+          "contributed_domain": "OCCUPANT_SAFETY_SYSTEMS",
+          "weight": 0.25
+        },
+        "data_flow_role": {
+          "role": "bus_bridge",
+          "contributed_domain": "NETWORK_GATEWAYING",
+          "weight": 0.25
+        },
+        "interface_proximity": {
+          "adjacent_interfaces": [
+            "IMPACT_SENSORS",
+            "PRESSURE_SENSORS",
+            "RESTRAINT_ACTUATORS"
+          ],
+          "contributed_domain": "OCCUPANT_SAFETY_SYSTEMS",
+          "weight": 0.2
+        },
+        "protocol_signal": {
+          "protocols": [
+            "PWR/NONE",
+            "DIGITAL/NONE"
+          ],
+          "contributed_domain": "NONE",
+          "weight": 0.15
+        },
+        "bus_membership": {
+          "buses": [
+            "CHASSIS_CAN",
+            "PARTY_CAN"
+          ],
+          "contributed_domain": "NETWORK_GATEWAYING",
+          "weight": 0.1
+        },
+        "lexical_tokens": {
+          "tokens": [
+            "restraints",
+            "controller"
+          ],
+          "matched_vocabulary": [
+            "restraints\u2192OCCUPANT_SAFETY_SYSTEMS"
+          ],
+          "weight": 0.03
+        },
+        "actuator_sensor_role": {
+          "role": "sensor_to_actuator",
+          "contributed_domain": "OCCUPANT_SAFETY_SYSTEMS",
+          "weight": 0.02
+        }
+      },
+      "cybersecurity_properties": {
+        "primary": [
+          "Integrity",
+          "Availability",
+          "Authenticity"
+        ],
+        "secondary": [],
+        "derivation": "Life-critical passive safety; false activation or suppression directly endangers occupants"
+      },
+      "functional_consequences": [
+        "false_airbag_deployment",
+        "airbag_suppression_in_collision",
+        "seatbelt_pretensioner_attack",
+        "restraint_system_unavailability",
+        "integrity_loss_in_occupant_safety_systems",
+        "safety_function_unavailability"
+      ],
+      "damage_scenario_seeds": [
+        "Physical harm to occupants from unexpected airbag deployment at speed",
+        "Occupant death from airbag suppression during real collision",
+        "Secondary injury from false seatbelt pretensioner activation",
+        "Safety harm from restraint system unavailability during collision"
+      ],
+      "attack_surface_classes": [
+        "in_vehicle_network",
+        "physical_access"
+      ],
+      "asset_target_properties": {
+        "Integrity": [
+          "deployment_commands",
+          "sensor_data",
+          "configuration"
+        ],
+        "Availability": [
+          "service",
+          "safety_function"
+        ],
+        "Authenticity": [
+          "messages",
+          "command_sources"
+        ]
+      },
+      "reachable_threat_actor_classes": [
+        "insider_attacker",
+        "supply_chain_attacker",
+        "physical_attacker"
+      ],
+      "entry_point": {
+        "is_entry_point": true,
+        "entry_point_types": [
+          "physical_hardware"
+        ],
+        "externally_reachable": false,
+        "transitive_remote_reachable": false,
+        "reachability_derivation": "attack_surface:physical_access + trust_zone:TZ-SRS"
+      },
+      "provenance": {
+        "source": [
+          "R155 Annex 5 Threat 3.1",
+          "R155 Annex 5 Threat 6.1",
+          "ISO/SAE 21434 Clause 8.3"
+        ],
+        "reference_standards": [
+          "ISO 26262-3:2018",
+          "SAE J3061",
+          "ISO/SAE 21434:2021",
+          "UNECE R155"
+        ],
+        "justification": "Stage3 evidence convergence: domain=OCCUPANT_SAFETY_SYSTEMS, trust_zone=TZ-SRS (level 3), bus=CHASSIS_CAN|PARTY_CAN, adjacent_interfaces=IMPACT_SENSORS+PRESSURE_SENSORS+RESTRAINT_ACTUATORS, data_flow_role=bus_bridge, lexical_tokens=restraints\u2192OCCUPANT_SAFETY_SYSTEMS",
+        "inference_method": "weighted_evidence_convergence_v2",
+        "deterministic": true
+      },
+      "capec_cwe_refs": [
+        {
+          "capec_id": "141",
+          "capec_name": "Cache Poisoning",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "r155:3.1"
+          ],
+          "cwe_ids": [
+            "CWE-348",
+            "CWE-345",
+            "CWE-349",
+            "CWE-346"
+          ],
+          "severity": "High",
+          "likelihood": "High"
+        },
+        {
+          "capec_id": "166",
+          "capec_name": "Force the System to Reset Values",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:physical_access"
+          ],
+          "cwe_ids": [
+            "CWE-306",
+            "CWE-1221",
+            "CWE-1232"
+          ],
+          "severity": "Medium",
+          "likelihood": "Unknown"
+        },
+        {
+          "capec_id": "194",
+          "capec_name": "Fake the Source of Data",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "r155:3.1"
+          ],
+          "cwe_ids": [
+            "CWE-287"
+          ],
+          "severity": "Medium",
+          "likelihood": "Unknown"
+        },
+        {
+          "capec_id": "196",
+          "capec_name": "Session Credential Falsification through Forging",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "r155:6.1"
+          ],
+          "cwe_ids": [
+            "CWE-384",
+            "CWE-664"
+          ],
+          "severity": "Medium",
+          "likelihood": "Medium"
+        },
+        {
+          "capec_id": "276",
+          "capec_name": "Inter-component Protocol Manipulation",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "r155:3.1"
+          ],
+          "cwe_ids": [
+            "CWE-707"
+          ],
+          "severity": "Unknown",
+          "likelihood": "Unknown"
+        },
+        {
+          "capec_id": "578",
+          "capec_name": "Disable Security Software",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:physical_access"
+          ],
+          "cwe_ids": [
+            "CWE-284"
+          ],
+          "severity": "Medium",
+          "likelihood": "Medium",
+          "known_false_positive_note": "CAPEC-578 (Disable Security Software) is conceptually thin for CAN-connected safety ECUs with no traditional security software stack. Applied as defeating any monitoring mechanism. Attack path generator must not use as a concrete attack step on VEHICLE_MOTION_CONTROL, OCCUPANT_SAFETY_SYSTEMS, or PERCEPTION_AND_SENSING nodes without additional evidence of a software security monitor being present."
+        }
+      ],
+      "topology": {
+        "connected_ecus": [
+          "AUTOPILOT",
+          "BODY_CONTROLLER",
+          "BRAKE_CONTROLLER",
+          "DRIVE_INVERTER_FRONT",
+          "DRIVE_INVERTER_REAR",
+          "STEERING_CONTROLLER"
+        ],
+        "via_buses": [
+          "CHASSIS_CAN",
+          "PARTY_CAN"
+        ],
+        "via_flows": [],
+        "trust_boundary_crossings": [
+          {
+            "src_ecu": "RESTRAINTS_CONTROLLER",
+            "dst_ecu": "BODY_CONTROLLER",
+            "src_trust_level": 3,
+            "dst_trust_level": 2,
+            "direction": "HIGH_TO_LOW"
+          }
+        ]
+      }
+    },
+    {
+      "ontology_id": "FUNC-008",
+      "functional_domain": "NETWORK_GATEWAYING",
+      "subdomains": [
+        "domain_routing"
+      ],
+      "confidence": 0.95,
+      "dual_domain": "AUTOMATED_DRIVING_CONTROL",
+      "mapped_ecus": [
+        "BODY_CONTROLLER"
+      ],
+      "mapped_interfaces": [
+        "DIAG_ETHERNET",
+        "OBD_INTERFACE",
+        "VEHICLE_NETWORK"
+      ],
+      "inference_evidence": {
+        "trust_zone_signal": {
+          "zone_id": "TZ-BODY",
+          "trust_level": 2,
+          "contributed_domain": "BODY_AND_COMFORT",
+          "weight": 0.25
+        },
+        "data_flow_role": {
+          "role": "bus_bridge",
+          "contributed_domain": "NETWORK_GATEWAYING",
+          "weight": 0.25
+        },
+        "interface_proximity": {
+          "adjacent_interfaces": [
+            "VEHICLE_NETWORK",
+            "OBD_INTERFACE",
+            "DIAG_ETHERNET"
+          ],
+          "contributed_domain": "DIAGNOSTIC_AND_SERVICE",
+          "weight": 0.2
+        },
+        "protocol_signal": {
+          "protocols": [
+            "CAN/NONE",
+            "PWR/NONE",
+            "ETH/UDS"
+          ],
+          "contributed_domain": "DIAGNOSTIC_AND_SERVICE",
+          "weight": 0.15
+        },
+        "bus_membership": {
+          "buses": [
+            "VEHICLE_CAN",
+            "CHASSIS_CAN",
+            "PARTY_CAN"
+          ],
+          "contributed_domain": "NETWORK_GATEWAYING",
+          "weight": 0.1
+        },
+        "lexical_tokens": {
+          "tokens": [
+            "body",
+            "controller"
+          ],
+          "matched_vocabulary": [
+            "body\u2192BODY_AND_COMFORT"
+          ],
+          "weight": 0.03
+        },
+        "actuator_sensor_role": {
+          "role": "network_bridge",
+          "contributed_domain": "NETWORK_GATEWAYING",
+          "weight": 0.02
+        }
+      },
+      "cybersecurity_properties": {
+        "primary": [
+          "Integrity",
+          "Availability",
+          "Authorization"
+        ],
+        "secondary": [
+          "Authenticity"
+        ],
+        "derivation": "Cross-domain boundary enforcement; compromise enables lateral movement to safety-critical domains"
+      },
+      "functional_consequences": [
+        "cross_domain_lateral_movement",
+        "routing_manipulation",
+        "integrity_loss_in_network_gatewaying",
+        "unauthorized_privileged_access"
+      ],
+      "damage_scenario_seeds": [
+        "Safety harm to vehicle occupants through gateway-mediated attack on motion control or occupant safety systems",
+        "Injection of malicious commands into chassis or powertrain domain via routing manipulation causing physical harm"
+      ],
+      "attack_surface_classes": [
+        "in_vehicle_network",
+        "diagnostic_interface",
+        "physical_access",
+        "remote_network"
+      ],
+      "asset_target_properties": {
+        "Integrity": [
+          "routing_rules",
+          "firewall_policy",
+          "messages"
+        ],
+        "Availability": [
+          "service"
+        ],
+        "Authorization": [
+          "cross_domain_sessions",
+          "policy_rules"
+        ],
+        "Authenticity": [
+          "messages"
+        ]
+      },
+      "reachable_threat_actor_classes": [
+        "insider_attacker",
+        "supply_chain_attacker",
+        "service_technician",
+        "physical_attacker",
+        "remote_attacker"
+      ],
+      "entry_point": {
+        "is_entry_point": true,
+        "entry_point_types": [
+          "physical_diagnostic",
+          "physical_hardware",
+          "remote_ip"
+        ],
+        "externally_reachable": true,
+        "transitive_remote_reachable": true,
+        "reachability_derivation": "attack_surface:diagnostic_interface + attack_surface:physical_access + attack_surface:remote_network + trust_zone:TZ-BODY"
+      },
+      "provenance": {
+        "source": [
+          "R155 Annex 5 Threat 3.2",
+          "R155 Annex 5 Threat 7.3",
+          "ISO/SAE 21434 Clause 8.3"
+        ],
+        "reference_standards": [
+          "ISO 26262-3:2018",
+          "SAE J3061",
+          "ISO/SAE 21434:2021",
+          "UNECE R155"
+        ],
+        "justification": "Rule P2 (BUS_BRIDGE): domain=NETWORK_GATEWAYING, trust_zone=TZ-BODY (level 2) [deployment annotation], buses=VEHICLE_CAN+CHASSIS_CAN+PARTY_CAN [communication annotation], adjacent_interfaces=VEHICLE_NETWORK+OBD_INTERFACE+DIAG_ETHERNET, lexical_tokens=body+controller",
+        "inference_method": "weighted_evidence_convergence_v2",
+        "deterministic": true
+      },
+      "capec_cwe_refs": [
+        {
+          "capec_id": "1",
+          "capec_name": "Accessing Functionality Not Properly Constrained by ACLs",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:diagnostic_interface",
+            "attack_surface:remote_network",
+            "r155:3.2"
+          ],
+          "cwe_ids": [
+            "CWE-276",
+            "CWE-285",
+            "CWE-434",
+            "CWE-693",
+            "CWE-732",
+            "CWE-1191",
+            "CWE-1193",
+            "CWE-1220",
+            "CWE-1297",
+            "CWE-1311",
+            "CWE-1314",
+            "CWE-1315",
+            "CWE-1318",
+            "CWE-1320",
+            "CWE-1321",
+            "CWE-1327"
+          ],
+          "severity": "High",
+          "likelihood": "High"
+        },
+        {
+          "capec_id": "141",
+          "capec_name": "Cache Poisoning",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:diagnostic_interface",
+            "attack_surface:remote_network"
+          ],
+          "cwe_ids": [
+            "CWE-348",
+            "CWE-345",
+            "CWE-349",
+            "CWE-346"
+          ],
+          "severity": "High",
+          "likelihood": "High"
+        },
+        {
+          "capec_id": "180",
+          "capec_name": "Exploiting Incorrectly Configured Access Control Security Levels",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:diagnostic_interface",
+            "attack_surface:physical_access",
+            "attack_surface:remote_network",
+            "r155:3.2"
+          ],
+          "cwe_ids": [
+            "CWE-732",
+            "CWE-1190",
+            "CWE-1191",
+            "CWE-1193",
+            "CWE-1220",
+            "CWE-1268",
+            "CWE-1280",
+            "CWE-1297",
+            "CWE-1311",
+            "CWE-1315",
+            "CWE-1318",
+            "CWE-1320",
+            "CWE-1321"
+          ],
+          "severity": "Medium",
+          "likelihood": "High"
+        },
+        {
+          "capec_id": "276",
+          "capec_name": "Inter-component Protocol Manipulation",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:diagnostic_interface",
+            "attack_surface:remote_network"
+          ],
+          "cwe_ids": [
+            "CWE-707"
+          ],
+          "severity": "Unknown",
+          "likelihood": "Unknown"
+        },
+        {
+          "capec_id": "277",
+          "capec_name": "Data Interchange Protocol Manipulation",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:diagnostic_interface",
+            "attack_surface:remote_network"
+          ],
+          "cwe_ids": [
+            "CWE-707"
+          ],
+          "severity": "Unknown",
+          "likelihood": "Unknown"
+        },
+        {
+          "capec_id": "384",
+          "capec_name": "Application API Message Manipulation via Man-in-the-Middle",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:remote_network"
+          ],
+          "cwe_ids": [
+            "CWE-471",
+            "CWE-345",
+            "CWE-346",
+            "CWE-602",
+            "CWE-311"
+          ],
+          "severity": "Low",
+          "likelihood": "Unknown"
+        },
+        {
+          "capec_id": "523",
+          "capec_name": "Malicious Software Implanted",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:diagnostic_interface",
+            "attack_surface:physical_access",
+            "attack_surface:remote_network",
+            "r155:7.3"
+          ],
+          "cwe_ids": [],
+          "severity": "High",
+          "likelihood": "Low"
+        },
+        {
+          "capec_id": "638",
+          "capec_name": "Altered Component Firmware",
+          "abstraction": "Detailed",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:diagnostic_interface",
+            "attack_surface:physical_access",
+            "attack_surface:remote_network",
+            "r155:7.3"
+          ],
+          "cwe_ids": [],
+          "severity": "Very High",
+          "likelihood": "Low"
+        }
+      ],
+      "topology": {
+        "connected_ecus": [
+          "AUTOPILOT",
+          "BRAKE_CONTROLLER",
+          "CHARGE_PORT_ECU",
+          "DRIVE_INVERTER_FRONT",
+          "DRIVE_INVERTER_REAR",
+          "HV_BATTERY",
+          "INTERIOR_RADAR",
+          "RESTRAINTS_CONTROLLER",
+          "SECURITY_CONTROLLER",
+          "STEERING_ANGLE_ECU",
+          "STEERING_CONTROLLER"
+        ],
+        "via_buses": [
+          "CHASSIS_CAN",
+          "PARTY_CAN",
+          "VEHICLE_CAN"
+        ],
+        "via_flows": [
+          "AUTOPILOT",
+          "CHARGE_PORT_ECU",
+          "DRIVE_INVERTER_FRONT",
+          "DRIVE_INVERTER_REAR",
+          "SECURITY_CONTROLLER"
+        ],
+        "trust_boundary_crossings": [
+          {
+            "src_ecu": "BODY_CONTROLLER",
+            "dst_ecu": "AUTOPILOT",
+            "src_trust_level": 2,
+            "dst_trust_level": 3,
+            "direction": "LOW_TO_HIGH_ESCALATION"
+          },
+          {
+            "src_ecu": "BODY_CONTROLLER",
+            "dst_ecu": "BRAKE_CONTROLLER",
+            "src_trust_level": 2,
+            "dst_trust_level": 3,
+            "direction": "LOW_TO_HIGH_ESCALATION"
+          },
+          {
+            "src_ecu": "BODY_CONTROLLER",
+            "dst_ecu": "CHARGE_PORT_ECU",
+            "src_trust_level": 2,
+            "dst_trust_level": 3,
+            "direction": "LOW_TO_HIGH_ESCALATION"
+          },
+          {
+            "src_ecu": "BODY_CONTROLLER",
+            "dst_ecu": "DRIVE_INVERTER_FRONT",
+            "src_trust_level": 2,
+            "dst_trust_level": 3,
+            "direction": "LOW_TO_HIGH_ESCALATION"
+          },
+          {
+            "src_ecu": "BODY_CONTROLLER",
+            "dst_ecu": "DRIVE_INVERTER_REAR",
+            "src_trust_level": 2,
+            "dst_trust_level": 3,
+            "direction": "LOW_TO_HIGH_ESCALATION"
+          },
+          {
+            "src_ecu": "BODY_CONTROLLER",
+            "dst_ecu": "HV_BATTERY",
+            "src_trust_level": 2,
+            "dst_trust_level": 3,
+            "direction": "LOW_TO_HIGH_ESCALATION"
+          },
+          {
+            "src_ecu": "BODY_CONTROLLER",
+            "dst_ecu": "RESTRAINTS_CONTROLLER",
+            "src_trust_level": 2,
+            "dst_trust_level": 3,
+            "direction": "LOW_TO_HIGH_ESCALATION"
+          },
+          {
+            "src_ecu": "BODY_CONTROLLER",
+            "dst_ecu": "STEERING_ANGLE_ECU",
+            "src_trust_level": 2,
+            "dst_trust_level": 3,
+            "direction": "LOW_TO_HIGH_ESCALATION"
+          },
+          {
+            "src_ecu": "BODY_CONTROLLER",
+            "dst_ecu": "STEERING_CONTROLLER",
+            "src_trust_level": 2,
+            "dst_trust_level": 3,
+            "direction": "LOW_TO_HIGH_ESCALATION"
+          }
+        ]
+      }
+    },
+    {
+      "ontology_id": "FUNC-009",
+      "functional_domain": "VEHICLE_ACCESS_CONTROL",
+      "subdomains": [
+        "authentication"
+      ],
+      "confidence": 0.95,
+      "dual_domain": null,
+      "mapped_ecus": [
+        "SECURITY_CONTROLLER"
+      ],
+      "mapped_interfaces": [
+        "BLE_INTERFACES",
+        "VEHICLE_NETWORK"
+      ],
+      "inference_evidence": {
+        "trust_zone_signal": {
+          "zone_id": "TZ-BODY",
+          "trust_level": 2,
+          "contributed_domain": "BODY_AND_COMFORT",
+          "weight": 0.25
+        },
+        "data_flow_role": {
+          "role": "wireless_to_network_bridge",
+          "contributed_domain": "VEHICLE_ACCESS_CONTROL",
+          "weight": 0.25
+        },
+        "interface_proximity": {
+          "adjacent_interfaces": [
+            "BLE_INTERFACES",
+            "VEHICLE_NETWORK"
+          ],
+          "contributed_domain": "VEHICLE_ACCESS_CONTROL",
+          "weight": 0.2
+        },
+        "protocol_signal": {
+          "protocols": [
+            "CAN/NONE",
+            "ETH/NONE",
+            "BLE/NONE"
+          ],
+          "contributed_domain": "PERCEPTION_AND_SENSING",
+          "weight": 0.15
+        },
+        "bus_membership": {
+          "buses": [
+            "VEHICLE_CAN"
+          ],
+          "contributed_domain": "NONE",
+          "weight": 0.1
+        },
+        "lexical_tokens": {
+          "tokens": [
+            "security",
+            "controller"
+          ],
+          "matched_vocabulary": [
+            "security\u2192VEHICLE_ACCESS_CONTROL"
+          ],
+          "weight": 0.03
+        },
+        "actuator_sensor_role": {
+          "role": "network_bridge",
+          "contributed_domain": "NETWORK_GATEWAYING",
+          "weight": 0.02
+        }
+      },
+      "cybersecurity_properties": {
+        "primary": [
+          "Authenticity",
+          "Authorization",
+          "Integrity"
+        ],
+        "secondary": [
+          "Confidentiality"
+        ],
+        "derivation": "Authentication and authorization gating; bypass enables unauthorized vehicle access and control"
+      },
+      "functional_consequences": [
+        "unauthorized_vehicle_unlock",
+        "immobilizer_bypass",
+        "relay_attack_enablement",
+        "authentication_bypass",
+        "authenticated_network_access_enabling_lateral_movement",
+        "integrity_loss_in_vehicle_access_control",
+        "unauthorized_privileged_access",
+        "confidentiality_loss_in_vehicle_access_control"
+      ],
+      "damage_scenario_seeds": [
+        "Vehicle theft via keyless entry system compromise",
+        "Unauthorized physical access to vehicle interior enabling further attack",
+        "Financial loss to vehicle owner through theft or ransomware enabled by authenticated network access",
+        "Regulatory non-compliance from unauthorized access to personal data stored on connected vehicle systems"
+      ],
+      "attack_surface_classes": [
+        "wireless_interface",
+        "physical_access",
+        "in_vehicle_network",
+        "remote_network"
+      ],
+      "asset_target_properties": {
+        "Authenticity": [
+          "credentials",
+          "tokens",
+          "messages"
+        ],
+        "Authorization": [
+          "access_decisions",
+          "session_grants"
+        ],
+        "Integrity": [
+          "configuration",
+          "key_material"
+        ],
+        "Confidentiality": [
+          "occupant_data",
+          "credentials"
+        ]
+      },
+      "reachable_threat_actor_classes": [
+        "remote_attacker",
+        "nearby_attacker",
+        "physical_attacker",
+        "insider_attacker",
+        "supply_chain_attacker"
+      ],
+      "entry_point": {
+        "is_entry_point": true,
+        "entry_point_types": [
+          "wireless_rf",
+          "physical_hardware",
+          "remote_ip"
+        ],
+        "externally_reachable": true,
+        "transitive_remote_reachable": true,
+        "reachability_derivation": "attack_surface:wireless_interface + attack_surface:physical_access + attack_surface:remote_network + trust_zone:TZ-BODY"
+      },
+      "provenance": {
+        "source": [
+          "R155 Annex 5 Threat 7.1",
+          "R155 Annex 5 Threat 7.2",
+          "ISO/SAE 21434 Clause 8.3"
+        ],
+        "reference_standards": [
+          "ISO 26262-3:2018",
+          "SAE J3061",
+          "ISO/SAE 21434:2021",
+          "UNECE R155"
+        ],
+        "justification": "Rule P5 (AUTHENTICATION_GATEKEEPER): domain=VEHICLE_ACCESS_CONTROL, trust_zone=TZ-BODY (level 2) [deployment annotation], buses=VEHICLE_CAN [communication annotation], adjacent_interfaces=BLE_INTERFACES+VEHICLE_NETWORK, lexical_tokens=security+controller",
+        "inference_method": "weighted_evidence_convergence_v2",
+        "deterministic": true
+      },
+      "capec_cwe_refs": [
+        {
+          "capec_id": "1",
+          "capec_name": "Accessing Functionality Not Properly Constrained by ACLs",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:remote_network",
+            "r155:7.2"
+          ],
+          "cwe_ids": [
+            "CWE-276",
+            "CWE-285",
+            "CWE-434",
+            "CWE-693",
+            "CWE-732",
+            "CWE-1191",
+            "CWE-1193",
+            "CWE-1220",
+            "CWE-1297",
+            "CWE-1311",
+            "CWE-1314",
+            "CWE-1315",
+            "CWE-1318",
+            "CWE-1320",
+            "CWE-1321",
+            "CWE-1327"
+          ],
+          "severity": "High",
+          "likelihood": "High"
+        },
+        {
+          "capec_id": "60",
+          "capec_name": "Reusing Session IDs (aka Session Replay)",
+          "abstraction": "Detailed",
+          "join_dimensions": [
+            "attack_surface:wireless_interface",
+            "attack_surface:remote_network"
+          ],
+          "cwe_ids": [
+            "CWE-294",
+            "CWE-290",
+            "CWE-346",
+            "CWE-384",
+            "CWE-488",
+            "CWE-539",
+            "CWE-200",
+            "CWE-285",
+            "CWE-664",
+            "CWE-732"
+          ],
+          "severity": "High",
+          "likelihood": "High",
+          "known_false_positive_note": "CAPEC-60 (Reusing Session IDs) is retained as an analogy for UDS SecurityAccess replay attacks per R155:6.1. CWE linkage is imprecise for bare-metal ECU contexts. Filter web-specific CWEs (CWE-294, CWE-488, CWE-539) from this entry in ISO 21434 output rendering. Prefer CAPEC-112 or CAPEC-21 for CAN/UDS credential reuse scenarios."
+        },
+        {
+          "capec_id": "90",
+          "capec_name": "Reflection Attack in Authentication Protocol",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:wireless_interface",
+            "attack_surface:in_vehicle_network",
+            "attack_surface:remote_network"
+          ],
+          "cwe_ids": [
+            "CWE-301",
+            "CWE-303"
+          ],
+          "severity": "High",
+          "likelihood": "High"
+        },
+        {
+          "capec_id": "180",
+          "capec_name": "Exploiting Incorrectly Configured Access Control Security Levels",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:physical_access",
+            "attack_surface:in_vehicle_network",
+            "attack_surface:remote_network",
+            "r155:7.2"
+          ],
+          "cwe_ids": [
+            "CWE-732",
+            "CWE-1190",
+            "CWE-1191",
+            "CWE-1193",
+            "CWE-1220",
+            "CWE-1268",
+            "CWE-1280",
+            "CWE-1297",
+            "CWE-1311",
+            "CWE-1315",
+            "CWE-1318",
+            "CWE-1320",
+            "CWE-1321"
+          ],
+          "severity": "Medium",
+          "likelihood": "High"
+        },
+        {
+          "capec_id": "194",
+          "capec_name": "Fake the Source of Data",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:wireless_interface",
+            "attack_surface:in_vehicle_network",
+            "attack_surface:remote_network",
+            "r155:7.1"
+          ],
+          "cwe_ids": [
+            "CWE-287"
+          ],
+          "severity": "Medium",
+          "likelihood": "Unknown"
+        },
+        {
+          "capec_id": "196",
+          "capec_name": "Session Credential Falsification through Forging",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:wireless_interface",
+            "attack_surface:in_vehicle_network",
+            "attack_surface:remote_network"
+          ],
+          "cwe_ids": [
+            "CWE-384",
+            "CWE-664"
+          ],
+          "severity": "Medium",
+          "likelihood": "Medium"
+        },
+        {
+          "capec_id": "395",
+          "capec_name": "Bypassing Electronic Locks and Access Controls",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:wireless_interface",
+            "attack_surface:physical_access"
+          ],
+          "cwe_ids": [],
+          "severity": "Unknown",
+          "likelihood": "Unknown"
+        },
+        {
+          "capec_id": "399",
+          "capec_name": "Cloning RFID Cards or Chips",
+          "abstraction": "Detailed",
+          "join_dimensions": [
+            "attack_surface:wireless_interface",
+            "attack_surface:physical_access"
+          ],
+          "cwe_ids": [],
+          "severity": "Unknown",
+          "likelihood": "Unknown"
+        },
+        {
+          "capec_id": "473",
+          "capec_name": "Signature Spoof",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:wireless_interface",
+            "attack_surface:physical_access",
+            "attack_surface:in_vehicle_network",
+            "attack_surface:remote_network"
+          ],
+          "cwe_ids": [
+            "CWE-20",
+            "CWE-327",
+            "CWE-290"
+          ],
+          "severity": "Unknown",
+          "likelihood": "Unknown"
+        },
+        {
+          "capec_id": "475",
+          "capec_name": "Signature Spoofing by Improper Validation",
+          "abstraction": "Detailed",
+          "join_dimensions": [
+            "attack_surface:wireless_interface",
+            "attack_surface:physical_access",
+            "attack_surface:in_vehicle_network",
+            "attack_surface:remote_network"
+          ],
+          "cwe_ids": [
+            "CWE-347",
+            "CWE-327",
+            "CWE-295"
+          ],
+          "severity": "High",
+          "likelihood": "Low"
+        },
+        {
+          "capec_id": "667",
+          "capec_name": "Bluetooth Impersonation AttackS (BIAS)",
+          "abstraction": "Detailed",
+          "join_dimensions": [
+            "attack_surface:wireless_interface",
+            "attack_surface:remote_network",
+            "r155:7.1"
+          ],
+          "cwe_ids": [
+            "CWE-290"
+          ],
+          "severity": "High",
+          "likelihood": "Medium"
+        },
+        {
+          "capec_id": "668",
+          "capec_name": "Key Negotiation of Bluetooth Attack (KNOB)",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:wireless_interface",
+            "attack_surface:remote_network"
+          ],
+          "cwe_ids": [
+            "CWE-425",
+            "CWE-285",
+            "CWE-693"
+          ],
+          "severity": "High",
+          "likelihood": "Low"
+        }
+      ],
+      "topology": {
+        "connected_ecus": [
+          "AUTOPILOT",
+          "BODY_CONTROLLER",
+          "DRIVE_INVERTER_FRONT",
+          "DRIVE_INVERTER_REAR",
+          "HV_BATTERY",
+          "INTERIOR_CAMERA",
+          "INTERIOR_RADAR",
+          "STEERING_ANGLE_ECU"
+        ],
+        "via_buses": [
+          "VEHICLE_CAN"
+        ],
+        "via_flows": [
+          "AUTOPILOT",
+          "BODY_CONTROLLER",
+          "INTERIOR_CAMERA"
+        ],
+        "trust_boundary_crossings": [
+          {
+            "src_ecu": "SECURITY_CONTROLLER",
+            "dst_ecu": "AUTOPILOT",
+            "src_trust_level": 2,
+            "dst_trust_level": 3,
+            "direction": "LOW_TO_HIGH_ESCALATION"
+          },
+          {
+            "src_ecu": "SECURITY_CONTROLLER",
+            "dst_ecu": "DRIVE_INVERTER_FRONT",
+            "src_trust_level": 2,
+            "dst_trust_level": 3,
+            "direction": "LOW_TO_HIGH_ESCALATION"
+          },
+          {
+            "src_ecu": "SECURITY_CONTROLLER",
+            "dst_ecu": "DRIVE_INVERTER_REAR",
+            "src_trust_level": 2,
+            "dst_trust_level": 3,
+            "direction": "LOW_TO_HIGH_ESCALATION"
+          },
+          {
+            "src_ecu": "SECURITY_CONTROLLER",
+            "dst_ecu": "HV_BATTERY",
+            "src_trust_level": 2,
+            "dst_trust_level": 3,
+            "direction": "LOW_TO_HIGH_ESCALATION"
+          },
+          {
+            "src_ecu": "SECURITY_CONTROLLER",
+            "dst_ecu": "STEERING_ANGLE_ECU",
+            "src_trust_level": 2,
+            "dst_trust_level": 3,
+            "direction": "LOW_TO_HIGH_ESCALATION"
+          }
+        ]
+      }
+    },
+    {
+      "ontology_id": "FUNC-010",
+      "functional_domain": "PERCEPTION_AND_SENSING",
+      "subdomains": [
+        "occupant_sensing"
+      ],
+      "confidence": 0.97,
+      "dual_domain": null,
+      "mapped_ecus": [
+        "INTERIOR_CAMERA"
+      ],
+      "mapped_interfaces": [],
+      "inference_evidence": {
+        "trust_zone_signal": {
+          "zone_id": "TZ-SENSOR",
+          "trust_level": 2,
+          "contributed_domain": "PERCEPTION_AND_SENSING",
+          "weight": 0.25
+        },
+        "data_flow_role": {
+          "role": "occupant_sensor_producer",
+          "contributed_domain": "PERCEPTION_AND_SENSING",
+          "weight": 0.25
+        },
+        "interface_proximity": {
+          "adjacent_interfaces": [],
+          "contributed_domain": "NONE",
+          "weight": 0.2
+        },
+        "protocol_signal": {
+          "protocols": [
+            "ETH/NONE"
+          ],
+          "contributed_domain": "PERCEPTION_AND_SENSING",
+          "weight": 0.15
+        },
+        "bus_membership": {
+          "buses": [],
+          "contributed_domain": "NONE",
+          "weight": 0.1
+        },
+        "lexical_tokens": {
+          "tokens": [
+            "interior",
+            "camera"
+          ],
+          "matched_vocabulary": [
+            "interior\u2192PERCEPTION_AND_SENSING",
+            "camera\u2192PERCEPTION_AND_SENSING"
+          ],
+          "weight": 0.03
+        },
+        "actuator_sensor_role": {
+          "role": "occupant_sensor",
+          "contributed_domain": "PERCEPTION_AND_SENSING",
+          "weight": 0.02
+        }
+      },
+      "cybersecurity_properties": {
+        "primary": [
+          "Integrity",
+          "Authenticity",
+          "Availability"
+        ],
+        "secondary": [
+          "Confidentiality"
+        ],
+        "derivation": "Sensor spoofing corrupts situational awareness; sensor blinding disables ADAS safety functions"
+      },
+      "functional_consequences": [
+        "occupant_state_falsification",
+        "presence_detection_bypass",
+        "safety_decision_corruption",
+        "integrity_loss_in_perception_and_sensing",
+        "safety_function_unavailability",
+        "confidentiality_loss_in_perception_and_sensing"
+      ],
+      "damage_scenario_seeds": [
+        "Physical harm from interior camera safety-critical decision corruption caused by falsified occupant state data fed to airbag or AEB systems",
+        "Incorrect airbag deployment or suppression triggered by falsified occupant presence or classification data causing physical harm (interior camera)",
+        "Privacy violation and regulatory non-compliance through covert biometric monitoring of vehicle occupants (interior camera)",
+        "GDPR breach from interior camera unauthorised access to or exfiltration of occupant biometric or presence data"
+      ],
+      "attack_surface_classes": [
+        "in_vehicle_network",
+        "physical_access",
+        "wireless_interface"
+      ],
+      "asset_target_properties": {
+        "Integrity": [
+          "occupant_state_data",
+          "presence_detection_output",
+          "biometric_data"
+        ],
+        "Availability": [
+          "service",
+          "safety_function"
+        ],
+        "Authenticity": [
+          "sensor_data",
+          "messages"
+        ],
+        "Confidentiality": [
+          "occupant_biometric_data",
+          "presence_data"
+        ]
+      },
+      "reachable_threat_actor_classes": [
+        "insider_attacker",
+        "supply_chain_attacker",
+        "physical_attacker",
+        "remote_attacker",
+        "nearby_attacker"
+      ],
+      "entry_point": {
+        "is_entry_point": true,
+        "entry_point_types": [
+          "physical_hardware",
+          "wireless_rf",
+          "remote_ip"
+        ],
+        "externally_reachable": true,
+        "transitive_remote_reachable": true,
+        "reachability_derivation": "attack_surface:physical_access + attack_surface:wireless_interface + trust_zone:TZ-SENSOR + transitive_network_exposure"
+      },
+      "provenance": {
+        "source": [
+          "R155 Annex 5 Threat 3.3",
+          "R155 Annex 5 Threat 6.1",
+          "R155 Annex 5 Threat 8.1",
+          "ISO/SAE 21434 Clause 8.3"
+        ],
+        "reference_standards": [
+          "ISO 26262-3:2018",
+          "SAE J3061",
+          "ISO/SAE 21434:2021",
+          "UNECE R155"
+        ],
+        "justification": "Stage3 evidence convergence: domain=PERCEPTION_AND_SENSING, trust_zone=TZ-SENSOR (level 2), data_flow_role=occupant_sensor_producer, lexical_tokens=interior\u2192PERCEPTION_AND_SENSING+camera\u2192PERCEPTION_AND_SENSING",
+        "inference_method": "weighted_evidence_convergence_v2",
+        "deterministic": true
+      },
+      "capec_cwe_refs": [
+        {
+          "capec_id": "141",
+          "capec_name": "Cache Poisoning",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:wireless_interface",
+            "r155:3.3"
+          ],
+          "cwe_ids": [
+            "CWE-348",
+            "CWE-345",
+            "CWE-349",
+            "CWE-346"
+          ],
+          "severity": "High",
+          "likelihood": "High"
+        },
+        {
+          "capec_id": "167",
+          "capec_name": "White Box Reverse Engineering",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:physical_access",
+            "r155:8.1"
+          ],
+          "cwe_ids": [
+            "CWE-1323"
+          ],
+          "severity": "Medium",
+          "likelihood": "Unknown"
+        },
+        {
+          "capec_id": "194",
+          "capec_name": "Fake the Source of Data",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:wireless_interface",
+            "r155:3.3"
+          ],
+          "cwe_ids": [
+            "CWE-287"
+          ],
+          "severity": "Medium",
+          "likelihood": "Unknown"
+        },
+        {
+          "capec_id": "195",
+          "capec_name": "Principal Spoof",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:wireless_interface",
+            "r155:3.3"
+          ],
+          "cwe_ids": [],
+          "severity": "Medium",
+          "likelihood": "Unknown"
+        },
+        {
+          "capec_id": "196",
+          "capec_name": "Session Credential Falsification through Forging",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:wireless_interface",
+            "r155:6.1"
+          ],
+          "cwe_ids": [
+            "CWE-384",
+            "CWE-664"
+          ],
+          "severity": "Medium",
+          "likelihood": "Medium"
+        },
+        {
+          "capec_id": "268",
+          "capec_name": "Audit Log Manipulation",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:physical_access",
+            "r155:8.1"
+          ],
+          "cwe_ids": [
+            "CWE-117"
+          ],
+          "severity": "Unknown",
+          "likelihood": "Unknown"
+        },
+        {
+          "capec_id": "276",
+          "capec_name": "Inter-component Protocol Manipulation",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:wireless_interface"
+          ],
+          "cwe_ids": [
+            "CWE-707"
+          ],
+          "severity": "Unknown",
+          "likelihood": "Unknown"
+        },
+        {
+          "capec_id": "547",
+          "capec_name": "Physical Destruction of Device or Component",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:physical_access"
+          ],
+          "cwe_ids": [],
+          "severity": "Unknown",
+          "likelihood": "Unknown"
+        },
+        {
+          "capec_id": "578",
+          "capec_name": "Disable Security Software",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:physical_access"
+          ],
+          "cwe_ids": [
+            "CWE-284"
+          ],
+          "severity": "Medium",
+          "likelihood": "Medium",
+          "known_false_positive_note": "CAPEC-578 (Disable Security Software) is conceptually thin for CAN-connected safety ECUs with no traditional security software stack. Applied as defeating any monitoring mechanism. Attack path generator must not use as a concrete attack step on VEHICLE_MOTION_CONTROL, OCCUPANT_SAFETY_SYSTEMS, or PERCEPTION_AND_SENSING nodes without additional evidence of a software security monitor being present."
+        }
+      ],
+      "topology": {
+        "connected_ecus": [
+          "SECURITY_CONTROLLER"
+        ],
+        "via_buses": [],
+        "via_flows": [
+          "SECURITY_CONTROLLER"
+        ],
+        "trust_boundary_crossings": []
+      }
+    },
+    {
+      "ontology_id": "FUNC-011",
+      "functional_domain": "PERCEPTION_AND_SENSING",
+      "subdomains": [
+        "occupant_sensing"
+      ],
+      "confidence": 0.95,
+      "dual_domain": null,
+      "mapped_ecus": [
+        "INTERIOR_RADAR"
+      ],
+      "mapped_interfaces": [],
+      "inference_evidence": {
+        "trust_zone_signal": {
+          "zone_id": "TZ-SENSOR",
+          "trust_level": 2,
+          "contributed_domain": "PERCEPTION_AND_SENSING",
+          "weight": 0.25
+        },
+        "data_flow_role": {
+          "role": "sensor_producer",
+          "contributed_domain": "PERCEPTION_AND_SENSING",
+          "weight": 0.25
+        },
+        "interface_proximity": {
+          "adjacent_interfaces": [],
+          "contributed_domain": "NONE",
+          "weight": 0.2
+        },
+        "protocol_signal": {
+          "protocols": [
+            "CAN/NONE"
+          ],
+          "contributed_domain": "NONE",
+          "weight": 0.15
+        },
+        "bus_membership": {
+          "buses": [
+            "VEHICLE_CAN"
+          ],
+          "contributed_domain": "NONE",
+          "weight": 0.1
+        },
+        "lexical_tokens": {
+          "tokens": [
+            "interior",
+            "radar"
+          ],
+          "matched_vocabulary": [
+            "interior\u2192PERCEPTION_AND_SENSING",
+            "radar\u2192PERCEPTION_AND_SENSING"
+          ],
+          "weight": 0.03
+        },
+        "actuator_sensor_role": {
+          "role": "sensor_producer",
+          "contributed_domain": "PERCEPTION_AND_SENSING",
+          "weight": 0.02
+        }
+      },
+      "cybersecurity_properties": {
+        "primary": [
+          "Integrity",
+          "Authenticity",
+          "Availability"
+        ],
+        "secondary": [
+          "Confidentiality"
+        ],
+        "derivation": "Sensor spoofing corrupts situational awareness; sensor blinding disables ADAS safety functions"
+      },
+      "functional_consequences": [
+        "occupant_state_falsification",
+        "presence_detection_bypass",
+        "safety_decision_corruption",
+        "integrity_loss_in_perception_and_sensing",
+        "safety_function_unavailability",
+        "confidentiality_loss_in_perception_and_sensing"
+      ],
+      "damage_scenario_seeds": [
+        "Physical harm from interior radar safety-critical decision corruption caused by falsified occupant state data fed to airbag or AEB systems",
+        "Incorrect airbag deployment or suppression triggered by falsified occupant presence or classification data causing physical harm (interior radar)",
+        "Privacy violation and regulatory non-compliance through covert biometric monitoring of vehicle occupants (interior radar)",
+        "GDPR breach from interior radar unauthorised access to or exfiltration of occupant biometric or presence data"
+      ],
+      "attack_surface_classes": [
+        "in_vehicle_network",
+        "physical_access",
+        "wireless_interface"
+      ],
+      "asset_target_properties": {
+        "Integrity": [
+          "occupant_state_data",
+          "presence_detection_output",
+          "biometric_data"
+        ],
+        "Availability": [
+          "service",
+          "safety_function"
+        ],
+        "Authenticity": [
+          "sensor_data",
+          "messages"
+        ],
+        "Confidentiality": [
+          "occupant_biometric_data",
+          "presence_data"
+        ]
+      },
+      "reachable_threat_actor_classes": [
+        "insider_attacker",
+        "supply_chain_attacker",
+        "physical_attacker",
+        "remote_attacker",
+        "nearby_attacker"
+      ],
+      "entry_point": {
+        "is_entry_point": true,
+        "entry_point_types": [
+          "physical_hardware",
+          "wireless_rf",
+          "remote_ip"
+        ],
+        "externally_reachable": true,
+        "transitive_remote_reachable": true,
+        "reachability_derivation": "attack_surface:physical_access + attack_surface:wireless_interface + trust_zone:TZ-SENSOR + transitive_network_exposure"
+      },
+      "provenance": {
+        "source": [
+          "R155 Annex 5 Threat 3.3",
+          "R155 Annex 5 Threat 6.1",
+          "R155 Annex 5 Threat 8.1",
+          "ISO/SAE 21434 Clause 8.3"
+        ],
+        "reference_standards": [
+          "ISO 26262-3:2018",
+          "SAE J3061",
+          "ISO/SAE 21434:2021",
+          "UNECE R155"
+        ],
+        "justification": "Rule P1 (PURE_SENSOR_PRODUCER): domain=PERCEPTION_AND_SENSING, trust_zone=TZ-SENSOR (level 2) [deployment annotation], buses=VEHICLE_CAN [communication annotation], lexical_tokens=interior+radar",
+        "inference_method": "weighted_evidence_convergence_v2",
+        "deterministic": true
+      },
+      "capec_cwe_refs": [
+        {
+          "capec_id": "141",
+          "capec_name": "Cache Poisoning",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:wireless_interface",
+            "r155:3.3"
+          ],
+          "cwe_ids": [
+            "CWE-348",
+            "CWE-345",
+            "CWE-349",
+            "CWE-346"
+          ],
+          "severity": "High",
+          "likelihood": "High"
+        },
+        {
+          "capec_id": "167",
+          "capec_name": "White Box Reverse Engineering",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:physical_access",
+            "r155:8.1"
+          ],
+          "cwe_ids": [
+            "CWE-1323"
+          ],
+          "severity": "Medium",
+          "likelihood": "Unknown"
+        },
+        {
+          "capec_id": "194",
+          "capec_name": "Fake the Source of Data",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:wireless_interface",
+            "r155:3.3"
+          ],
+          "cwe_ids": [
+            "CWE-287"
+          ],
+          "severity": "Medium",
+          "likelihood": "Unknown"
+        },
+        {
+          "capec_id": "195",
+          "capec_name": "Principal Spoof",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:wireless_interface",
+            "r155:3.3"
+          ],
+          "cwe_ids": [],
+          "severity": "Medium",
+          "likelihood": "Unknown"
+        },
+        {
+          "capec_id": "196",
+          "capec_name": "Session Credential Falsification through Forging",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:wireless_interface",
+            "r155:6.1"
+          ],
+          "cwe_ids": [
+            "CWE-384",
+            "CWE-664"
+          ],
+          "severity": "Medium",
+          "likelihood": "Medium"
+        },
+        {
+          "capec_id": "268",
+          "capec_name": "Audit Log Manipulation",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:physical_access",
+            "r155:8.1"
+          ],
+          "cwe_ids": [
+            "CWE-117"
+          ],
+          "severity": "Unknown",
+          "likelihood": "Unknown"
+        },
+        {
+          "capec_id": "276",
+          "capec_name": "Inter-component Protocol Manipulation",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:wireless_interface"
+          ],
+          "cwe_ids": [
+            "CWE-707"
+          ],
+          "severity": "Unknown",
+          "likelihood": "Unknown"
+        },
+        {
+          "capec_id": "547",
+          "capec_name": "Physical Destruction of Device or Component",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:physical_access"
+          ],
+          "cwe_ids": [],
+          "severity": "Unknown",
+          "likelihood": "Unknown"
+        },
+        {
+          "capec_id": "578",
+          "capec_name": "Disable Security Software",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:physical_access"
+          ],
+          "cwe_ids": [
+            "CWE-284"
+          ],
+          "severity": "Medium",
+          "likelihood": "Medium",
+          "known_false_positive_note": "CAPEC-578 (Disable Security Software) is conceptually thin for CAN-connected safety ECUs with no traditional security software stack. Applied as defeating any monitoring mechanism. Attack path generator must not use as a concrete attack step on VEHICLE_MOTION_CONTROL, OCCUPANT_SAFETY_SYSTEMS, or PERCEPTION_AND_SENSING nodes without additional evidence of a software security monitor being present."
+        }
+      ],
+      "topology": {
+        "connected_ecus": [
+          "AUTOPILOT",
+          "BODY_CONTROLLER",
+          "DRIVE_INVERTER_FRONT",
+          "DRIVE_INVERTER_REAR",
+          "HV_BATTERY",
+          "SECURITY_CONTROLLER",
+          "STEERING_ANGLE_ECU"
+        ],
+        "via_buses": [
+          "VEHICLE_CAN"
+        ],
+        "via_flows": [
+          "AUTOPILOT"
+        ],
+        "trust_boundary_crossings": [
+          {
+            "src_ecu": "INTERIOR_RADAR",
+            "dst_ecu": "AUTOPILOT",
+            "src_trust_level": 2,
+            "dst_trust_level": 3,
+            "direction": "LOW_TO_HIGH_ESCALATION"
+          },
+          {
+            "src_ecu": "INTERIOR_RADAR",
+            "dst_ecu": "DRIVE_INVERTER_FRONT",
+            "src_trust_level": 2,
+            "dst_trust_level": 3,
+            "direction": "LOW_TO_HIGH_ESCALATION"
+          },
+          {
+            "src_ecu": "INTERIOR_RADAR",
+            "dst_ecu": "DRIVE_INVERTER_REAR",
+            "src_trust_level": 2,
+            "dst_trust_level": 3,
+            "direction": "LOW_TO_HIGH_ESCALATION"
+          },
+          {
+            "src_ecu": "INTERIOR_RADAR",
+            "dst_ecu": "HV_BATTERY",
+            "src_trust_level": 2,
+            "dst_trust_level": 3,
+            "direction": "LOW_TO_HIGH_ESCALATION"
+          },
+          {
+            "src_ecu": "INTERIOR_RADAR",
+            "dst_ecu": "STEERING_ANGLE_ECU",
+            "src_trust_level": 2,
+            "dst_trust_level": 3,
+            "direction": "LOW_TO_HIGH_ESCALATION"
+          }
+        ]
+      }
+    },
+    {
+      "ontology_id": "FUNC-012",
+      "functional_domain": "VEHICLE_MOTION_CONTROL",
+      "subdomains": [
+        "lateral_control"
+      ],
+      "confidence": 0.95,
+      "dual_domain": null,
+      "mapped_ecus": [
+        "STEERING_ANGLE_ECU"
+      ],
+      "mapped_interfaces": [],
+      "inference_evidence": {
+        "trust_zone_signal": {
+          "zone_id": "TZ-STEERING",
+          "trust_level": 3,
+          "contributed_domain": "VEHICLE_MOTION_CONTROL",
+          "weight": 0.25
+        },
+        "data_flow_role": {
+          "role": "actuator_producer",
+          "contributed_domain": "VEHICLE_MOTION_CONTROL",
+          "weight": 0.25
+        },
+        "interface_proximity": {
+          "adjacent_interfaces": [],
+          "contributed_domain": "NONE",
+          "weight": 0.2
+        },
+        "protocol_signal": {
+          "protocols": [
+            "CAN/NONE"
+          ],
+          "contributed_domain": "NONE",
+          "weight": 0.15
+        },
+        "bus_membership": {
+          "buses": [
+            "VEHICLE_CAN"
+          ],
+          "contributed_domain": "NONE",
+          "weight": 0.1
+        },
+        "lexical_tokens": {
+          "tokens": [
+            "steering",
+            "angle",
+            "ecu"
+          ],
+          "matched_vocabulary": [
+            "steering\u2192VEHICLE_MOTION_CONTROL",
+            "angle\u2192VEHICLE_MOTION_CONTROL"
+          ],
+          "weight": 0.03
+        },
+        "actuator_sensor_role": {
+          "role": "unknown",
+          "contributed_domain": "NONE",
+          "weight": 0.02
+        }
+      },
+      "cybersecurity_properties": {
+        "primary": [
+          "Integrity",
+          "Availability",
+          "Authenticity"
+        ],
+        "secondary": [
+          "Non-repudiation"
+        ],
+        "derivation": "Safety-critical control function; integrity loss enables command injection; availability loss disables safety function"
+      },
+      "functional_consequences": [
+        "unintended_steering",
+        "uncontrolled_lateral_motion",
+        "integrity_loss_in_vehicle_motion_control",
+        "safety_function_unavailability"
+      ],
+      "damage_scenario_seeds": [
+        "Vehicle lane departure or rollover causing physical harm from steering angle sensor uncontrolled lateral motion",
+        "Collision with road users due to steering command injection (steering angle sensor)"
+      ],
+      "attack_surface_classes": [
+        "in_vehicle_network",
+        "diagnostic_interface",
+        "physical_access"
+      ],
+      "asset_target_properties": {
+        "Integrity": [
+          "commands",
+          "control_signals",
+          "configuration"
+        ],
+        "Availability": [
+          "service",
+          "safety_function"
+        ],
+        "Authenticity": [
+          "messages",
+          "command_sources"
+        ]
+      },
+      "reachable_threat_actor_classes": [
+        "insider_attacker",
+        "supply_chain_attacker",
+        "service_technician",
+        "physical_attacker"
+      ],
+      "entry_point": {
+        "is_entry_point": true,
+        "entry_point_types": [
+          "physical_diagnostic",
+          "physical_hardware"
+        ],
+        "externally_reachable": true,
+        "transitive_remote_reachable": false,
+        "reachability_derivation": "attack_surface:diagnostic_interface + attack_surface:physical_access + trust_zone:TZ-STEERING"
+      },
+      "provenance": {
+        "source": [
+          "R155 Annex 5 Threat 3.1",
+          "R155 Annex 5 Threat 6.1",
+          "ISO/SAE 21434 Clause 8.3"
+        ],
+        "reference_standards": [
+          "ISO 26262-3:2018",
+          "SAE J3061",
+          "ISO/SAE 21434:2021",
+          "UNECE R155"
+        ],
+        "justification": "Rule P8 (AMBIGUOUS): domain=VEHICLE_MOTION_CONTROL, trust_zone=TZ-STEERING (level 3) [deployment annotation], buses=VEHICLE_CAN [communication annotation], lexical_tokens=steering+angle+ecu",
+        "inference_method": "weighted_evidence_convergence_v2",
+        "deterministic": true
+      },
+      "capec_cwe_refs": [
+        {
+          "capec_id": "141",
+          "capec_name": "Cache Poisoning",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:diagnostic_interface",
+            "r155:3.1"
+          ],
+          "cwe_ids": [
+            "CWE-348",
+            "CWE-345",
+            "CWE-349",
+            "CWE-346"
+          ],
+          "severity": "High",
+          "likelihood": "High"
+        },
+        {
+          "capec_id": "166",
+          "capec_name": "Force the System to Reset Values",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:diagnostic_interface",
+            "attack_surface:physical_access"
+          ],
+          "cwe_ids": [
+            "CWE-306",
+            "CWE-1221",
+            "CWE-1232"
+          ],
+          "severity": "Medium",
+          "likelihood": "Unknown"
+        },
+        {
+          "capec_id": "194",
+          "capec_name": "Fake the Source of Data",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:diagnostic_interface",
+            "r155:3.1"
+          ],
+          "cwe_ids": [
+            "CWE-287"
+          ],
+          "severity": "Medium",
+          "likelihood": "Unknown"
+        },
+        {
+          "capec_id": "196",
+          "capec_name": "Session Credential Falsification through Forging",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:diagnostic_interface",
+            "r155:6.1"
+          ],
+          "cwe_ids": [
+            "CWE-384",
+            "CWE-664"
+          ],
+          "severity": "Medium",
+          "likelihood": "Medium"
+        },
+        {
+          "capec_id": "276",
+          "capec_name": "Inter-component Protocol Manipulation",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:diagnostic_interface",
+            "r155:3.1"
+          ],
+          "cwe_ids": [
+            "CWE-707"
+          ],
+          "severity": "Unknown",
+          "likelihood": "Unknown"
+        },
+        {
+          "capec_id": "578",
+          "capec_name": "Disable Security Software",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:diagnostic_interface",
+            "attack_surface:physical_access"
+          ],
+          "cwe_ids": [
+            "CWE-284"
+          ],
+          "severity": "Medium",
+          "likelihood": "Medium",
+          "known_false_positive_note": "CAPEC-578 (Disable Security Software) is conceptually thin for CAN-connected safety ECUs with no traditional security software stack. Applied as defeating any monitoring mechanism. Attack path generator must not use as a concrete attack step on VEHICLE_MOTION_CONTROL, OCCUPANT_SAFETY_SYSTEMS, or PERCEPTION_AND_SENSING nodes without additional evidence of a software security monitor being present."
+        }
+      ],
+      "topology": {
+        "connected_ecus": [
+          "AUTOPILOT",
+          "BODY_CONTROLLER",
+          "DRIVE_INVERTER_FRONT",
+          "DRIVE_INVERTER_REAR",
+          "HV_BATTERY",
+          "INTERIOR_RADAR",
+          "SECURITY_CONTROLLER"
+        ],
+        "via_buses": [
+          "VEHICLE_CAN"
+        ],
+        "via_flows": [
+          "AUTOPILOT"
+        ],
+        "trust_boundary_crossings": [
+          {
+            "src_ecu": "STEERING_ANGLE_ECU",
+            "dst_ecu": "BODY_CONTROLLER",
+            "src_trust_level": 3,
+            "dst_trust_level": 2,
+            "direction": "HIGH_TO_LOW"
+          },
+          {
+            "src_ecu": "STEERING_ANGLE_ECU",
+            "dst_ecu": "INTERIOR_RADAR",
+            "src_trust_level": 3,
+            "dst_trust_level": 2,
+            "direction": "HIGH_TO_LOW"
+          },
+          {
+            "src_ecu": "STEERING_ANGLE_ECU",
+            "dst_ecu": "SECURITY_CONTROLLER",
+            "src_trust_level": 3,
+            "dst_trust_level": 2,
+            "direction": "HIGH_TO_LOW"
+          }
+        ]
+      }
+    },
+    {
+      "ontology_id": "FUNC-013",
+      "functional_domain": "POWERTRAIN_MANAGEMENT",
+      "subdomains": [
+        "energy_storage"
+      ],
+      "confidence": 0.95,
+      "dual_domain": null,
+      "mapped_ecus": [
+        "HV_BATTERY"
+      ],
+      "mapped_interfaces": [
+        "HV_DISCONNECT"
+      ],
+      "inference_evidence": {
+        "trust_zone_signal": {
+          "zone_id": "TZ-POWERTRAIN",
+          "trust_level": 3,
+          "contributed_domain": "POWERTRAIN_MANAGEMENT",
+          "weight": 0.25
+        },
+        "data_flow_role": {
+          "role": "control_producer",
+          "contributed_domain": "AUTOMATED_DRIVING_CONTROL",
+          "weight": 0.25
+        },
+        "interface_proximity": {
+          "adjacent_interfaces": [
+            "HV_DISCONNECT"
+          ],
+          "contributed_domain": "POWERTRAIN_MANAGEMENT",
+          "weight": 0.2
+        },
+        "protocol_signal": {
+          "protocols": [
+            "CAN/NONE",
+            "PWR/NONE"
+          ],
+          "contributed_domain": "NONE",
+          "weight": 0.15
+        },
+        "bus_membership": {
+          "buses": [
+            "VEHICLE_CAN"
+          ],
+          "contributed_domain": "NONE",
+          "weight": 0.1
+        },
+        "lexical_tokens": {
+          "tokens": [
+            "hv",
+            "battery"
+          ],
+          "matched_vocabulary": [
+            "hv\u2192POWERTRAIN_MANAGEMENT",
+            "battery\u2192POWERTRAIN_MANAGEMENT"
+          ],
+          "weight": 0.03
+        },
+        "actuator_sensor_role": {
+          "role": "actuator_producer",
+          "contributed_domain": "VEHICLE_MOTION_CONTROL",
+          "weight": 0.02
+        }
+      },
+      "cybersecurity_properties": {
+        "primary": [
+          "Integrity",
+          "Availability",
+          "Authenticity"
+        ],
+        "secondary": [
+          "Confidentiality"
+        ],
+        "derivation": "Safety-critical energy conversion and storage; unauthenticated CAN commands are the primary attack vector for torque/HV manipulation; BMS state data and charging session data carry commercial and privacy sensitivity"
+      },
+      "functional_consequences": [
+        "hv_system_compromise",
+        "thermal_runaway_enablement",
+        "integrity_loss_in_powertrain_management",
+        "safety_function_unavailability",
+        "confidentiality_loss_in_powertrain_management"
+      ],
+      "damage_scenario_seeds": [
+        "Fire or electrocution risk to occupants from high-voltage system compromise",
+        "Thermal runaway triggered by battery management manipulation causing fire risk"
+      ],
+      "attack_surface_classes": [
+        "in_vehicle_network",
+        "diagnostic_interface",
+        "physical_access"
+      ],
+      "asset_target_properties": {
+        "Integrity": [
+          "cell_voltage_data",
+          "SoC_values",
+          "BMS_configuration",
+          "thermal_limits"
+        ],
+        "Availability": [
+          "service",
+          "safety_function"
+        ],
+        "Authenticity": [
+          "messages"
+        ],
+        "Confidentiality": [
+          "battery_state_data",
+          "SoC_values"
+        ]
+      },
+      "reachable_threat_actor_classes": [
+        "insider_attacker",
+        "supply_chain_attacker",
+        "service_technician",
+        "physical_attacker"
+      ],
+      "entry_point": {
+        "is_entry_point": true,
+        "entry_point_types": [
+          "physical_diagnostic",
+          "physical_hardware"
+        ],
+        "externally_reachable": true,
+        "transitive_remote_reachable": false,
+        "reachability_derivation": "attack_surface:diagnostic_interface + attack_surface:physical_access + trust_zone:TZ-POWERTRAIN"
+      },
+      "provenance": {
+        "source": [
+          "R155 Annex 5 Threat 3.1",
+          "R155 Annex 5 Threat 6.2",
+          "ISO/SAE 21434 Clause 8.3"
+        ],
+        "reference_standards": [
+          "ISO 26262-3:2018",
+          "SAE J3061",
+          "ISO/SAE 21434:2021",
+          "UNECE R155"
+        ],
+        "justification": "Rule P6 (ENERGY_MANAGER): domain=POWERTRAIN_MANAGEMENT, trust_zone=TZ-POWERTRAIN (level 3) [deployment annotation], buses=VEHICLE_CAN [communication annotation], adjacent_interfaces=HV_DISCONNECT, lexical_tokens=hv+battery",
+        "inference_method": "weighted_evidence_convergence_v2",
+        "deterministic": true
+      },
+      "capec_cwe_refs": [
+        {
+          "capec_id": "141",
+          "capec_name": "Cache Poisoning",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:diagnostic_interface",
+            "r155:3.1"
+          ],
+          "cwe_ids": [
+            "CWE-348",
+            "CWE-345",
+            "CWE-349",
+            "CWE-346"
+          ],
+          "severity": "High",
+          "likelihood": "High"
+        },
+        {
+          "capec_id": "167",
+          "capec_name": "White Box Reverse Engineering",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:diagnostic_interface",
+            "attack_surface:physical_access"
+          ],
+          "cwe_ids": [
+            "CWE-1323"
+          ],
+          "severity": "Medium",
+          "likelihood": "Unknown"
+        },
+        {
+          "capec_id": "194",
+          "capec_name": "Fake the Source of Data",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:diagnostic_interface",
+            "r155:3.1"
+          ],
+          "cwe_ids": [
+            "CWE-287"
+          ],
+          "severity": "Medium",
+          "likelihood": "Unknown"
+        },
+        {
+          "capec_id": "268",
+          "capec_name": "Audit Log Manipulation",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:diagnostic_interface",
+            "attack_surface:physical_access"
+          ],
+          "cwe_ids": [
+            "CWE-117"
+          ],
+          "severity": "Unknown",
+          "likelihood": "Unknown"
+        },
+        {
+          "capec_id": "276",
+          "capec_name": "Inter-component Protocol Manipulation",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:diagnostic_interface",
+            "r155:3.1"
+          ],
+          "cwe_ids": [
+            "CWE-707"
+          ],
+          "severity": "Unknown",
+          "likelihood": "Unknown"
+        },
+        {
+          "capec_id": "401",
+          "capec_name": "Physically Hacking Hardware",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:physical_access"
+          ],
+          "cwe_ids": [
+            "CWE-1263"
+          ],
+          "severity": "High",
+          "likelihood": "Low"
+        },
+        {
+          "capec_id": "534",
+          "capec_name": "Malicious Hardware Update",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:physical_access"
+          ],
+          "cwe_ids": [],
+          "severity": "High",
+          "likelihood": "Low"
+        },
+        {
+          "capec_id": "536",
+          "capec_name": "Data Injected During Configuration",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:diagnostic_interface",
+            "attack_surface:physical_access"
+          ],
+          "cwe_ids": [
+            "CWE-284"
+          ],
+          "severity": "High",
+          "likelihood": "Low"
+        },
+        {
+          "capec_id": "664",
+          "capec_name": "Server Side Request Forgery",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:physical_access",
+            "r155:6.2"
+          ],
+          "cwe_ids": [
+            "CWE-918",
+            "CWE-20"
+          ],
+          "severity": "High",
+          "likelihood": "High"
+        },
+        {
+          "capec_id": "680",
+          "capec_name": "Exploitation of Improperly Controlled Registers",
+          "abstraction": "Detailed",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:diagnostic_interface",
+            "attack_surface:physical_access"
+          ],
+          "cwe_ids": [
+            "CWE-1224",
+            "CWE-1231",
+            "CWE-1233",
+            "CWE-1262",
+            "CWE-1283"
+          ],
+          "severity": "High",
+          "likelihood": "Medium"
+        },
+        {
+          "capec_id": "681",
+          "capec_name": "Exploitation of Improperly Controlled Hardware Security Identifiers",
+          "abstraction": "Detailed",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:diagnostic_interface",
+            "attack_surface:physical_access"
+          ],
+          "cwe_ids": [
+            "CWE-1259",
+            "CWE-1267",
+            "CWE-1270",
+            "CWE-1294",
+            "CWE-1302"
+          ],
+          "severity": "Very High",
+          "likelihood": "Medium"
+        },
+        {
+          "capec_id": "682",
+          "capec_name": "Exploitation of Firmware or ROM Code with Unpatchable Vulnerabilities",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:diagnostic_interface",
+            "attack_surface:physical_access"
+          ],
+          "cwe_ids": [
+            "CWE-1277",
+            "CWE-1310"
+          ],
+          "severity": "High",
+          "likelihood": "Medium"
+        }
+      ],
+      "topology": {
+        "connected_ecus": [
+          "AUTOPILOT",
+          "BODY_CONTROLLER",
+          "DRIVE_INVERTER_FRONT",
+          "DRIVE_INVERTER_REAR",
+          "INTERIOR_RADAR",
+          "SECURITY_CONTROLLER",
+          "STEERING_ANGLE_ECU"
+        ],
+        "via_buses": [
+          "VEHICLE_CAN"
+        ],
+        "via_flows": [
+          "DRIVE_INVERTER_FRONT",
+          "DRIVE_INVERTER_REAR"
+        ],
+        "trust_boundary_crossings": [
+          {
+            "src_ecu": "HV_BATTERY",
+            "dst_ecu": "BODY_CONTROLLER",
+            "src_trust_level": 3,
+            "dst_trust_level": 2,
+            "direction": "HIGH_TO_LOW"
+          },
+          {
+            "src_ecu": "HV_BATTERY",
+            "dst_ecu": "INTERIOR_RADAR",
+            "src_trust_level": 3,
+            "dst_trust_level": 2,
+            "direction": "HIGH_TO_LOW"
+          },
+          {
+            "src_ecu": "HV_BATTERY",
+            "dst_ecu": "SECURITY_CONTROLLER",
+            "src_trust_level": 3,
+            "dst_trust_level": 2,
+            "direction": "HIGH_TO_LOW"
+          }
+        ]
+      }
+    },
+    {
+      "ontology_id": "FUNC-014",
+      "functional_domain": "POWERTRAIN_MANAGEMENT",
+      "subdomains": [
+        "energy_transfer"
+      ],
+      "confidence": 0.95,
+      "dual_domain": null,
+      "mapped_ecus": [
+        "CHARGE_PORT_ECU"
+      ],
+      "mapped_interfaces": [],
+      "inference_evidence": {
+        "trust_zone_signal": {
+          "zone_id": "TZ-POWERTRAIN",
+          "trust_level": 3,
+          "contributed_domain": "POWERTRAIN_MANAGEMENT",
+          "weight": 0.25
+        },
+        "data_flow_role": {
+          "role": "pure_consumer",
+          "contributed_domain": "PERCEPTION_AND_SENSING",
+          "weight": 0.25
+        },
+        "interface_proximity": {
+          "adjacent_interfaces": [],
+          "contributed_domain": "NONE",
+          "weight": 0.2
+        },
+        "protocol_signal": {
+          "protocols": [
+            "PWR/NONE"
+          ],
+          "contributed_domain": "NONE",
+          "weight": 0.15
+        },
+        "bus_membership": {
+          "buses": [],
+          "contributed_domain": "NONE",
+          "weight": 0.1
+        },
+        "lexical_tokens": {
+          "tokens": [
+            "charge",
+            "port",
+            "ecu"
+          ],
+          "matched_vocabulary": [
+            "charge\u2192POWERTRAIN_MANAGEMENT"
+          ],
+          "weight": 0.03
+        },
+        "actuator_sensor_role": {
+          "role": "unknown",
+          "contributed_domain": "NONE",
+          "weight": 0.02
+        }
+      },
+      "cybersecurity_properties": {
+        "primary": [
+          "Integrity",
+          "Availability",
+          "Authenticity"
+        ],
+        "secondary": [
+          "Confidentiality"
+        ],
+        "derivation": "Safety-critical energy conversion and storage; unauthenticated CAN commands are the primary attack vector for torque/HV manipulation; BMS state data and charging session data carry commercial and privacy sensitivity"
+      },
+      "functional_consequences": [
+        "charging_system_manipulation",
+        "hv_system_compromise",
+        "integrity_loss_in_powertrain_management",
+        "safety_function_unavailability",
+        "confidentiality_loss_in_powertrain_management"
+      ],
+      "damage_scenario_seeds": [
+        "Charging system manipulation causing HV connector damage or fire risk to nearby persons",
+        "Financial loss from charge state falsification causing stranding or exploitation"
+      ],
+      "attack_surface_classes": [
+        "in_vehicle_network",
+        "diagnostic_interface",
+        "physical_access"
+      ],
+      "asset_target_properties": {
+        "Integrity": [
+          "charging_commands",
+          "charge_state_data",
+          "HV_interlock_signals"
+        ],
+        "Availability": [
+          "service",
+          "safety_function"
+        ],
+        "Authenticity": [
+          "messages"
+        ],
+        "Confidentiality": [
+          "charging_session_data",
+          "charge_state_data"
+        ]
+      },
+      "reachable_threat_actor_classes": [
+        "insider_attacker",
+        "supply_chain_attacker",
+        "service_technician",
+        "physical_attacker"
+      ],
+      "entry_point": {
+        "is_entry_point": true,
+        "entry_point_types": [
+          "physical_diagnostic",
+          "physical_hardware"
+        ],
+        "externally_reachable": true,
+        "transitive_remote_reachable": false,
+        "reachability_derivation": "attack_surface:diagnostic_interface + attack_surface:physical_access + trust_zone:TZ-POWERTRAIN"
+      },
+      "provenance": {
+        "source": [
+          "R155 Annex 5 Threat 3.1",
+          "R155 Annex 5 Threat 6.2",
+          "ISO/SAE 21434 Clause 8.3"
+        ],
+        "reference_standards": [
+          "ISO 26262-3:2018",
+          "SAE J3061",
+          "ISO/SAE 21434:2021",
+          "UNECE R155"
+        ],
+        "justification": "Rule P6 (ENERGY_MANAGER): domain=POWERTRAIN_MANAGEMENT, trust_zone=TZ-POWERTRAIN (level 3) [deployment annotation], lexical_tokens=charge+port+ecu",
+        "inference_method": "weighted_evidence_convergence_v2",
+        "deterministic": true
+      },
+      "capec_cwe_refs": [
+        {
+          "capec_id": "141",
+          "capec_name": "Cache Poisoning",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:diagnostic_interface",
+            "r155:3.1"
+          ],
+          "cwe_ids": [
+            "CWE-348",
+            "CWE-345",
+            "CWE-349",
+            "CWE-346"
+          ],
+          "severity": "High",
+          "likelihood": "High"
+        },
+        {
+          "capec_id": "167",
+          "capec_name": "White Box Reverse Engineering",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:diagnostic_interface",
+            "attack_surface:physical_access"
+          ],
+          "cwe_ids": [
+            "CWE-1323"
+          ],
+          "severity": "Medium",
+          "likelihood": "Unknown"
+        },
+        {
+          "capec_id": "194",
+          "capec_name": "Fake the Source of Data",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:diagnostic_interface",
+            "r155:3.1"
+          ],
+          "cwe_ids": [
+            "CWE-287"
+          ],
+          "severity": "Medium",
+          "likelihood": "Unknown"
+        },
+        {
+          "capec_id": "268",
+          "capec_name": "Audit Log Manipulation",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:diagnostic_interface",
+            "attack_surface:physical_access"
+          ],
+          "cwe_ids": [
+            "CWE-117"
+          ],
+          "severity": "Unknown",
+          "likelihood": "Unknown"
+        },
+        {
+          "capec_id": "276",
+          "capec_name": "Inter-component Protocol Manipulation",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:diagnostic_interface",
+            "r155:3.1"
+          ],
+          "cwe_ids": [
+            "CWE-707"
+          ],
+          "severity": "Unknown",
+          "likelihood": "Unknown"
+        },
+        {
+          "capec_id": "401",
+          "capec_name": "Physically Hacking Hardware",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:physical_access"
+          ],
+          "cwe_ids": [
+            "CWE-1263"
+          ],
+          "severity": "High",
+          "likelihood": "Low"
+        },
+        {
+          "capec_id": "534",
+          "capec_name": "Malicious Hardware Update",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:physical_access"
+          ],
+          "cwe_ids": [],
+          "severity": "High",
+          "likelihood": "Low"
+        },
+        {
+          "capec_id": "536",
+          "capec_name": "Data Injected During Configuration",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:diagnostic_interface",
+            "attack_surface:physical_access"
+          ],
+          "cwe_ids": [
+            "CWE-284"
+          ],
+          "severity": "High",
+          "likelihood": "Low"
+        },
+        {
+          "capec_id": "664",
+          "capec_name": "Server Side Request Forgery",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:physical_access",
+            "r155:6.2"
+          ],
+          "cwe_ids": [
+            "CWE-918",
+            "CWE-20"
+          ],
+          "severity": "High",
+          "likelihood": "High"
+        },
+        {
+          "capec_id": "680",
+          "capec_name": "Exploitation of Improperly Controlled Registers",
+          "abstraction": "Detailed",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:diagnostic_interface",
+            "attack_surface:physical_access"
+          ],
+          "cwe_ids": [
+            "CWE-1224",
+            "CWE-1231",
+            "CWE-1233",
+            "CWE-1262",
+            "CWE-1283"
+          ],
+          "severity": "High",
+          "likelihood": "Medium"
+        },
+        {
+          "capec_id": "681",
+          "capec_name": "Exploitation of Improperly Controlled Hardware Security Identifiers",
+          "abstraction": "Detailed",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:diagnostic_interface",
+            "attack_surface:physical_access"
+          ],
+          "cwe_ids": [
+            "CWE-1259",
+            "CWE-1267",
+            "CWE-1270",
+            "CWE-1294",
+            "CWE-1302"
+          ],
+          "severity": "Very High",
+          "likelihood": "Medium"
+        },
+        {
+          "capec_id": "682",
+          "capec_name": "Exploitation of Firmware or ROM Code with Unpatchable Vulnerabilities",
+          "abstraction": "Standard",
+          "join_dimensions": [
+            "attack_surface:in_vehicle_network",
+            "attack_surface:diagnostic_interface",
+            "attack_surface:physical_access"
+          ],
+          "cwe_ids": [
+            "CWE-1277",
+            "CWE-1310"
+          ],
+          "severity": "High",
+          "likelihood": "Medium"
+        }
+      ],
+      "topology": {
+        "connected_ecus": [
+          "BODY_CONTROLLER"
+        ],
+        "via_buses": [],
+        "via_flows": [
+          "BODY_CONTROLLER"
+        ],
+        "trust_boundary_crossings": [
+          {
+            "src_ecu": "CHARGE_PORT_ECU",
+            "dst_ecu": "BODY_CONTROLLER",
+            "src_trust_level": 3,
+            "dst_trust_level": 2,
+            "direction": "HIGH_TO_LOW"
+          }
+        ]
+      }
+    }
+  ]
+}

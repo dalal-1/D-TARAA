@@ -1,0 +1,779 @@
+[
+  {
+    "threat_id": "TS-01",
+    "damage_scenario_ids": [
+      "DS-01"
+    ],
+    "impact_value": 3,
+    "impact_rating": "Moderate",
+    "feasibility_value": 4,
+    "feasibility_rating": "High",
+    "controllability": "C3",
+    "risk_score": 12,
+    "risk_level": "High",
+    "scoring_method": "HEAVENS",
+    "residual_risk_level": "TBD \u2014 requires post-mitigation re-evaluation"
+  },
+  {
+    "threat_id": "TS-02",
+    "damage_scenario_ids": [
+      "DS-01"
+    ],
+    "impact_value": 3,
+    "impact_rating": "Moderate",
+    "feasibility_value": 4,
+    "feasibility_rating": "High",
+    "controllability": "C3",
+    "risk_score": 12,
+    "risk_level": "High",
+    "scoring_method": "HEAVENS",
+    "residual_risk_level": "TBD \u2014 requires post-mitigation re-evaluation"
+  },
+  {
+    "threat_id": "TS-04",
+    "damage_scenario_ids": [
+      "DS-01"
+    ],
+    "impact_value": 3,
+    "impact_rating": "Moderate",
+    "feasibility_value": 4,
+    "feasibility_rating": "High",
+    "controllability": "C3",
+    "risk_score": 12,
+    "risk_level": "High",
+    "scoring_method": "HEAVENS",
+    "residual_risk_level": "TBD \u2014 requires post-mitigation re-evaluation"
+  },
+  {
+    "threat_id": "TS-05",
+    "damage_scenario_ids": [
+      "DS-01"
+    ],
+    "impact_value": 3,
+    "impact_rating": "Moderate",
+    "feasibility_value": 4,
+    "feasibility_rating": "High",
+    "controllability": "C3",
+    "risk_score": 12,
+    "risk_level": "High",
+    "scoring_method": "HEAVENS",
+    "residual_risk_level": "TBD \u2014 requires post-mitigation re-evaluation"
+  },
+  {
+    "threat_id": "TS-08",
+    "damage_scenario_ids": [
+      "DS-02"
+    ],
+    "impact_value": 3,
+    "impact_rating": "Moderate",
+    "feasibility_value": 4,
+    "feasibility_rating": "High",
+    "controllability": "C3",
+    "risk_score": 12,
+    "risk_level": "High",
+    "scoring_method": "HEAVENS",
+    "residual_risk_level": "TBD \u2014 requires post-mitigation re-evaluation"
+  },
+  {
+    "threat_id": "TS-10",
+    "damage_scenario_ids": [
+      "DS-02"
+    ],
+    "impact_value": 3,
+    "impact_rating": "Moderate",
+    "feasibility_value": 4,
+    "feasibility_rating": "High",
+    "controllability": "C3",
+    "risk_score": 12,
+    "risk_level": "High",
+    "scoring_method": "HEAVENS",
+    "residual_risk_level": "TBD \u2014 requires post-mitigation re-evaluation"
+  },
+  {
+    "threat_id": "TS-11",
+    "damage_scenario_ids": [
+      "DS-02"
+    ],
+    "impact_value": 3,
+    "impact_rating": "Moderate",
+    "feasibility_value": 4,
+    "feasibility_rating": "High",
+    "controllability": "C3",
+    "risk_score": 12,
+    "risk_level": "High",
+    "scoring_method": "HEAVENS",
+    "residual_risk_level": "TBD \u2014 requires post-mitigation re-evaluation"
+  },
+  {
+    "threat_id": "TS-13",
+    "damage_scenario_ids": [
+      "DS-03"
+    ],
+    "impact_value": 5,
+    "impact_rating": "Catastrophic",
+    "feasibility_value": 4,
+    "feasibility_rating": "High",
+    "controllability": "C3",
+    "risk_score": 20,
+    "risk_level": "Critical",
+    "scoring_method": "HEAVENS",
+    "residual_risk_level": "TBD \u2014 requires post-mitigation re-evaluation"
+  },
+  {
+    "threat_id": "TS-15",
+    "damage_scenario_ids": [
+      "DS-03"
+    ],
+    "impact_value": 5,
+    "impact_rating": "Catastrophic",
+    "feasibility_value": 4,
+    "feasibility_rating": "High",
+    "controllability": "C3",
+    "risk_score": 20,
+    "risk_level": "Critical",
+    "scoring_method": "HEAVENS",
+    "residual_risk_level": "TBD \u2014 requires post-mitigation re-evaluation"
+  },
+  {
+    "threat_id": "TS-17",
+    "damage_scenario_ids": [
+      "DS-03"
+    ],
+    "impact_value": 5,
+    "impact_rating": "Catastrophic",
+    "feasibility_value": 4,
+    "feasibility_rating": "High",
+    "controllability": "C3",
+    "risk_score": 20,
+    "risk_level": "Critical",
+    "scoring_method": "HEAVENS",
+    "residual_risk_level": "TBD \u2014 requires post-mitigation re-evaluation"
+  },
+  {
+    "threat_id": "TS-20",
+    "damage_scenario_ids": [
+      "DS-04"
+    ],
+    "impact_value": 5,
+    "impact_rating": "Catastrophic",
+    "feasibility_value": 4,
+    "feasibility_rating": "High",
+    "controllability": "C3",
+    "risk_score": 20,
+    "risk_level": "Critical",
+    "scoring_method": "HEAVENS",
+    "residual_risk_level": "TBD \u2014 requires post-mitigation re-evaluation"
+  },
+  {
+    "threat_id": "TS-22",
+    "damage_scenario_ids": [
+      "DS-04"
+    ],
+    "impact_value": 5,
+    "impact_rating": "Catastrophic",
+    "feasibility_value": 4,
+    "feasibility_rating": "High",
+    "controllability": "C3",
+    "risk_score": 20,
+    "risk_level": "Critical",
+    "scoring_method": "HEAVENS",
+    "residual_risk_level": "TBD \u2014 requires post-mitigation re-evaluation"
+  },
+  {
+    "threat_id": "TS-24",
+    "damage_scenario_ids": [
+      "DS-04"
+    ],
+    "impact_value": 5,
+    "impact_rating": "Catastrophic",
+    "feasibility_value": 4,
+    "feasibility_rating": "High",
+    "controllability": "C3",
+    "risk_score": 20,
+    "risk_level": "Critical",
+    "scoring_method": "HEAVENS",
+    "residual_risk_level": "TBD \u2014 requires post-mitigation re-evaluation"
+  },
+  {
+    "threat_id": "TS-27",
+    "damage_scenario_ids": [
+      "DS-05"
+    ],
+    "impact_value": 5,
+    "impact_rating": "Catastrophic",
+    "feasibility_value": 4,
+    "feasibility_rating": "High",
+    "controllability": "C3",
+    "risk_score": 20,
+    "risk_level": "Critical",
+    "scoring_method": "HEAVENS",
+    "residual_risk_level": "TBD \u2014 requires post-mitigation re-evaluation"
+  },
+  {
+    "threat_id": "TS-29",
+    "damage_scenario_ids": [
+      "DS-05"
+    ],
+    "impact_value": 5,
+    "impact_rating": "Catastrophic",
+    "feasibility_value": 4,
+    "feasibility_rating": "High",
+    "controllability": "C3",
+    "risk_score": 20,
+    "risk_level": "Critical",
+    "scoring_method": "HEAVENS",
+    "residual_risk_level": "TBD \u2014 requires post-mitigation re-evaluation"
+  },
+  {
+    "threat_id": "TS-31",
+    "damage_scenario_ids": [
+      "DS-05"
+    ],
+    "impact_value": 5,
+    "impact_rating": "Catastrophic",
+    "feasibility_value": 4,
+    "feasibility_rating": "High",
+    "controllability": "C3",
+    "risk_score": 20,
+    "risk_level": "Critical",
+    "scoring_method": "HEAVENS",
+    "residual_risk_level": "TBD \u2014 requires post-mitigation re-evaluation"
+  },
+  {
+    "threat_id": "TS-33",
+    "damage_scenario_ids": [
+      "DS-05"
+    ],
+    "impact_value": 5,
+    "impact_rating": "Catastrophic",
+    "feasibility_value": 4,
+    "feasibility_rating": "High",
+    "controllability": "C3",
+    "risk_score": 20,
+    "risk_level": "Critical",
+    "scoring_method": "HEAVENS",
+    "residual_risk_level": "TBD \u2014 requires post-mitigation re-evaluation"
+  },
+  {
+    "threat_id": "TS-36",
+    "damage_scenario_ids": [
+      "DS-06"
+    ],
+    "impact_value": 5,
+    "impact_rating": "Catastrophic",
+    "feasibility_value": 4,
+    "feasibility_rating": "High",
+    "controllability": "C3",
+    "risk_score": 20,
+    "risk_level": "Critical",
+    "scoring_method": "HEAVENS",
+    "residual_risk_level": "TBD \u2014 requires post-mitigation re-evaluation"
+  },
+  {
+    "threat_id": "TS-38",
+    "damage_scenario_ids": [
+      "DS-06"
+    ],
+    "impact_value": 5,
+    "impact_rating": "Catastrophic",
+    "feasibility_value": 4,
+    "feasibility_rating": "High",
+    "controllability": "C3",
+    "risk_score": 20,
+    "risk_level": "Critical",
+    "scoring_method": "HEAVENS",
+    "residual_risk_level": "TBD \u2014 requires post-mitigation re-evaluation"
+  },
+  {
+    "threat_id": "TS-40",
+    "damage_scenario_ids": [
+      "DS-06"
+    ],
+    "impact_value": 5,
+    "impact_rating": "Catastrophic",
+    "feasibility_value": 4,
+    "feasibility_rating": "High",
+    "controllability": "C3",
+    "risk_score": 20,
+    "risk_level": "Critical",
+    "scoring_method": "HEAVENS",
+    "residual_risk_level": "TBD \u2014 requires post-mitigation re-evaluation"
+  },
+  {
+    "threat_id": "TS-42",
+    "damage_scenario_ids": [
+      "DS-06"
+    ],
+    "impact_value": 5,
+    "impact_rating": "Catastrophic",
+    "feasibility_value": 4,
+    "feasibility_rating": "High",
+    "controllability": "C3",
+    "risk_score": 20,
+    "risk_level": "Critical",
+    "scoring_method": "HEAVENS",
+    "residual_risk_level": "TBD \u2014 requires post-mitigation re-evaluation"
+  },
+  {
+    "threat_id": "TS-45",
+    "damage_scenario_ids": [
+      "DS-07"
+    ],
+    "impact_value": 5,
+    "impact_rating": "Catastrophic",
+    "feasibility_value": 4,
+    "feasibility_rating": "High",
+    "controllability": "C3",
+    "risk_score": 20,
+    "risk_level": "Critical",
+    "scoring_method": "HEAVENS",
+    "residual_risk_level": "TBD \u2014 requires post-mitigation re-evaluation"
+  },
+  {
+    "threat_id": "TS-47",
+    "damage_scenario_ids": [
+      "DS-07"
+    ],
+    "impact_value": 5,
+    "impact_rating": "Catastrophic",
+    "feasibility_value": 4,
+    "feasibility_rating": "High",
+    "controllability": "C3",
+    "risk_score": 20,
+    "risk_level": "Critical",
+    "scoring_method": "HEAVENS",
+    "residual_risk_level": "TBD \u2014 requires post-mitigation re-evaluation"
+  },
+  {
+    "threat_id": "TS-49",
+    "damage_scenario_ids": [
+      "DS-07"
+    ],
+    "impact_value": 5,
+    "impact_rating": "Catastrophic",
+    "feasibility_value": 4,
+    "feasibility_rating": "High",
+    "controllability": "C3",
+    "risk_score": 20,
+    "risk_level": "Critical",
+    "scoring_method": "HEAVENS",
+    "residual_risk_level": "TBD \u2014 requires post-mitigation re-evaluation"
+  },
+  {
+    "threat_id": "TS-52",
+    "damage_scenario_ids": [
+      "DS-08"
+    ],
+    "impact_value": 3,
+    "impact_rating": "Moderate",
+    "feasibility_value": 4,
+    "feasibility_rating": "High",
+    "controllability": "C3",
+    "risk_score": 12,
+    "risk_level": "High",
+    "scoring_method": "HEAVENS",
+    "residual_risk_level": "TBD \u2014 requires post-mitigation re-evaluation"
+  },
+  {
+    "threat_id": "TS-53",
+    "damage_scenario_ids": [
+      "DS-08"
+    ],
+    "impact_value": 3,
+    "impact_rating": "Moderate",
+    "feasibility_value": 4,
+    "feasibility_rating": "High",
+    "controllability": "C3",
+    "risk_score": 12,
+    "risk_level": "High",
+    "scoring_method": "HEAVENS",
+    "residual_risk_level": "TBD \u2014 requires post-mitigation re-evaluation"
+  },
+  {
+    "threat_id": "TS-55",
+    "damage_scenario_ids": [
+      "DS-08"
+    ],
+    "impact_value": 3,
+    "impact_rating": "Moderate",
+    "feasibility_value": 4,
+    "feasibility_rating": "High",
+    "controllability": "C3",
+    "risk_score": 12,
+    "risk_level": "High",
+    "scoring_method": "HEAVENS",
+    "residual_risk_level": "TBD \u2014 requires post-mitigation re-evaluation"
+  },
+  {
+    "threat_id": "TS-56",
+    "damage_scenario_ids": [
+      "DS-08"
+    ],
+    "impact_value": 3,
+    "impact_rating": "Moderate",
+    "feasibility_value": 4,
+    "feasibility_rating": "High",
+    "controllability": "C3",
+    "risk_score": 12,
+    "risk_level": "High",
+    "scoring_method": "HEAVENS",
+    "residual_risk_level": "TBD \u2014 requires post-mitigation re-evaluation"
+  },
+  {
+    "threat_id": "TS-59",
+    "damage_scenario_ids": [
+      "DS-09"
+    ],
+    "impact_value": 3,
+    "impact_rating": "Moderate",
+    "feasibility_value": 4,
+    "feasibility_rating": "High",
+    "controllability": "C3",
+    "risk_score": 12,
+    "risk_level": "High",
+    "scoring_method": "HEAVENS",
+    "residual_risk_level": "TBD \u2014 requires post-mitigation re-evaluation"
+  },
+  {
+    "threat_id": "TS-62",
+    "damage_scenario_ids": [
+      "DS-09"
+    ],
+    "impact_value": 3,
+    "impact_rating": "Moderate",
+    "feasibility_value": 4,
+    "feasibility_rating": "High",
+    "controllability": "C3",
+    "risk_score": 12,
+    "risk_level": "High",
+    "scoring_method": "HEAVENS",
+    "residual_risk_level": "TBD \u2014 requires post-mitigation re-evaluation"
+  },
+  {
+    "threat_id": "TS-64",
+    "damage_scenario_ids": [
+      "DS-09"
+    ],
+    "impact_value": 3,
+    "impact_rating": "Moderate",
+    "feasibility_value": 4,
+    "feasibility_rating": "High",
+    "controllability": "C3",
+    "risk_score": 12,
+    "risk_level": "High",
+    "scoring_method": "HEAVENS",
+    "residual_risk_level": "TBD \u2014 requires post-mitigation re-evaluation"
+  },
+  {
+    "threat_id": "TS-66",
+    "damage_scenario_ids": [
+      "DS-09"
+    ],
+    "impact_value": 3,
+    "impact_rating": "Moderate",
+    "feasibility_value": 4,
+    "feasibility_rating": "High",
+    "controllability": "C3",
+    "risk_score": 12,
+    "risk_level": "High",
+    "scoring_method": "HEAVENS",
+    "residual_risk_level": "TBD \u2014 requires post-mitigation re-evaluation"
+  },
+  {
+    "threat_id": "TS-68",
+    "damage_scenario_ids": [
+      "DS-10",
+      "DS-11"
+    ],
+    "impact_value": 3,
+    "impact_rating": "Moderate",
+    "feasibility_value": 4,
+    "feasibility_rating": "High",
+    "controllability": "C3",
+    "risk_score": 12,
+    "risk_level": "High",
+    "scoring_method": "HEAVENS",
+    "residual_risk_level": "TBD \u2014 requires post-mitigation re-evaluation"
+  },
+  {
+    "threat_id": "TS-70",
+    "damage_scenario_ids": [
+      "DS-10",
+      "DS-11"
+    ],
+    "impact_value": 3,
+    "impact_rating": "Moderate",
+    "feasibility_value": 4,
+    "feasibility_rating": "High",
+    "controllability": "C3",
+    "risk_score": 12,
+    "risk_level": "High",
+    "scoring_method": "HEAVENS",
+    "residual_risk_level": "TBD \u2014 requires post-mitigation re-evaluation"
+  },
+  {
+    "threat_id": "TS-72",
+    "damage_scenario_ids": [
+      "DS-10",
+      "DS-11"
+    ],
+    "impact_value": 3,
+    "impact_rating": "Moderate",
+    "feasibility_value": 4,
+    "feasibility_rating": "High",
+    "controllability": "C3",
+    "risk_score": 12,
+    "risk_level": "High",
+    "scoring_method": "HEAVENS",
+    "residual_risk_level": "TBD \u2014 requires post-mitigation re-evaluation"
+  },
+  {
+    "threat_id": "TS-74",
+    "damage_scenario_ids": [
+      "DS-10",
+      "DS-11"
+    ],
+    "impact_value": 3,
+    "impact_rating": "Moderate",
+    "feasibility_value": 4,
+    "feasibility_rating": "High",
+    "controllability": "C3",
+    "risk_score": 12,
+    "risk_level": "High",
+    "scoring_method": "HEAVENS",
+    "residual_risk_level": "TBD \u2014 requires post-mitigation re-evaluation"
+  },
+  {
+    "threat_id": "TS-77",
+    "damage_scenario_ids": [
+      "DS-12",
+      "DS-13"
+    ],
+    "impact_value": 3,
+    "impact_rating": "Moderate",
+    "feasibility_value": 4,
+    "feasibility_rating": "High",
+    "controllability": "C3",
+    "risk_score": 12,
+    "risk_level": "High",
+    "scoring_method": "HEAVENS",
+    "residual_risk_level": "TBD \u2014 requires post-mitigation re-evaluation"
+  },
+  {
+    "threat_id": "TS-79",
+    "damage_scenario_ids": [
+      "DS-12",
+      "DS-13"
+    ],
+    "impact_value": 3,
+    "impact_rating": "Moderate",
+    "feasibility_value": 4,
+    "feasibility_rating": "High",
+    "controllability": "C3",
+    "risk_score": 12,
+    "risk_level": "High",
+    "scoring_method": "HEAVENS",
+    "residual_risk_level": "TBD \u2014 requires post-mitigation re-evaluation"
+  },
+  {
+    "threat_id": "TS-81",
+    "damage_scenario_ids": [
+      "DS-12",
+      "DS-13"
+    ],
+    "impact_value": 3,
+    "impact_rating": "Moderate",
+    "feasibility_value": 4,
+    "feasibility_rating": "High",
+    "controllability": "C3",
+    "risk_score": 12,
+    "risk_level": "High",
+    "scoring_method": "HEAVENS",
+    "residual_risk_level": "TBD \u2014 requires post-mitigation re-evaluation"
+  },
+  {
+    "threat_id": "TS-83",
+    "damage_scenario_ids": [
+      "DS-12",
+      "DS-13"
+    ],
+    "impact_value": 3,
+    "impact_rating": "Moderate",
+    "feasibility_value": 4,
+    "feasibility_rating": "High",
+    "controllability": "C3",
+    "risk_score": 12,
+    "risk_level": "High",
+    "scoring_method": "HEAVENS",
+    "residual_risk_level": "TBD \u2014 requires post-mitigation re-evaluation"
+  },
+  {
+    "threat_id": "TS-86",
+    "damage_scenario_ids": [
+      "DS-14"
+    ],
+    "impact_value": 5,
+    "impact_rating": "Catastrophic",
+    "feasibility_value": 4,
+    "feasibility_rating": "High",
+    "controllability": "C3",
+    "risk_score": 20,
+    "risk_level": "Critical",
+    "scoring_method": "HEAVENS",
+    "residual_risk_level": "TBD \u2014 requires post-mitigation re-evaluation"
+  },
+  {
+    "threat_id": "TS-88",
+    "damage_scenario_ids": [
+      "DS-14"
+    ],
+    "impact_value": 5,
+    "impact_rating": "Catastrophic",
+    "feasibility_value": 4,
+    "feasibility_rating": "High",
+    "controllability": "C3",
+    "risk_score": 20,
+    "risk_level": "Critical",
+    "scoring_method": "HEAVENS",
+    "residual_risk_level": "TBD \u2014 requires post-mitigation re-evaluation"
+  },
+  {
+    "threat_id": "TS-90",
+    "damage_scenario_ids": [
+      "DS-14"
+    ],
+    "impact_value": 5,
+    "impact_rating": "Catastrophic",
+    "feasibility_value": 4,
+    "feasibility_rating": "High",
+    "controllability": "C3",
+    "risk_score": 20,
+    "risk_level": "Critical",
+    "scoring_method": "HEAVENS",
+    "residual_risk_level": "TBD \u2014 requires post-mitigation re-evaluation"
+  },
+  {
+    "threat_id": "TS-93",
+    "damage_scenario_ids": [
+      "DS-15"
+    ],
+    "impact_value": 5,
+    "impact_rating": "Catastrophic",
+    "feasibility_value": 4,
+    "feasibility_rating": "High",
+    "controllability": "C3",
+    "risk_score": 20,
+    "risk_level": "Critical",
+    "scoring_method": "HEAVENS",
+    "residual_risk_level": "TBD \u2014 requires post-mitigation re-evaluation"
+  },
+  {
+    "threat_id": "TS-94",
+    "damage_scenario_ids": [
+      "DS-15"
+    ],
+    "impact_value": 5,
+    "impact_rating": "Catastrophic",
+    "feasibility_value": 4,
+    "feasibility_rating": "High",
+    "controllability": "C3",
+    "risk_score": 20,
+    "risk_level": "Critical",
+    "scoring_method": "HEAVENS",
+    "residual_risk_level": "TBD \u2014 requires post-mitigation re-evaluation"
+  },
+  {
+    "threat_id": "TS-96",
+    "damage_scenario_ids": [
+      "DS-15"
+    ],
+    "impact_value": 5,
+    "impact_rating": "Catastrophic",
+    "feasibility_value": 4,
+    "feasibility_rating": "High",
+    "controllability": "C3",
+    "risk_score": 20,
+    "risk_level": "Critical",
+    "scoring_method": "HEAVENS",
+    "residual_risk_level": "TBD \u2014 requires post-mitigation re-evaluation"
+  },
+  {
+    "threat_id": "TS-98",
+    "damage_scenario_ids": [
+      "DS-15"
+    ],
+    "impact_value": 5,
+    "impact_rating": "Catastrophic",
+    "feasibility_value": 4,
+    "feasibility_rating": "High",
+    "controllability": "C3",
+    "risk_score": 20,
+    "risk_level": "Critical",
+    "scoring_method": "HEAVENS",
+    "residual_risk_level": "TBD \u2014 requires post-mitigation re-evaluation"
+  },
+  {
+    "threat_id": "TS-102",
+    "damage_scenario_ids": [
+      "DS-16",
+      "DS-17"
+    ],
+    "impact_value": 5,
+    "impact_rating": "Catastrophic",
+    "feasibility_value": 4,
+    "feasibility_rating": "High",
+    "controllability": "C3",
+    "risk_score": 20,
+    "risk_level": "Critical",
+    "scoring_method": "HEAVENS",
+    "residual_risk_level": "TBD \u2014 requires post-mitigation re-evaluation"
+  },
+  {
+    "threat_id": "TS-103",
+    "damage_scenario_ids": [
+      "DS-16",
+      "DS-17"
+    ],
+    "impact_value": 5,
+    "impact_rating": "Catastrophic",
+    "feasibility_value": 4,
+    "feasibility_rating": "High",
+    "controllability": "C3",
+    "risk_score": 20,
+    "risk_level": "Critical",
+    "scoring_method": "HEAVENS",
+    "residual_risk_level": "TBD \u2014 requires post-mitigation re-evaluation"
+  },
+  {
+    "threat_id": "TS-105",
+    "damage_scenario_ids": [
+      "DS-16",
+      "DS-17"
+    ],
+    "impact_value": 5,
+    "impact_rating": "Catastrophic",
+    "feasibility_value": 4,
+    "feasibility_rating": "High",
+    "controllability": "C3",
+    "risk_score": 20,
+    "risk_level": "Critical",
+    "scoring_method": "HEAVENS",
+    "residual_risk_level": "TBD \u2014 requires post-mitigation re-evaluation"
+  },
+  {
+    "threat_id": "TS-107",
+    "damage_scenario_ids": [
+      "DS-16",
+      "DS-17"
+    ],
+    "impact_value": 5,
+    "impact_rating": "Catastrophic",
+    "feasibility_value": 4,
+    "feasibility_rating": "High",
+    "controllability": "C3",
+    "risk_score": 20,
+    "risk_level": "Critical",
+    "scoring_method": "HEAVENS",
+    "residual_risk_level": "TBD \u2014 requires post-mitigation re-evaluation"
+  }
+]

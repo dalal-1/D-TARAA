@@ -2,40 +2,60 @@
   "item_definition": {
     "item_id": "ITEM-DRIVER-SAFETY-CRITICAL-PATH",
     "item_name": "Driver Physical Safety During Automated Driving",
-    "asset": "Driver Physical Safety During Automated Driving"
+    "asset": "Driver Physical Safety During Automated Driving",
+    "vehicle_identity": {
+      "vendor": "tesla",
+      "models": [
+        "model_3",
+        "model_y"
+      ],
+      "note": "Vendor and model identifiers as they appear in CPE product strings for vehicle-scoped advisories. Used only to establish that a disclosure concerns this item; localisation to a component is done separately."
+    }
   },
   "trust_zones": [
     {
       "id": "TZ-ADAS",
-      "trust_level": 3
+      "trust_level": 3,
+      "functional_domain": "AUTOMATED_DRIVING_CONTROL",
+      "functional_subdomain": "supervisory_control"
     },
     {
       "id": "TZ-BRAKE",
-      "trust_level": 3
+      "trust_level": 3,
+      "functional_domain": "VEHICLE_MOTION_CONTROL",
+      "functional_subdomain": "deceleration_control"
     },
     {
       "id": "TZ-STEERING",
-      "trust_level": 3
+      "trust_level": 3,
+      "functional_domain": "VEHICLE_MOTION_CONTROL",
+      "functional_subdomain": "lateral_control"
     },
     {
       "id": "TZ-POWERTRAIN",
-      "trust_level": 3
+      "trust_level": 3,
+      "functional_domain": "POWERTRAIN_MANAGEMENT"
     },
     {
       "id": "TZ-SRS",
-      "trust_level": 3
+      "trust_level": 3,
+      "functional_domain": "OCCUPANT_SAFETY_SYSTEMS",
+      "functional_subdomain": "passive_safety"
     },
     {
       "id": "TZ-BODY",
-      "trust_level": 2
+      "trust_level": 2,
+      "functional_domain": "BODY_AND_COMFORT"
     },
     {
       "id": "TZ-SENSOR",
-      "trust_level": 2
+      "trust_level": 2,
+      "functional_domain": "PERCEPTION_AND_SENSING"
     },
     {
       "id": "TZ-VNET",
-      "trust_level": 1
+      "trust_level": 1,
+      "functional_domain": "NETWORK_GATEWAYING"
     }
   ],
   "ecus": [
@@ -79,7 +99,8 @@
             "source": "https://service.tesla.com/docs/ModelY/ServiceManual/en-us/GUID-612A9F70-C8F3-4E31-92F0-1C978BE4C968.html"
           }
         ]
-      }
+      },
+      "control_authority": "supervisory"
     },
     {
       "id": "RADAR",
@@ -95,7 +116,8 @@
         ],
         "technology_evidence": "none_available",
         "evidence_note": "No OS, chipset, firmware technology, or identifiable hardware platform found in any OEM, NHTSA, or GPL source. CAN-FD interface retained as it defines the protocol attack surface."
-      }
+      },
+      "control_authority": "monitoring"
     },
     {
       "id": "BRAKE_CONTROLLER",
@@ -123,7 +145,8 @@
         ],
         "technology_evidence": "partial",
         "evidence_note": "ECU families confirmed from OEM and NHTSA sources. No OS, firmware technology, chipset, or software stack documented in any authoritative source."
-      }
+      },
+      "control_authority": "actuating"
     },
     {
       "id": "STEERING_CONTROLLER",
@@ -152,7 +175,8 @@
           }
         ],
         "evidence_note": "ASIL-D was NOT present in NHTSA RMISC-25V092 source text. Removed per evidence audit \u2014 claim was inferred, not cited. EPAS is commonly ASIL-D by ISO 26262 industry convention but this is not an OEM-stated fact in the cited document."
-      }
+      },
+      "control_authority": "actuating"
     },
     {
       "id": "DRIVE_INVERTER_FRONT",
@@ -168,7 +192,9 @@
         ],
         "technology_evidence": "none_available",
         "evidence_note": "No OS, chipset, firmware technology, or identifiable hardware platform found in any OEM, NHTSA, or GPL source."
-      }
+      },
+      "control_authority": "actuating",
+      "energy_role": "traction"
     },
     {
       "id": "DRIVE_INVERTER_REAR",
@@ -184,7 +210,9 @@
         ],
         "technology_evidence": "none_available",
         "evidence_note": "No OS, chipset, firmware technology, or identifiable hardware platform found in any OEM, NHTSA, or GPL source."
-      }
+      },
+      "control_authority": "actuating",
+      "energy_role": "traction"
     },
     {
       "id": "RESTRAINTS_CONTROLLER",
@@ -200,7 +228,8 @@
         ],
         "technology_evidence": "partial",
         "evidence_note": "ECU family confirmed. No OS, chipset, firmware technology, or software stack documented in any authoritative source. ASIL-D classification was removed from this entry: while RCM/airbag systems are assigned ASIL-D by ISO 26262 industry convention, this is NOT explicitly stated in the cited Tesla OEM service manual. The claim was inferred and has been removed per evidence audit."
-      }
+      },
+      "control_authority": "actuating"
     },
     {
       "id": "BODY_CONTROLLER",
@@ -216,7 +245,8 @@
         ],
         "technology_evidence": "partial",
         "evidence_note": "ECU topology confirmed. No OS, chipset, firmware technology, or software stack documented in any authoritative source."
-      }
+      },
+      "control_authority": "actuating"
     },
     {
       "id": "SECURITY_CONTROLLER",
@@ -284,7 +314,9 @@
             "source": "https://www.synacktiv.com/sites/default/files/2024-10/hexacon_0_click_rce_on_tesla_model_3_through_tpms_sensors_light.pdf"
           }
         ]
-      }
+      },
+      "control_authority": "actuating",
+      "security_function": "authentication"
     },
     {
       "id": "INTERIOR_CAMERA",
@@ -308,7 +340,8 @@
         ],
         "technology_evidence": "none_available",
         "evidence_note": "No OS, chipset, firmware technology, or identifiable hardware platform found in any OEM, NHTSA, or GPL source."
-      }
+      },
+      "control_authority": "monitoring"
     },
     {
       "id": "INTERIOR_RADAR",
@@ -324,7 +357,8 @@
         ],
         "technology_evidence": "none_available",
         "evidence_note": "No OS, chipset, firmware technology, or identifiable hardware platform found in any OEM, NHTSA, or GPL source."
-      }
+      },
+      "control_authority": "monitoring"
     },
     {
       "id": "STEERING_ANGLE_ECU",
@@ -340,7 +374,8 @@
         ],
         "technology_evidence": "none_available",
         "evidence_note": "No OS, chipset, firmware technology, or identifiable hardware platform found in any OEM, NHTSA, or GPL source."
-      }
+      },
+      "control_authority": "monitoring"
     },
     {
       "id": "HV_BATTERY",
@@ -356,7 +391,9 @@
         ],
         "technology_evidence": "none_available",
         "evidence_note": "No OS, chipset, firmware technology, or identifiable hardware platform found in any OEM, NHTSA, or GPL source."
-      }
+      },
+      "control_authority": "monitoring",
+      "energy_role": "storage"
     },
     {
       "id": "CHARGE_PORT_ECU",
@@ -380,7 +417,9 @@
         ],
         "technology_evidence": "partial",
         "evidence_note": "Protocol variants and firmware reinstall mechanism confirmed. No OS, chipset, or software stack documented in any authoritative source."
-      }
+      },
+      "control_authority": "actuating",
+      "energy_role": "charging"
     }
   ],
   "external_interfaces": [
@@ -391,7 +430,9 @@
       "attacker_profile": "physical",
       "exposed": false,
       "security_properties": [],
-      "assessment_status": "unassessed"
+      "assessment_status": "unassessed",
+      "functional_domain": "PERCEPTION_AND_SENSING",
+      "functional_subdomain": "environmental_sensing"
     },
     {
       "id": "SPEED_SENSORS",
@@ -400,7 +441,9 @@
       "attacker_profile": "physical",
       "exposed": false,
       "security_properties": [],
-      "assessment_status": "unassessed"
+      "assessment_status": "unassessed",
+      "functional_domain": "VEHICLE_MOTION_CONTROL",
+      "functional_subdomain": "deceleration_control"
     },
     {
       "id": "IMPACT_SENSORS",
@@ -409,7 +452,9 @@
       "attacker_profile": "physical",
       "exposed": false,
       "security_properties": [],
-      "assessment_status": "unassessed"
+      "assessment_status": "unassessed",
+      "functional_domain": "OCCUPANT_SAFETY_SYSTEMS",
+      "functional_subdomain": "passive_safety"
     },
     {
       "id": "PRESSURE_SENSORS",
@@ -418,7 +463,9 @@
       "attacker_profile": "physical",
       "exposed": false,
       "security_properties": [],
-      "assessment_status": "unassessed"
+      "assessment_status": "unassessed",
+      "functional_domain": "OCCUPANT_SAFETY_SYSTEMS",
+      "functional_subdomain": "passive_safety"
     },
     {
       "id": "ACCEL_SENSOR",
@@ -427,7 +474,9 @@
       "attacker_profile": "physical",
       "exposed": false,
       "security_properties": [],
-      "assessment_status": "unassessed"
+      "assessment_status": "unassessed",
+      "functional_domain": "VEHICLE_MOTION_CONTROL",
+      "functional_subdomain": "acceleration_control"
     },
     {
       "id": "RESTRAINT_ACTUATORS",
@@ -436,7 +485,9 @@
       "attacker_profile": "physical",
       "exposed": false,
       "security_properties": [],
-      "assessment_status": "unassessed"
+      "assessment_status": "unassessed",
+      "functional_domain": "OCCUPANT_SAFETY_SYSTEMS",
+      "functional_subdomain": "passive_safety"
     },
     {
       "id": "VEHICLE_NETWORK",
@@ -480,7 +531,9 @@
           }
         ]
       },
-      "assessment_status": "explicitly_insecure"
+      "assessment_status": "explicitly_insecure",
+      "functional_domain": "DIAGNOSTIC_AND_SERVICE",
+      "functional_subdomain": "obd_access"
     },
     {
       "id": "BLE_INTERFACES",
@@ -505,7 +558,9 @@
           }
         ]
       },
-      "assessment_status": "explicitly_insecure"
+      "assessment_status": "explicitly_insecure",
+      "functional_domain": "VEHICLE_ACCESS_CONTROL",
+      "functional_subdomain": "authentication"
     },
     {
       "id": "HV_DISCONNECT",
@@ -514,7 +569,9 @@
       "attacker_profile": "physical",
       "exposed": false,
       "security_properties": [],
-      "assessment_status": "unassessed"
+      "assessment_status": "unassessed",
+      "functional_domain": "POWERTRAIN_MANAGEMENT",
+      "functional_subdomain": "energy_transfer"
     },
     {
       "id": "DIAG_ETHERNET",
@@ -541,7 +598,9 @@
           }
         ]
       },
-      "assessment_status": "assessed"
+      "assessment_status": "assessed",
+      "functional_domain": "DIAGNOSTIC_AND_SERVICE",
+      "functional_subdomain": "obd_access"
     }
   ],
   "communication_buses": [
@@ -629,7 +688,8 @@
             "source": "https://keenlab.tencent.com/en/2016/09/19/Keen-Security-Lab-of-Tencent-Car-Hacking-Research-Remote-Attack-to-Tesla-Cars/"
           }
         ]
-      }
+      },
+      "functional_domain": "BODY_AND_COMFORT"
     }
   ],
   "data_flows": [
@@ -751,7 +811,8 @@
         "transport": "BLE",
         "application": "NONE"
       },
-      "direction": "bidirectional"
+      "direction": "bidirectional",
+      "data_category": "occupant_sensing"
     },
     {
       "id": "SECURITY_TO_VEHICLE_NETWORK",
@@ -841,7 +902,8 @@
         "transport": "ETH",
         "application": "NONE"
       },
-      "direction": "oneway"
+      "direction": "oneway",
+      "data_category": "occupant_sensing"
     },
     {
       "id": "STEERING_FEEDBACK",
@@ -990,5 +1052,6 @@
         }
       ]
     }
-  ]
+  ],
+  "schema_version": "2.0"
 }

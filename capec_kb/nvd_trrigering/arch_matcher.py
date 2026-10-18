@@ -102,6 +102,26 @@ for _cpe_tok, _arch_keys in _VENDOR_PRODUCT_ALIASES.items():
         _ARCH_KEY_TO_VALID_CPE_TOKENS.setdefault(_ak, set()).add(_cpe_tok)
 
 
+# Threshold for localising a vehicle-scoped disclosure to a component by
+# description evidence. Higher than MATCH_THRESHOLD because the evidence is
+# weaker: it is applied only after the disclosure has been established as
+# concerning this item.
+DESC_LOCALISATION_THRESHOLD = 0.30
+
+# Terms that appear in almost any automotive advisory and therefore carry no
+# localising power. A description mentioning the CAN bus does not identify which
+# component carries the flaw, so such tokens are excluded from the evidence used
+# to localise a vehicle-scoped disclosure.
+NON_LOCALISING_TOKENS = {
+    "can", "bus", "vehicle", "vehicles", "module", "modules", "system",
+    "systems", "network", "networked", "adjacent", "attacker", "attackers",
+    "code", "memory", "data", "message", "messages", "arbitrary", "remote",
+    "execute", "execution", "firmware", "software", "hardware", "interface",
+    "controller", "ecu", "protocol", "authentication", "required", "affected",
+    "specific", "flaw", "exists", "within", "sent", "response", "trigger",
+}
+
+
 def _tokenize(text: str) -> list[str]:
     text = text.lower()
     tokens = re.findall(r"[a-z0-9]+", text)
@@ -117,45 +137,129 @@ def _load_architecture(arch_path: str | Path) -> dict:
 
 
 def _build_tech_index(arch: dict) -> dict[str, list[str]]:
+    """Map each declared technology to the architectural elements carrying it.
+
+    The index covers every technology-bearing element type, not only control
+    units. The elements that determine how an attacker reaches a system are
+    frequently external interfaces and communication buses, and a disclosure
+    naming a bus or interface technology must be localisable to them.
+    """
     index: dict[str, list[str]] = {}
 
-    def _add(raw_component: str, ecu_id: str) -> None:
-        key = raw_component.lower().strip()
+    CATEGORIES = (
+        "software_technologies",
+        "hardware_technologies",
+        "update_technologies",
+        "communication_technologies",
+    )
+
+    def _add(raw_component: str, element_id: str) -> None:
+        key = (raw_component or "").lower().strip()
         if not key:
             return
-        if key not in index:
-            index[key] = []
-        if ecu_id not in index[key]:
-            index[key].append(ecu_id)
+        index.setdefault(key, [])
+        if element_id not in index[key]:
+            index[key].append(element_id)
 
-    for ecu in arch.get("ecus", []):
-        ecu_id = ecu["id"]
-        tc = ecu.get("technology_context", {})
-        for category in (
-            "software_technologies",
-            "hardware_technologies",
-            "update_technologies",
-            "communication_technologies",
-        ):
-            for item in tc.get(category, []):
-                _add(item.get("component", ""), ecu_id)
+    def _index_element(element: dict, id_field: str = "id") -> None:
+        element_id = element.get(id_field)
+        if not element_id:
+            return
+        tc = element.get("technology_context", {}) or {}
+        for category in CATEGORIES:
+            for item in tc.get(category, []) or []:
+                _add(item.get("component", ""), element_id)
 
-    for node in arch.get("supplemental_technology_nodes", []):
+    for collection in ("ecus", "external_interfaces", "communication_buses"):
+        for element in arch.get(collection, []) or []:
+            _index_element(element)
+
+    for node in arch.get("supplemental_technology_nodes", []) or []:
         node_id = node.get("id", "SUPPLEMENTAL")
-        for category in (
-            "software_technologies",
-            "hardware_technologies",
-            "communication_technologies",
-        ):
-            for item in node.get(category, []):
+        for category in CATEGORIES:
+            for item in node.get(category, []) or []:
                 _add(item.get("component", ""), node_id)
 
-    for group in arch.get("technology_groups", []):
+    for group in arch.get("technology_groups", []) or []:
         group_id = group.get("logical_grouping_id", "GROUP")
-        for item in group.get("technologies", []):
+        for item in group.get("technologies", []) or []:
             _add(item.get("component", ""), group_id)
 
-    return index
+    return {k: sorted(v) for k, v in sorted(index.items())}
+
+
+def _item_identity_match(cve_enriched: dict, arch: dict) -> dict[str, Any] | None:
+    """Decide whether the disclosure's CPE data names the item itself.
+
+    Automotive advisories are frequently registered against the vehicle rather
+    than against the component that carries the flaw: the CPE product string
+    identifies a model and its firmware, not the module. Such a record cannot be
+    localised by CPE token overlap against a component technology index, because
+    the tokens describe a different level of the system. This function
+    establishes only that the disclosure is in scope for the item; localisation
+    to a component is performed separately from the description.
+    """
+    identity = (arch.get("item_definition") or {}).get("vehicle_identity")
+    if not identity:
+        return None
+
+    vendor = str(identity.get("vendor", "")).lower()
+    models = {str(m).lower() for m in identity.get("models", [])}
+    if not vendor or not models:
+        return None
+
+    for entry in cve_enriched.get("cpes", []) or []:
+        if str(entry.get("vendor", "")).lower() != vendor:
+            continue
+        # Compare normalised product strings rather than tokens, so that a model
+        # discriminator such as "3" or "y" is not dropped by the tokeniser's
+        # minimum length. Matching "model_y" against a "model_3" record would
+        # place a disclosure on the wrong vehicle.
+        product = str(entry.get("product", "")).lower()
+        product_norm = re.sub(r"[^a-z0-9]+", "_", product).strip("_")
+        for model in models:
+            model_norm = re.sub(r"[^a-z0-9]+", "_", model.lower()).strip("_")
+            if product_norm == model_norm or product_norm.startswith(model_norm + "_"):
+                return {"vendor": vendor, "product": product,
+                        "model": model, "cpeUri": entry.get("cpeUri")}
+    return None
+
+
+def _localise_by_description(
+    desc_tokens: set[str],
+    tech_index: dict[str, list[str]],
+) -> list[dict[str, Any]]:
+    """Localise an item-scoped disclosure to components by description evidence.
+
+    Applied only once the disclosure has been established as concerning the
+    item. Each technology key is scored by the share of its own tokens that the
+    description mentions, so that a description naming a specific module
+    localises to the elements carrying it without a generic term matching
+    broadly.
+    """
+    results: list[dict[str, Any]] = []
+    localising = desc_tokens - NON_LOCALISING_TOKENS
+    if not localising:
+        return results
+
+    for tech_key, element_ids in tech_index.items():
+        arch_tokens = _token_set(tech_key) - NON_LOCALISING_TOKENS
+        if not arch_tokens:
+            continue
+        overlap = localising & arch_tokens
+        if not overlap:
+            continue
+        coverage = len(overlap) / len(arch_tokens)
+        if coverage < DESC_LOCALISATION_THRESHOLD:
+            continue
+        results.append({
+            "technology":    tech_key,
+            "components":    element_ids,
+            "score":         round(coverage, 3),
+            "matchedVia":    "item_scope_description",
+            "matchedTokens": sorted(overlap),
+        })
+    return results
 
 
 def _cpe_token_set(cve_enriched: dict) -> set[str]:
@@ -271,6 +375,7 @@ def match_cve_to_architecture(
             "matchedTechnologies": [],
             "matchDetails":        [],
             "scoreThreshold":      score_threshold,
+            "itemScoped":          False,
         }
 
     matches: list[dict[str, Any]] = []
@@ -310,6 +415,35 @@ def match_cve_to_architecture(
             "matchedVia": matched_via,
         })
 
+    # Second stage. Where CPE token overlap localised nothing, the disclosure may
+    # still concern this item: automotive advisories are commonly registered
+    # against a vehicle rather than against the component carrying the flaw. If
+    # the CPE data names the item itself, localise to components from the
+    # description instead, and record that the weaker evidence was used.
+    item_scope = None
+    if not matches:
+        item_scope = _item_identity_match(cve_enriched, arch)
+        if item_scope is not None:
+            logger.info(
+                "[arch_matcher] CVE %s is vehicle-scoped (%s); localising by description",
+                cve_enriched.get("cveId"), item_scope.get("product"),
+            )
+            for hit in _localise_by_description(desc_tokens, tech_index):
+                logger.info(
+                    "[arch_matcher] MATCH tech_key=%-30s  coverage=%.3f  via=%s  ecus=%s",
+                    hit["technology"], hit["score"], hit["matchedVia"], hit["components"],
+                )
+                matches.append({
+                    "techKey":    hit["technology"],
+                    "ecuIds":     hit["components"],
+                    "score":      hit["score"],
+                    "p1_score":   0.0,
+                    "p2_boost":   0.0,
+                    "p3_boost":   0.0,
+                    "matchedVia": hit["matchedVia"],
+                    "matchedTokens": hit["matchedTokens"],
+                })
+
     impacted_ecus: dict[str, float] = {}
     for match in matches:
         for ecu_id in match["ecuIds"]:
@@ -327,4 +461,6 @@ def match_cve_to_architecture(
         "matchedTechnologies": [m["techKey"] for m in matches],
         "matchDetails":        matches,
         "scoreThreshold":      score_threshold,
+        "itemScoped":          item_scope is not None,
+        "itemScopeEvidence":   item_scope,
     }

@@ -1,0 +1,2413 @@
+{
+  "status": "extracted",
+  "total_pages": 30,
+  "sections": [
+    {
+      "r155_id": "R155-4.3.1",
+      "section": "4.3.1",
+      "raw_text": "Threats regarding back-end servers related to vehicles in the field 1 Back-end servers used as a means to attack a vehicle or extract data 1.1 Abuse of privileges by staff (insider attack) 1.2 Unauthorized internet access to the server (enabled for example by backdoors, unpatched system software vulnerabilities, SQL attacks or other means) 1.3 Unauthorized physical access to the server (conducted by for example USB sticks or other media connecting to the server) 2 Services from back-end server being disrupted, affecting the operation of a vehicle 2.1 Attack on back-end server stops it functioning, for example it prevents it from interacting with vehicles and providing services they rely on 3 Vehicle related data held on back-end servers being lost or compromised (\"data breach\") 3.1 Abuse of privileges by staff (insider attack) 3.2 Loss of information in the cloud. Sensitive data may be lost due to attacks or accidents when data is stored by third-party cloud service providers 3.3 Unauthorized internet access to the server (enabled for example by backdoors, unpatched system software vulnerabilities, SQL attacks or other means) 3.4 Unauthorized physical access to the server (conducted for example by USB sticks or other media connecting to the server) 3.5 Information breach by unintended sharing of data (e.g. admin errors)",
+      "page": 20,
+      "provenance": {
+        "source": "UNECE R155",
+        "section": "4.3.1",
+        "document": "UN Regulation No. 155",
+        "url": "https://unece.org/sites/default/files/2021-03/R155e.pdf",
+        "extraction_method": "pdf_parsing",
+        "page": 20
+      }
+    },
+    {
+      "r155_id": "R155-4.3.2",
+      "section": "4.3.2",
+      "raw_text": "Threats to vehicles regarding their communication channels 4 Spoofing of messages or data received by the vehicle 4.1 Spoofing of messages by impersonation (e.g. 802.11p V2X during platooning, GNSS messages, etc.) 4.2 Sybil attack (in order to spoof other vehicles as if there are many vehicles on the road) 5 Communication channels used to conduct unauthorized manipulation, deletion or other amendments to vehicle held code/data 5.1 Communications channels permit code injection, for example tampered software binary might be injected into the communication stream 5.2 Communications channels permit manipulate of vehicle held data/code 5.3 Communications channels permit overwrite of vehicle held data/code 5.4 Communications channels permit erasure of vehicle held data/code 5.5 Communications channels permit introduction of data/code to the vehicle (write data code) 6 Communication channels permit untrusted/unreliable messages to be accepted or are 6.1 Accepting information from an unreliable or untrusted source 6.2 Man in the middle attack/ session hijacking E/ECE/TRANS/505/Rev.3/Add.154 Annex 5 21 High level and sub-level descriptions of vulnerability/ threat Example of vulnerability or attack method vulnerable to session hijacking/replay attacks 6.3 Replay attack, for example an attack against a communication gateway allows the attacker to downgrade software of an ECU or firmware of the gateway 7 Information can be readily disclosed. For example, through eavesdropping on communications or through allowing unauthorized access to sensitive files or folders 7.1 Interception of information / interfering radiations / monitoring communications 7.2 Gaining unauthorized access to files or data 8 Denial of service attacks via communication channels to disrupt vehicle functions 8.1 Sending a large number of garbage data to vehicle information system, so that it is unable to provide services in the normal manner 8.2 Black hole attack, in order to disrupt communication between vehicles the attacker is able to block messages between the vehicles 9 An unprivileged user is able to gain privileged access to vehicle systems 9.1 An unprivileged user is able to gain privileged access, for example root access 10 Viruses embedded in communication media are able to infect vehicle systems 10.1 Virus embedded in communication media infects vehicle systems 11 Messages received by the vehicle (for example X2V or diagnostic messages), or transmitted within it, contain malicious content 11.1 Malicious internal (e.g. CAN) messages 11.2 Malicious V2X messages, e.g. infrastructure to vehicle or vehicle-vehicle messages (e.g. CAM, DENM) 11.3 Malicious diagnostic messages 11.4 Malicious proprietary messages (e.g. those normally sent from OEM or component/system/function supplier) 4.3.3. Threats to vehicles regarding their update procedures 12 Misuse or compromise of update procedures 12.1 Compromise of over the air software update procedures. This includes fabricating the system update program or firmware 12.2 Compromise of local/physical software update procedures. This includes fabricating the system update program or firmware 12.3 The software is manipulated before the update process (and is therefore corrupted), although the update process is intact 12.4 Compromise of cryptographic keys of the software provider to allow invalid update 13 It is possible to deny legitimate updates 13.1 Denial of Service attack against update server or network to prevent rollout of critical software updates and/or unlock of customer specific features",
+      "page": 20,
+      "provenance": {
+        "source": "UNECE R155",
+        "section": "4.3.2",
+        "document": "UN Regulation No. 155",
+        "url": "https://unece.org/sites/default/files/2021-03/R155e.pdf",
+        "extraction_method": "pdf_parsing",
+        "page": 20
+      }
+    },
+    {
+      "r155_id": "R155-4.3.4",
+      "section": "4.3.4",
+      "raw_text": "Threats to vehicles regarding unintended human actions facilitating a cyber attack 15 Legitimate actors are able to take actions that would unwittingly facilitate a cyber- attack 15.1 Innocent victim (e.g. owner, operator or maintenance engineer) being tricked into taking an action to unintentionally load malware or enable an attack 15.2 Defined security procedures are not followed E/ECE/TRANS/505/Rev.3/Add.154 Annex 5 22 High level and sub-level descriptions of vulnerability/ threat Example of vulnerability or attack method",
+      "page": 21,
+      "provenance": {
+        "source": "UNECE R155",
+        "section": "4.3.4",
+        "document": "UN Regulation No. 155",
+        "url": "https://unece.org/sites/default/files/2021-03/R155e.pdf",
+        "extraction_method": "pdf_parsing",
+        "page": 21
+      }
+    },
+    {
+      "r155_id": "R155-4.3.5",
+      "section": "4.3.5",
+      "raw_text": "Threats to vehicles regarding their external connectivity and connections 16 Manipulation of the connectivity of vehicle functions enables a cyber- attack, this can include telematics; systems that permit remote operations; and systems using short range wireless communications 16.1 Manipulation of functions designed to remotely operate systems, such as remote key, immobilizer, and charging pile 16.2 Manipulation of vehicle telematics (e.g. manipulate temperature measurement of sensitive goods, remotely unlock cargo doors) 16.3 Interference with short range wireless systems or sensors 17 Hosted 3rd party software, e.g. entertainment applications, used as a means to attack vehicle systems 17.1 Corrupted applications, or those with poor software security, used as a method to attack vehicle systems 18 Devices connected to external interfaces e.g. USB ports, OBD port, used as a means to attack vehicle systems 18.1 External interfaces such as USB or other ports used as a point of attack, for example through code injection 18.2 Media infected with a virus connected to a vehicle system 18.3 Diagnostic access (e.g. dongles in OBD port) used to facilitate an attack, e.g. manipulate vehicle parameters (directly or indirectly)",
+      "page": 22,
+      "provenance": {
+        "source": "UNECE R155",
+        "section": "4.3.5",
+        "document": "UN Regulation No. 155",
+        "url": "https://unece.org/sites/default/files/2021-03/R155e.pdf",
+        "extraction_method": "pdf_parsing",
+        "page": 22
+      }
+    },
+    {
+      "r155_id": "R155-4.3.6",
+      "section": "4.3.6",
+      "raw_text": "Threats to vehicle data/code 19 Extraction of vehicle data/code 19.1 Extraction of copyright or proprietary software from vehicle systems (product piracy) 19.2 Unauthorized access to the owner’s privacy information such as personal identity, payment account information, address book information, location information, vehicle’s electronic ID, etc. 19.3 Extraction of cryptographic keys 20 Manipulation of vehicle data/code 20.1 Illegal/unauthorized changes to vehicle’s electronic ID 20.2 Identity fraud. For example, if a user wants to display another identity when communicating with toll systems, manufacturer backend 20.3 Action to circumvent monitoring systems (e.g. hacking/ tampering/ blocking of messages such as ODR Tracker data, or number of runs) 20.4 Data manipulation to falsify vehicle’s driving data (e.g. mileage, driving speed, driving directions, etc.) 20.5 Unauthorized changes to system diagnostic data 21 Erasure of data/code 21.1 Unauthorized deletion/manipulation of system event logs 22 Introduction of malware 22.2 Introduce malicious software or malicious software activity 23 Introduction of new software or overwrite existing software 23.1 Fabrication of software of the vehicle control system or information system E/ECE/TRANS/505/Rev.3/Add.154 Annex 5 23 High level and sub-level descriptions of vulnerability/ threat Example of vulnerability or attack method 24 Disruption of systems or operations 24.1 Denial of service, for example this may be triggered on the internal network by flooding a CAN bus, or by provoking faults on an ECU via a high rate of messaging 25 Manipulation of vehicle parameters 25.1 Unauthorized access of falsify the configuration parameters of vehicle’s key functions, such as brake data, airbag deployed threshold, etc. 25.2 Unauthorized access of falsify the charging parameters, such as charging voltage, charging power, battery temperature, etc.",
+      "page": 22,
+      "provenance": {
+        "source": "UNECE R155",
+        "section": "4.3.6",
+        "document": "UN Regulation No. 155",
+        "url": "https://unece.org/sites/default/files/2021-03/R155e.pdf",
+        "extraction_method": "pdf_parsing",
+        "page": 22
+      }
+    },
+    {
+      "r155_id": "R155-4.3.7",
+      "section": "4.3.7",
+      "raw_text": "Potential vulnerabilities that could be exploited if not sufficiently protected or hardened 26 Cryptographic technologies can be compromised or are insufficiently applied 26.1 Combination of short encryption keys and long period of validity enables attacker to break encryption 26.2 Insufficient use of cryptographic algorithms to protect sensitive systems 26.3 Using already or soon to be deprecated cryptographic algorithms 27 Parts or supplies could be compromised to permit vehicles to be attacked 27.1 Hardware or software, engineered to enable an attack or fails to meet design criteria to stop an attack 28 Software or hardware development permits vulnerabilities 28.1 Software bugs. The presence of software bugs can be a basis for potential exploitable vulnerabilities. This is particularly true if software has not been tested to verify that known bad code/bugs is not present and reduce the risk of unknown bad code/bugs being present 28.2 Using remainders from development (e.g. debug ports, JTAG ports, microprocessors, development certificates, developer passwords, …) can permit access to ECUs or permit attackers to gain higher privileges 29 Network design introduces vulnerabilities 29.1 Superfluous internet ports left open, providing access to network systems 29.2 Circumvent network separation to gain control. Specific example is the use of unprotected gateways, or access points (such as truck-trailer gateways), to circumvent protections and gain access to other network segments to perform malicious acts, such as sending arbitrary CAN bus messages 31 Unintended transfer of data can occur 31.1 Information breach. Personal data may be leaked when the car changes user (e.g. is sold or is used as hire vehicle with new hirers) 32 Physical manipulation of systems can enable an attack 32.1 Manipulation of electronic hardware, e.g. unauthorized electronic hardware added to a vehicle to enable \"man-in-the-middle\" attack Replacement of authorized electronic hardware (e.g., sensors) with unauthorized electronic hardware Manipulation of the information collected by a sensor (for example, using a magnet to tamper with the Hall effect sensor connected to the gearbox) E/ECE/TRANS/505/Rev.3/Add.154 Annex 5 24 Part B. Mitigations to the threats intended for vehicles 1. Mitigations for \"Vehicle communication channels\" Mitigations to the threats which are related to \"Vehicle communication channels\" are listed in Table B1. Table B1 Mitigation to the threats which are related to \"Vehicle communication channels\" Table A1 reference Threats to \"Vehicle communication channels\" Ref Mitigation 4.1 Spoofing of messages (e.g. 802.11p V2X during platooning, GNSS messages, etc.) by impersonation M10 The vehicle shall verify the authenticity and integrity of messages it receives 4.2 Sybil attack (in order to spoof other vehicles as if there are many vehicles on the road) M11 Security controls shall be implemented for storing cryptographic keys (e.g., use of Hardware Security Modules) 5.1 Communication channels permit code injection into vehicle held data/code, for example tampered software binary might be injected into the communication stream M10 M6 The vehicle shall verify the authenticity and integrity of messages it receives Systems shall implement security by design to minimize risks 5.2 Communication channels permit manipulation of vehicle held data/code M7 Access control techniques and designs shall be applied to protect system data/code 5.3 Communication channels permit overwrite of vehicle held data/code 5.4 21.1 Communication channels permit erasure of vehicle held data/code 5.5 Communication channels permit introduction of data/code to vehicle systems (write data code) 6.1 Accepting information from an unreliable or untrusted source M10 The vehicle shall verify the authenticity and integrity of messages it receives 6.2 Man in the middle attack / session hijacking M10 The vehicle shall verify the authenticity and integrity of messages it receives 6.3 Replay attack, for example an attack against a communication gateway allows the attacker to downgrade software of an ECU or firmware of the gateway 7.1 Interception of information / interfering radiations / monitoring communications M12 Confidential data transmitted to or from the vehicle shall be protected 7.2 Gaining unauthorized access to files or data M8 Through system design and access control it should not be possible for unauthorized personnel to access personal or system critical data. Example of Security Controls can be found in OWASP 8.1 Sending a large number of garbage data to vehicle information system, so that it is unable to provide services in the normal manner M13 Measures to detect and recover from a denial of service attack shall be employed E/ECE/TRANS/505/Rev.3/Add.154 Annex 5 25 Table A1 reference Threats to \"Vehicle communication channels\" Ref Mitigation 8.2 Black hole attack, disruption of communication between vehicles by blocking the transfer of messages to other vehicles M13 Measures to detect and recover from a denial of service attack shall be employed 9.1 An unprivileged user is able to gain privileged access, for example root access M9 Measures to prevent and detect unauthorized access shall be employed 10.1 Virus embedded in communication media infects vehicle systems M14 Measures to protect systems against embedded viruses/malware should be considered 11.1 Malicious internal (e.g. CAN) messages M15 Measures to detect malicious internal messages or activity should be considered 11.2 Malicious V2X messages, e.g. infrastructure to vehicle or vehicle- vehicle messages (e.g. CAM, DENM) M10 The vehicle shall verify the authenticity and integrity of messages it receives 11.3 Malicious diagnostic messages 11.4 Malicious proprietary messages (e.g. those normally sent from OEM or component/system/function supplier) 2. Mitigations for \"Update process\" Mitigations to the threats which are related to \"Update process\" are listed in Table B2. Table B2 Mitigations to the threats which are related to \"Update process\" Table A1 reference Threats to \"Update process\" Ref Mitigation 12.1 Compromise of over the air software update procedures. This includes fabricating the system update program or firmware M16 Secure software update procedures shall be employed 12.2 Compromise of local/physical software update procedures. This includes fabricating the system update program or firmware 12.3 The software is manipulated before the update process (and is therefore corrupted), although the update process is intact 12.4 Compromise of cryptographic keys of the software provider to allow invalid update M11 Security controls shall be implemented for storing cryptographic keys 13.1 Denial of Service attack against update server or network to prevent rollout of critical software updates and/or unlock of customer specific features M3 Security Controls shall be applied to back-end systems. Where back-end servers are critical to the provision of services there are recovery measures in case of system outage. Example Security Controls can be found in OWASP 3. Mitigations for \"Unintended human actions facilitating a cyber attack\" Mitigations to the threats which are related to \"Unintended human actions facilitating a cyber attack\" are listed in Table B3. E/ECE/TRANS/505/Rev.3/Add.154 Annex 5 26 Table B3 Mitigations to the threats which are related to \"Unintended human actions facilitating a cyber attack\" Table A1 reference Threats relating to \"Unintended human actions\" Ref Mitigation 15.1 Innocent victim (e.g. owner, operator or maintenance engineer) is tricked into taking an action to unintentionally load malware or enable an attack M18 Measures shall be implemented for defining and controlling user roles and access privileges, based on the principle of least access privilege 15.2 Defined security procedures are not followed M19 Organizations shall ensure security procedures are defined and followed including logging of actions and access related to the management of the security functions 4. Mitigations for \"External connectivity and connections\" Mitigations to the threats which are related to \"external connectivity and connections\" are listed in Table B4. Table B4 Mitigation to the threats which are related to \"external connectivity and connections\" Table A1 reference Threats to \"External connectivity and connections\" Ref Mitigation 16.1 Manipulation of functions designed to remotely operate vehicle systems, such as remote key, immobiliser, and charging pile M20 Security controls shall be applied to systems that have remote access 16.2 Manipulation of vehicle telematics (e.g. manipulate temperature measurement of sensitive goods, remotely unlock cargo doors) 16.3 Interference with short range wireless systems or sensors 17.1 Corrupted applications, or those with poor software security, used as a method to attack vehicle systems M21 Software shall be security assessed, authenticated and integrity protected. Security controls shall be applied to minimise the risk from third party software that is intended or foreseeable to be hosted on the vehicle 18.1 External interfaces such as USB or other ports used as a point of attack, for example through code injection M22 Security controls shall be applied to external interfaces 18.2 Media infected with viruses connected to the vehicle 18.3 Diagnostic access (e.g. dongles in OBD port) used to facilitate an attack, e.g. manipulate vehicle parameters (directly or indirectly) M22 Security controls shall be applied to external interfaces 5. Mitigations for \"Potential targets of, or motivations for, an attack \" Mitigations to the threats which are related to \"Potential targets of, or motivations for, an attack \" are listed in Table B5. E/ECE/TRANS/505/Rev.3/Add.154 Annex 5 27 Table B5 Mitigations to the threats which are related to \"Potential targets of, or motivations for, an attack\" Table A1 reference Threats to \"Potential targets of, or motivations for, an attack\" Ref Mitigation 19.1 Extraction of copyright or proprietary software from vehicle systems (product piracy / stolen software) M7 Access control techniques and designs shall be applied to protect system data/code. Example Security Controls can be found in OWASP 19.2 Unauthorized access to the owner’s privacy information such as personal identity, payment account information, address book information, location information, vehicle’s electronic ID, etc. M8 Through system design and access control it should not be possible for unauthorized personnel to access personal or system critical data. Examples of Security Controls can be found in OWASP 19.3 Extraction of cryptographic keys M11 Security controls shall be implemented for storing cryptographic keys e.g. Security Modules 20.1 Illegal/unauthorised changes to vehicle’s electronic ID M7 Access control techniques and designs shall be applied to protect system data/code. Example Security Controls can be found in OWASP 20.2 Identity fraud. For example, if a user wants to display another identity when communicating with toll systems, manufacturer backend 20.3 Action to circumvent monitoring systems (e.g. hacking/ tampering/ blocking of messages such as ODR Tracker data, or number of runs) M7 Access control techniques and designs shall be applied to protect system data/code. Example Security Controls can be found in OWASP. Data manipulation attacks on sensors or transmitted data could be mitigated by correlating the data from different sources of information 20.4 Data manipulation to falsify vehicle’s driving data (e.g. mileage, driving speed, driving directions, etc.) 20.5 Unauthorised changes to system diagnostic data 21.1 Unauthorized deletion/manipulation of system event logs M7 Access control techniques and designs shall be applied to protect system data/code. Example Security Controls can be found in OWASP. 22.2 Introduce malicious software or malicious software activity M7 Access control techniques and designs shall be applied to protect system data/code. Example Security Controls can be found in OWASP. 23.1 Fabrication of software of the vehicle control system or information system 24.1 Denial of service, for example this may be triggered on the internal network by flooding a CAN bus, or by provoking faults on an ECU via a high rate of messaging M13 Measures to detect and recover from a denial of service attack shall be employed 25.1 Unauthorized access to falsify configuration parameters of vehicle’s key functions, such as brake data, airbag deployed threshold, etc. M7 Access control techniques and designs shall be applied to protect system data/code. Example Security Controls can be found in OWASP 25.2 Unauthorized access to falsify charging parameters, such as charging voltage, charging power, battery temperature, etc. E/ECE/TRANS/505/Rev.3/Add.154 Annex 5 28 6. Mitigations for \"Potential vulnerabilities that could be exploited if not sufficiently protected or hardened\" Mitigations to the threats which are related to \"Potential vulnerabilities that could be exploited if not sufficiently protected or hardened\" are listed in Table B6. Table B6 Mitigations to the threats which are related to \"Potential vulnerabilities that could be exploited if not sufficiently protected or hardened\" Table A1 reference Threats to \"Potential vulnerabilities that could be exploited if not sufficiently protected or hardened\" Ref Mitigation 26.1 Combination of short encryption keys and long period of validity enables attacker to break encryption M23 Cybersecurity best practices for software and hardware development shall be followed 26.2 Insufficient use of cryptographic algorithms to protect sensitive systems 26.3 Using deprecated cryptographic algorithms 27.1 Hardware or software, engineered to enable an attack or fail to meet design criteria to stop an attack M23 Cybersecurity best practices for software and hardware development shall be followed 28.1 The presence of software bugs can be a basis for potential exploitable vulnerabilities. This is particularly true if software has not been tested to verify that known bad code/bugs is not present and reduce the risk of unknown bad code/bugs being present M23 Cybersecurity best practices for software and hardware development shall be followed. Cybersecurity testing with adequate coverage 28.2 Using remainders from development (e.g. debug ports, JTAG ports, microprocessors, development certificates, developer passwords, …) can permit an attacker to access ECUs or gain higher privileges 29.1 Superfluous internet ports left open, providing access to network systems 29.2 Circumvent network separation to gain control. Specific example is the use of unprotected gateways, or access points (such as truck-trailer gateways), to circumvent protections and gain access to other network segments to perform malicious acts, such as sending arbitrary CAN bus messages M23 Cybersecurity best practices for software and hardware development shall be followed. Cybersecurity best practices for system design and system integration shall be followed 7. Mitigations for \"Data loss / data breach from vehicle\" Mitigations to the threats which are related to \"Data loss / data breach from vehicle\" are listed in Table B7. Table B7 Mitigations to the threats which are related to \"Data loss / data breach from vehicle\" Table A1 reference Threats of \"Data loss / data breach from vehicle\" Ref Mitigation 31.1 Information breach. Personal data may be breached when the car changes user (e.g. is sold or is used as hire vehicle with new hirers) M24 Best practices for the protection of data integrity and confidentiality shall be followed for storing personal data. E/ECE/TRANS/505/Rev.3/Add.154 Annex 5 29 8. Mitigations for \"Physical manipulation of systems to enable an attack\" Mitigation to the threats which are related to \"Physical manipulation of systems to enable an attack\" are listed in Table B8. Table B8 Mitigations to the threats which are related to \"Physical manipulation of systems to enable an attack\" Table A1 reference Threats to \"Physical manipulation of systems to enable an attack\" Ref Mitigation 32.1 Manipulation of OEM hardware, e.g. unauthorised hardware added to a vehicle to enable \"man-in-the-middle\" attack M9 Measures to prevent and detect unauthorized access shall be employed Part C. Mitigations to the threats outside of vehicles 1. Mitigations for \"Back-end servers\" Mitigations to the threats which are related to \"Back-end servers\" are listed in Table C1. Table C1 Mitigations to the threats which are related to \"Back-end servers\" Table A1 reference Threats to \"Back-end servers\" Ref Mitigation",
+      "page": 23,
+      "provenance": {
+        "source": "UNECE R155",
+        "section": "4.3.7",
+        "document": "UN Regulation No. 155",
+        "url": "https://unece.org/sites/default/files/2021-03/R155e.pdf",
+        "extraction_method": "pdf_parsing",
+        "page": 23
+      }
+    },
+    {
+      "r155_id": "R155-1.1",
+      "section": "1.1",
+      "raw_text": "& 3.1 Abuse of privileges by staff (insider attack) M1 Security Controls are applied to back-end systems to minimise the risk of insider attack",
+      "page": 29,
+      "provenance": {
+        "source": "UNECE R155",
+        "section": "1.1",
+        "document": "UN Regulation No. 155",
+        "url": "https://unece.org/sites/default/files/2021-03/R155e.pdf",
+        "extraction_method": "pdf_parsing",
+        "page": 29
+      }
+    },
+    {
+      "r155_id": "R155-1.2",
+      "section": "1.2",
+      "raw_text": "& 3.3 Unauthorised internet access to the server (enabled for example by backdoors, unpatched system software vulnerabilities, SQL attacks or other means) M2 Security Controls are applied to back-end systems to minimise unauthorised access. Example Security Controls can be found in OWASP",
+      "page": 29,
+      "provenance": {
+        "source": "UNECE R155",
+        "section": "1.2",
+        "document": "UN Regulation No. 155",
+        "url": "https://unece.org/sites/default/files/2021-03/R155e.pdf",
+        "extraction_method": "pdf_parsing",
+        "page": 29
+      }
+    },
+    {
+      "r155_id": "R155-1.3",
+      "section": "1.3",
+      "raw_text": "& 3.4 Unauthorised physical access to the server (conducted by for example USB sticks or other media connecting to the server) M8 Through system design and access control it should not be possible for unauthorised personnel to access personal or system critical data 2.1 Attack on back-end server stops it functioning, for example it prevents it from interacting with vehicles and providing services they rely on M3 Security Controls are applied to back-end systems. Where back-end servers are critical to the provision of services there are recovery measures in case of system outage. Example Security Controls can be found in OWASP 3.2 Loss of information in the cloud. Sensitive data may be lost due to attacks or accidents when data is stored by third-party cloud service providers M4 Security Controls are applied to minimise risks associated with cloud computing. Example Security Controls can be found in OWASP and NCSC cloud computing guidance 3.5 Information breach by unintended sharing of data (e.g. admin errors, storing data in servers in garages) M5 Security Controls are applied to back-end systems to prevent data breaches. Example Security Controls can be found in OWASP E/ECE/TRANS/505/Rev.3/Add.154 Annex 5 30 2. Mitigations for \"Unintended human actions\" Mitigations to the threats which are related to \"Unintended human actions\" are listed in Table C2. Table C2 Mitigations to the threats which are related to \"Unintended human actions\" Table A1 reference Threats relating to \"Unintended human actions\" Ref Mitigation 15.1 Innocent victim (e.g. owner, operator or maintenance engineer) is tricked into taking an action to unintentionally load malware or enable an attack M18 Measures shall be implemented for defining and controlling user roles and access privileges, based on the principle of least access privilege 15.2 Defined security procedures are not followed M19 Organizations shall ensure security procedures are defined and followed including logging of actions and access related to the management of the security functions 3. Mitigations for \"Physical loss of data\" Mitigations to the threats which are related to \"Physical loss of data\" are listed in Table C3. Table C3 Mitigations to the threats which are related to \"Physical loss of data loss\" Table A1 reference Threats of \"Physical loss of data\" Ref Mitigation 30.1 Damage caused by a third party. Sensitive data may be lost or compromised due to physical damages in cases of traffic accident or theft M24 Best practices for the protection of data integrity and confidentiality shall be followed for storing personal data. Example Security Controls can be found in ISO/SC27/WG5 30.2 Loss from DRM (digital right management) conflicts. User data may be deleted due to DRM issues 30.3 The (integrity of) sensitive data may be lost due to IT components wear and tear, causing potential cascading issues (in case of key alteration, for example)",
+      "page": 29,
+      "provenance": {
+        "source": "UNECE R155",
+        "section": "1.3",
+        "document": "UN Regulation No. 155",
+        "url": "https://unece.org/sites/default/files/2021-03/R155e.pdf",
+        "extraction_method": "pdf_parsing",
+        "page": 29
+      }
+    }
+  ],
+  "definitions": [
+    {
+      "term": "Vehicle type",
+      "definition": "vehicles which do not differ in at least the following essential respects: The manufacturer’s designation of the vehicle type; Essential aspects of the electric/electronic architecture and external interfaces with respect to cyber security.",
+      "section": "2",
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 4,
+        "section": "2",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "term": "Cyber security",
+      "definition": "the condition in which road vehicles and their functions are protected from cyber threats to electrical or electronic components.",
+      "section": "2",
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 4,
+        "section": "2",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "term": "Cyber Security Management System (CSMS)",
+      "definition": "a systematic risk-based approach defining organisational processes, responsibilities and governance to treat risk associated with cyber threats to vehicles and protect them from cyber- attacks.",
+      "section": "2",
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 4,
+        "section": "2",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "term": "System",
+      "definition": "a set of components and/or sub-systems that implements a function or functions.",
+      "section": "2",
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 4,
+        "section": "2",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "term": "Development phase",
+      "definition": "the period before a vehicle type is type approved.",
+      "section": "2",
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 4,
+        "section": "2",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "term": "Production phase",
+      "definition": "the duration of production of a vehicle type.",
+      "section": "2",
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 4,
+        "section": "2",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "term": "Post-production phase",
+      "definition": "the period in which a vehicle type is no longer produced until the end-of-life of all vehicles under the vehicle type. Vehicles incorporating a specific vehicle type will be operational during this phase but will no longer be produced. The phase ends when there are no longer any operational vehicles of a specific vehicle type.",
+      "section": "2",
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 4,
+        "section": "2",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "term": "Mitigation",
+      "definition": "a measure that is reducing risk.",
+      "section": "2",
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 4,
+        "section": "2",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "term": "Risk",
+      "definition": "the potential that a given threat will exploit vulnerabilities of a vehicle and thereby cause harm to the organization or to an individual.",
+      "section": "2",
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 4,
+        "section": "2",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "term": "Risk Assessment",
+      "definition": "the overall process of finding, recognizing and describing risks (risk identification), to comprehend the nature of risk and to determine the level of risk (risk analysis), and of comparing the results of risk analysis with risk criteria to determine whether the risk and/or its magnitude is acceptable or tolerable (risk evaluation).",
+      "section": "2",
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 4,
+        "section": "2",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "term": "Risk Management",
+      "definition": "coordinated activities to direct and control an organization with regard to risk.",
+      "section": "2",
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 5,
+        "section": "2",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "term": "Threat",
+      "definition": "a potential cause of an unwanted incident, which may result in harm to a system, organization or individual.",
+      "section": "2",
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 5,
+        "section": "2",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "term": "Vulnerability",
+      "definition": "a weakness of an asset or mitigation that can be exploited by one or more threats.",
+      "section": "2",
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 5,
+        "section": "2",
+        "extraction_method": "pdf_parsing"
+      }
+    }
+  ],
+  "threats": [
+    {
+      "id": "1.1",
+      "title": "Abuse of privileges by staff (insider attack)",
+      "description": "Abuse of privileges by staff (insider attack)",
+      "examples": [],
+      "category": "Back-end server",
+      "raw_lines": [
+        "1.1",
+        "Abuse of privileges by staff (insider attack)"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 20,
+        "section": "Annex 5 Part A - 1.1",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "1.2",
+      "title": "Unauthorized internet access to the server (enabled for example by backdoors, unpatched system software vulnerabilities, SQL attacks or other means)",
+      "description": "Unauthorized internet access to the server (enabled for example by backdoors, unpatched system software vulnerabilities, SQL attacks or other means)",
+      "examples": [
+        "by backdoors",
+        "unpatched system software vulnerabilities",
+        "SQL attacks or other means)"
+      ],
+      "category": "Vulnerability",
+      "raw_lines": [
+        "1.2",
+        "Unauthorized internet access to the server (enabled",
+        "for example by backdoors, unpatched system",
+        "software vulnerabilities, SQL attacks or other means)"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 20,
+        "section": "Annex 5 Part A - 1.2",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "1.3",
+      "title": "Unauthorized physical access to the server (conducted by for example USB sticks or other media connecting to the server)",
+      "description": "Unauthorized physical access to the server (conducted by for example USB sticks or other media connecting to the server)",
+      "examples": [
+        "USB sticks or other media connecting to the server)"
+      ],
+      "category": "Physical",
+      "raw_lines": [
+        "1.3",
+        "Unauthorized physical access to the server",
+        "(conducted by for example USB sticks or other",
+        "media connecting to the server)"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 20,
+        "section": "Annex 5 Part A - 1.3",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "2.1",
+      "title": "Attack on back-end server stops it functioning, for example it prevents it from interacting with vehicles and providing services they rely on",
+      "description": "Attack on back-end server stops it functioning, for example it prevents it from interacting with vehicles and providing services they rely on",
+      "examples": [
+        "it prevents it from interacting with vehicles and providing services they rely on"
+      ],
+      "category": "Back-end server",
+      "raw_lines": [
+        "2.1",
+        "Attack on back-end server stops it functioning,",
+        "for example it prevents it from interacting with",
+        "vehicles and providing services they rely on"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 20,
+        "section": "Annex 5 Part A - 2.1",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "3.1",
+      "title": "Abuse of privileges by staff (insider attack)",
+      "description": "Abuse of privileges by staff (insider attack)",
+      "examples": [],
+      "category": "Back-end server",
+      "raw_lines": [
+        "3.1",
+        "Abuse of privileges by staff (insider attack)"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 20,
+        "section": "Annex 5 Part A - 3.1",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "3.2",
+      "title": "Loss of information in the cloud. Sensitive data may be lost due to attacks or accidents when data is stored by third-party cloud service providers",
+      "description": "Loss of information in the cloud. Sensitive data may be lost due to attacks or accidents when data is stored by third-party cloud service providers",
+      "examples": [],
+      "category": "Back-end server",
+      "raw_lines": [
+        "3.2",
+        "Loss of information in the cloud. Sensitive data",
+        "may be lost due to attacks or accidents when data is",
+        "stored by third-party cloud service providers"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 20,
+        "section": "Annex 5 Part A - 3.2",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "3.3",
+      "title": "Unauthorized internet access to the server (enabled for example by backdoors, unpatched system software vulnerabilities, SQL attacks or other means)",
+      "description": "Unauthorized internet access to the server (enabled for example by backdoors, unpatched system software vulnerabilities, SQL attacks or other means)",
+      "examples": [
+        "by backdoors",
+        "unpatched system software vulnerabilities",
+        "SQL attacks or other means)"
+      ],
+      "category": "Vulnerability",
+      "raw_lines": [
+        "3.3",
+        "Unauthorized internet access to the server",
+        "(enabled for example by backdoors, unpatched",
+        "system software vulnerabilities, SQL attacks or other",
+        "means)"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 20,
+        "section": "Annex 5 Part A - 3.3",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "3.4",
+      "title": "Unauthorized physical access to the server (conducted for example by USB sticks or other media connecting to the server)",
+      "description": "Unauthorized physical access to the server (conducted for example by USB sticks or other media connecting to the server)",
+      "examples": [
+        "by USB sticks or other media connecting to the server)"
+      ],
+      "category": "Physical",
+      "raw_lines": [
+        "3.4",
+        "Unauthorized physical access to the server",
+        "(conducted for example by USB sticks or other",
+        "media connecting to the server)"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 20,
+        "section": "Annex 5 Part A - 3.4",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "3.5",
+      "title": "Information breach by unintended sharing of data (e.g. admin errors)",
+      "description": "Information breach by unintended sharing of data (e.g. admin errors)",
+      "examples": [
+        "admin errors)"
+      ],
+      "category": "Back-end server",
+      "raw_lines": [
+        "3.5",
+        "Information breach by unintended sharing of data",
+        "(e.g. admin errors)"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 20,
+        "section": "Annex 5 Part A - 3.5",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "4.1",
+      "title": "Spoofing of messages by impersonation (e.g. 802.11p V2X during platooning, GNSS messages, etc.)",
+      "description": "Spoofing of messages by impersonation (e.g. 802.11p V2X during platooning, GNSS messages, etc.)",
+      "examples": [
+        "802"
+      ],
+      "category": "Communication channel",
+      "raw_lines": [
+        "4.1",
+        "Spoofing of messages by impersonation (e.g.",
+        "802.11p V2X during platooning, GNSS messages,",
+        "etc.)"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 20,
+        "section": "Annex 5 Part A - 4.1",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "4.2",
+      "title": "Sybil attack (in order to spoof other vehicles as if there are many vehicles on the road)",
+      "description": "Sybil attack (in order to spoof other vehicles as if there are many vehicles on the road)",
+      "examples": [],
+      "category": "Communication channel",
+      "raw_lines": [
+        "4.2",
+        "Sybil attack (in order to spoof other vehicles as if",
+        "there are many vehicles on the road)"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 20,
+        "section": "Annex 5 Part A - 4.2",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "5.1",
+      "title": "Communications channels permit code injection, for example tampered software binary might be injected into the communication stream",
+      "description": "Communications channels permit code injection, for example tampered software binary might be injected into the communication stream",
+      "examples": [
+        "tampered software binary might be injected into the communication stream"
+      ],
+      "category": "Communication channel",
+      "raw_lines": [
+        "5.1",
+        "Communications channels permit code injection, for",
+        "example tampered software binary might be injected",
+        "into the communication stream"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 20,
+        "section": "Annex 5 Part A - 5.1",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "5.2",
+      "title": "Communications channels permit manipulate of vehicle held data/code",
+      "description": "Communications channels permit manipulate of vehicle held data/code",
+      "examples": [],
+      "category": "Data / code",
+      "raw_lines": [
+        "5.2",
+        "Communications channels permit manipulate of",
+        "vehicle held data/code"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 20,
+        "section": "Annex 5 Part A - 5.2",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "5.3",
+      "title": "Communications channels permit overwrite of vehicle held data/code",
+      "description": "Communications channels permit overwrite of vehicle held data/code",
+      "examples": [],
+      "category": "Data / code",
+      "raw_lines": [
+        "5.3",
+        "Communications channels permit overwrite of",
+        "vehicle held data/code"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 20,
+        "section": "Annex 5 Part A - 5.3",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "5.4",
+      "title": "Communications channels permit erasure of vehicle held data/code",
+      "description": "Communications channels permit erasure of vehicle held data/code",
+      "examples": [],
+      "category": "Data / code",
+      "raw_lines": [
+        "5.4",
+        "Communications channels permit erasure of vehicle",
+        "held data/code"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 20,
+        "section": "Annex 5 Part A - 5.4",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "5.5",
+      "title": "Communications channels permit introduction of data/code to the vehicle (write data code)",
+      "description": "Communications channels permit introduction of data/code to the vehicle (write data code)",
+      "examples": [],
+      "category": "Data / code",
+      "raw_lines": [
+        "5.5",
+        "Communications channels permit introduction of",
+        "data/code to the vehicle (write data code)"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 20,
+        "section": "Annex 5 Part A - 5.5",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "6.1",
+      "title": "Accepting information from an unreliable or untrusted source",
+      "description": "Accepting information from an unreliable or untrusted source",
+      "examples": [],
+      "category": "Communication channel",
+      "raw_lines": [
+        "6.1",
+        "Accepting information from an unreliable or",
+        "untrusted source"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 20,
+        "section": "Annex 5 Part A - 6.1",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "6.2",
+      "title": "Man in the middle attack/ session hijacking",
+      "description": "Man in the middle attack/ session hijacking",
+      "examples": [],
+      "category": "Communication channel",
+      "raw_lines": [
+        "6.2",
+        "Man in the middle attack/ session hijacking"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 20,
+        "section": "Annex 5 Part A - 6.2",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "6.3",
+      "title": "Replay attack, for example an attack against a communication gateway allows the attacker to downgrade software of an ECU or firmware of the gateway",
+      "description": "Replay attack, for example an attack against a communication gateway allows the attacker to downgrade software of an ECU or firmware of the gateway",
+      "examples": [
+        "an attack against a communication gateway allows the attacker to downgrade software of an ECU or firmware of the gateway"
+      ],
+      "category": "Communication channel",
+      "raw_lines": [
+        "6.3",
+        "Replay attack, for example an attack against a",
+        "communication gateway allows the attacker to",
+        "downgrade software of an ECU or firmware of the",
+        "gateway"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 21,
+        "section": "Annex 5 Part A - 6.3",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "7.1",
+      "title": "Interception of information / interfering radiations / monitoring communications",
+      "description": "Interception of information / interfering radiations / monitoring communications",
+      "examples": [],
+      "category": "Communication channel",
+      "raw_lines": [
+        "7.1",
+        "Interception of information / interfering radiations",
+        "/ monitoring communications"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 21,
+        "section": "Annex 5 Part A - 7.1",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "7.2",
+      "title": "Gaining unauthorized access to files or data",
+      "description": "Gaining unauthorized access to files or data",
+      "examples": [],
+      "category": "Communication channel",
+      "raw_lines": [
+        "7.2",
+        "Gaining unauthorized access to files or data"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 21,
+        "section": "Annex 5 Part A - 7.2",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "8.1",
+      "title": "Sending a large number of garbage data to vehicle information system, so that it is unable to provide services in the normal manner",
+      "description": "Sending a large number of garbage data to vehicle information system, so that it is unable to provide services in the normal manner",
+      "examples": [],
+      "category": "Communication channel",
+      "raw_lines": [
+        "8.1",
+        "Sending a large number of garbage data to vehicle",
+        "information system, so that it is unable to provide",
+        "services in the normal manner"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 21,
+        "section": "Annex 5 Part A - 8.1",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "8.2",
+      "title": "Black hole attack, in order to disrupt communication between vehicles the attacker is able to block messages between the vehicles",
+      "description": "Black hole attack, in order to disrupt communication between vehicles the attacker is able to block messages between the vehicles",
+      "examples": [],
+      "category": "Communication channel",
+      "raw_lines": [
+        "8.2",
+        "Black hole attack, in order to disrupt",
+        "communication between vehicles the attacker is able",
+        "to block messages between the vehicles"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 21,
+        "section": "Annex 5 Part A - 8.2",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "9.1",
+      "title": "An unprivileged user is able to gain privileged access, for example root access",
+      "description": "An unprivileged user is able to gain privileged access, for example root access",
+      "examples": [
+        "root access"
+      ],
+      "category": "Communication channel",
+      "raw_lines": [
+        "9.1",
+        "An unprivileged user is able to gain privileged",
+        "access, for example root access"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 21,
+        "section": "Annex 5 Part A - 9.1",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "10.1",
+      "title": "Virus embedded in communication media infects vehicle systems",
+      "description": "Virus embedded in communication media infects vehicle systems",
+      "examples": [],
+      "category": "Communication channel",
+      "raw_lines": [
+        "10.1",
+        "Virus embedded in communication media infects",
+        "vehicle systems"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 21,
+        "section": "Annex 5 Part A - 10.1",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "11.1",
+      "title": "Malicious internal (e.g. CAN) messages",
+      "description": "Malicious internal (e.g. CAN) messages",
+      "examples": [
+        "CAN) messages"
+      ],
+      "category": "Communication channel",
+      "raw_lines": [
+        "11.1",
+        "Malicious internal (e.g. CAN) messages"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 21,
+        "section": "Annex 5 Part A - 11.1",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "11.2",
+      "title": "Malicious V2X messages, e.g. infrastructure to vehicle or vehicle-vehicle messages (e.g. CAM, DENM)",
+      "description": "Malicious V2X messages, e.g. infrastructure to vehicle or vehicle-vehicle messages (e.g. CAM, DENM)",
+      "examples": [
+        "infrastructure to vehicle or vehicle-vehicle messages (e"
+      ],
+      "category": "Communication channel",
+      "raw_lines": [
+        "11.2",
+        "Malicious V2X messages, e.g. infrastructure to",
+        "vehicle or vehicle-vehicle messages (e.g. CAM,",
+        "DENM)"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 21,
+        "section": "Annex 5 Part A - 11.2",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "11.3",
+      "title": "Malicious diagnostic messages",
+      "description": "Malicious diagnostic messages",
+      "examples": [],
+      "category": "Communication channel",
+      "raw_lines": [
+        "11.3",
+        "Malicious diagnostic messages"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 21,
+        "section": "Annex 5 Part A - 11.3",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "11.4",
+      "title": "Malicious proprietary messages (e.g. those normally sent from OEM or component/system/function supplier) 4.3.3. Threats to vehicles regarding their update procedures",
+      "description": "Malicious proprietary messages (e.g. those normally sent from OEM or component/system/function supplier) 4.3.3. Threats to vehicles regarding their update procedures",
+      "examples": [
+        "those normally sent from OEM or component/system/function supplier) 4"
+      ],
+      "category": "Update procedure",
+      "raw_lines": [
+        "11.4",
+        "Malicious proprietary messages (e.g. those",
+        "normally sent from OEM or",
+        "component/system/function supplier)",
+        "4.3.3. Threats to",
+        "vehicles regarding",
+        "their update",
+        "procedures"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 21,
+        "section": "Annex 5 Part A - 11.4",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "12.1",
+      "title": "Compromise of over the air software update procedures. This includes fabricating the system update program or firmware",
+      "description": "Compromise of over the air software update procedures. This includes fabricating the system update program or firmware",
+      "examples": [],
+      "category": "Update procedure",
+      "raw_lines": [
+        "12.1",
+        "Compromise of over the air software update",
+        "procedures.  This includes fabricating the system",
+        "update program or firmware"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 21,
+        "section": "Annex 5 Part A - 12.1",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "12.2",
+      "title": "Compromise of local/physical software update procedures. This includes fabricating the system update program or firmware",
+      "description": "Compromise of local/physical software update procedures. This includes fabricating the system update program or firmware",
+      "examples": [],
+      "category": "Update procedure",
+      "raw_lines": [
+        "12.2",
+        "Compromise of local/physical software update",
+        "procedures. This includes fabricating the system",
+        "update program or firmware"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 21,
+        "section": "Annex 5 Part A - 12.2",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "12.3",
+      "title": "The software is manipulated before the update process (and is therefore corrupted), although the update process is intact",
+      "description": "The software is manipulated before the update process (and is therefore corrupted), although the update process is intact",
+      "examples": [],
+      "category": "Update procedure",
+      "raw_lines": [
+        "12.3",
+        "The software is manipulated before the update",
+        "process (and is therefore corrupted), although the",
+        "update process is intact"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 21,
+        "section": "Annex 5 Part A - 12.3",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "12.4",
+      "title": "Compromise of cryptographic keys of the software provider to allow invalid update",
+      "description": "Compromise of cryptographic keys of the software provider to allow invalid update",
+      "examples": [],
+      "category": "Cryptography",
+      "raw_lines": [
+        "12.4",
+        "Compromise of cryptographic keys of the software",
+        "provider to allow invalid update"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 21,
+        "section": "Annex 5 Part A - 12.4",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "13.1",
+      "title": "Denial of Service attack against update server or network to prevent rollout of critical software updates and/or unlock of customer specific features",
+      "description": "Denial of Service attack against update server or network to prevent rollout of critical software updates and/or unlock of customer specific features",
+      "examples": [],
+      "category": "Communication channel",
+      "raw_lines": [
+        "13.1",
+        "Denial of Service attack against update server or",
+        "network to prevent rollout of critical software",
+        "updates and/or unlock of customer specific features"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 21,
+        "section": "Annex 5 Part A - 13.1",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "15.1",
+      "title": "Innocent victim (e.g. owner, operator or maintenance engineer) being tricked into taking an action to unintentionally load malware or enable an attack",
+      "description": "Innocent victim (e.g. owner, operator or maintenance engineer) being tricked into taking an action to unintentionally load malware or enable an attack",
+      "examples": [
+        "owner",
+        "operator or maintenance engineer) being tricked into taking an action to unintentionally load malware or enable an attack"
+      ],
+      "category": "Human action",
+      "raw_lines": [
+        "15.1",
+        "Innocent victim (e.g. owner, operator or maintenance",
+        "engineer) being tricked into taking an action to",
+        "unintentionally load malware or enable an attack"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 21,
+        "section": "Annex 5 Part A - 15.1",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "15.2",
+      "title": "Defined security procedures are not followed",
+      "description": "Defined security procedures are not followed",
+      "examples": [],
+      "category": "Human action",
+      "raw_lines": [
+        "15.2",
+        "Defined security procedures are not followed"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 21,
+        "section": "Annex 5 Part A - 15.2",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "16.1",
+      "title": "Manipulation of functions designed to remotely operate systems, such as remote key, immobilizer, and charging pile",
+      "description": "Manipulation of functions designed to remotely operate systems, such as remote key, immobilizer, and charging pile",
+      "examples": [
+        "remote key",
+        "immobilizer",
+        "and charging pile"
+      ],
+      "category": "External connectivity",
+      "raw_lines": [
+        "16.1",
+        "Manipulation of functions designed to remotely",
+        "operate systems, such as remote key, immobilizer,",
+        "and charging pile"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 22,
+        "section": "Annex 5 Part A - 16.1",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "16.2",
+      "title": "Manipulation of vehicle telematics (e.g. manipulate temperature measurement of sensitive goods, remotely unlock cargo doors)",
+      "description": "Manipulation of vehicle telematics (e.g. manipulate temperature measurement of sensitive goods, remotely unlock cargo doors)",
+      "examples": [
+        "manipulate temperature measurement of sensitive goods",
+        "remotely unlock cargo doors)"
+      ],
+      "category": "Vehicle interface",
+      "raw_lines": [
+        "16.2",
+        "Manipulation of vehicle telematics (e.g.",
+        "manipulate temperature measurement of sensitive",
+        "goods, remotely unlock cargo doors)"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 22,
+        "section": "Annex 5 Part A - 16.2",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "16.3",
+      "title": "Interference with short range wireless systems or sensors",
+      "description": "Interference with short range wireless systems or sensors",
+      "examples": [],
+      "category": "External connectivity",
+      "raw_lines": [
+        "16.3",
+        "Interference with short range wireless systems or",
+        "sensors"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 22,
+        "section": "Annex 5 Part A - 16.3",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "17.1",
+      "title": "Corrupted applications, or those with poor software security, used as a method to attack vehicle systems",
+      "description": "Corrupted applications, or those with poor software security, used as a method to attack vehicle systems",
+      "examples": [],
+      "category": "External connectivity",
+      "raw_lines": [
+        "17.1",
+        "Corrupted applications, or those with poor",
+        "software security, used as a method to attack vehicle",
+        "systems"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 22,
+        "section": "Annex 5 Part A - 17.1",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "18.1",
+      "title": "External interfaces such as USB or other ports used as a point of attack, for example through code injection",
+      "description": "External interfaces such as USB or other ports used as a point of attack, for example through code injection",
+      "examples": [
+        "USB or other ports used as a point of attack",
+        "for example through code injection"
+      ],
+      "category": "External connectivity",
+      "raw_lines": [
+        "18.1",
+        "External interfaces such as USB or other ports used",
+        "as a point of attack, for example through code",
+        "injection"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 22,
+        "section": "Annex 5 Part A - 18.1",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "18.2",
+      "title": "Media infected with a virus connected to a vehicle system",
+      "description": "Media infected with a virus connected to a vehicle system",
+      "examples": [],
+      "category": "External connectivity",
+      "raw_lines": [
+        "18.2",
+        "Media infected with a virus connected to a vehicle",
+        "system"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 22,
+        "section": "Annex 5 Part A - 18.2",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "18.3",
+      "title": "Diagnostic access (e.g. dongles in OBD port) used to facilitate an attack, e.g. manipulate vehicle parameters (directly or indirectly)",
+      "description": "Diagnostic access (e.g. dongles in OBD port) used to facilitate an attack, e.g. manipulate vehicle parameters (directly or indirectly)",
+      "examples": [
+        "dongles in OBD port) used to facilitate an attack",
+        "e"
+      ],
+      "category": "Vehicle interface",
+      "raw_lines": [
+        "18.3",
+        "Diagnostic access (e.g.  dongles in OBD port) used",
+        "to facilitate an attack, e.g. manipulate vehicle",
+        "parameters (directly or indirectly)"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 22,
+        "section": "Annex 5 Part A - 18.3",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "19.2",
+      "title": "Unauthorized access to the owner’s privacy information such as personal identity, payment account information, address book information, location information, vehicle’s electronic ID, etc.",
+      "description": "Unauthorized access to the owner’s privacy information such as personal identity, payment account information, address book information, location information, vehicle’s electronic ID, etc.",
+      "examples": [
+        "personal identity",
+        "payment account information",
+        "address book information",
+        "location information",
+        "vehicle’s electronic ID",
+        "etc"
+      ],
+      "category": "Data / code",
+      "raw_lines": [
+        "19.2",
+        "Unauthorized access to the owner’s privacy",
+        "information such as personal identity, payment",
+        "account information, address book information,",
+        "location information, vehicle’s electronic ID, etc."
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 22,
+        "section": "Annex 5 Part A - 19.2",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "19.3",
+      "title": "Extraction of cryptographic keys",
+      "description": "Extraction of cryptographic keys",
+      "examples": [],
+      "category": "Cryptography",
+      "raw_lines": [
+        "19.3",
+        "Extraction of cryptographic keys"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 22,
+        "section": "Annex 5 Part A - 19.3",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "20.1",
+      "title": "Illegal/unauthorized changes to vehicle’s electronic ID",
+      "description": "Illegal/unauthorized changes to vehicle’s electronic ID",
+      "examples": [],
+      "category": "Data / code",
+      "raw_lines": [
+        "20.1",
+        "Illegal/unauthorized changes to vehicle’s electronic",
+        "ID"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 22,
+        "section": "Annex 5 Part A - 20.1",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "20.2",
+      "title": "Identity fraud. For example, if a user wants to display another identity when communicating with toll systems, manufacturer backend",
+      "description": "Identity fraud. For example, if a user wants to display another identity when communicating with toll systems, manufacturer backend",
+      "examples": [
+        "if a user wants to display another identity when communicating with toll systems",
+        "manufacturer backend"
+      ],
+      "category": "Data / code",
+      "raw_lines": [
+        "20.2",
+        "Identity fraud. For example, if a user wants to",
+        "display another identity when communicating with",
+        "toll systems, manufacturer backend"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 22,
+        "section": "Annex 5 Part A - 20.2",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "20.3",
+      "title": "Action to circumvent monitoring systems (e.g. hacking/ tampering/ blocking of messages such as ODR Tracker data, or number of runs)",
+      "description": "Action to circumvent monitoring systems (e.g. hacking/ tampering/ blocking of messages such as ODR Tracker data, or number of runs)",
+      "examples": [
+        "hacking/ tampering/ blocking of messages such as ODR Tracker data",
+        "or number of runs)"
+      ],
+      "category": "Data / code",
+      "raw_lines": [
+        "20.3",
+        "Action to circumvent monitoring systems (e.g.",
+        "hacking/ tampering/ blocking of messages such as",
+        "ODR Tracker data, or number of runs)"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 22,
+        "section": "Annex 5 Part A - 20.3",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "20.4",
+      "title": "Data manipulation to falsify vehicle’s driving data (e.g. mileage, driving speed, driving directions, etc.)",
+      "description": "Data manipulation to falsify vehicle’s driving data (e.g. mileage, driving speed, driving directions, etc.)",
+      "examples": [
+        "mileage",
+        "driving speed",
+        "driving directions",
+        "etc"
+      ],
+      "category": "Data / code",
+      "raw_lines": [
+        "20.4",
+        "Data manipulation to falsify vehicle’s driving data",
+        "(e.g. mileage, driving speed, driving directions, etc.)"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 22,
+        "section": "Annex 5 Part A - 20.4",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "20.5",
+      "title": "Unauthorized changes to system diagnostic data",
+      "description": "Unauthorized changes to system diagnostic data",
+      "examples": [],
+      "category": "Data / code",
+      "raw_lines": [
+        "20.5",
+        "Unauthorized changes to system diagnostic data"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 22,
+        "section": "Annex 5 Part A - 20.5",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "21.1",
+      "title": "Unauthorized deletion/manipulation of system event logs",
+      "description": "Unauthorized deletion/manipulation of system event logs",
+      "examples": [],
+      "category": "Data / code",
+      "raw_lines": [
+        "21.1",
+        "Unauthorized deletion/manipulation of system event",
+        "logs"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 22,
+        "section": "Annex 5 Part A - 21.1",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "22.2",
+      "title": "Introduce malicious software or malicious software activity",
+      "description": "Introduce malicious software or malicious software activity",
+      "examples": [],
+      "category": "Data / code",
+      "raw_lines": [
+        "22.2",
+        "Introduce malicious software or malicious software",
+        "activity"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 22,
+        "section": "Annex 5 Part A - 22.2",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "23.1",
+      "title": "Fabrication of software of the vehicle control system or information system",
+      "description": "Fabrication of software of the vehicle control system or information system",
+      "examples": [],
+      "category": "Data / code",
+      "raw_lines": [
+        "23.1",
+        "Fabrication of software of the vehicle control",
+        "system or information system"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 22,
+        "section": "Annex 5 Part A - 23.1",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "24.1",
+      "title": "Denial of service, for example this may be triggered on the internal network by flooding a CAN bus, or by provoking faults on an ECU via a high rate of messaging",
+      "description": "Denial of service, for example this may be triggered on the internal network by flooding a CAN bus, or by provoking faults on an ECU via a high rate of messaging",
+      "examples": [
+        "this may be triggered on the internal network by flooding a CAN bus",
+        "or by provoking faults on an ECU via a high rate of messaging"
+      ],
+      "category": "Communication channel",
+      "raw_lines": [
+        "24.1",
+        "Denial of service, for example this may be triggered",
+        "on the internal network by flooding a CAN bus, or",
+        "by provoking faults on an ECU via a high rate of",
+        "messaging"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 23,
+        "section": "Annex 5 Part A - 24.1",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "25.1",
+      "title": "Unauthorized access of falsify the configuration parameters of vehicle’s key functions, such as brake data, airbag deployed threshold, etc.",
+      "description": "Unauthorized access of falsify the configuration parameters of vehicle’s key functions, such as brake data, airbag deployed threshold, etc.",
+      "examples": [
+        "brake data",
+        "airbag deployed threshold",
+        "etc"
+      ],
+      "category": "Data / code",
+      "raw_lines": [
+        "25.1",
+        "Unauthorized access of falsify the configuration",
+        "parameters of vehicle’s key functions, such as",
+        "brake data, airbag deployed threshold, etc."
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 23,
+        "section": "Annex 5 Part A - 25.1",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "25.2",
+      "title": "Unauthorized access of falsify the charging parameters, such as charging voltage, charging power, battery temperature, etc.",
+      "description": "Unauthorized access of falsify the charging parameters, such as charging voltage, charging power, battery temperature, etc.",
+      "examples": [
+        "charging voltage",
+        "charging power",
+        "battery temperature",
+        "etc"
+      ],
+      "category": "Data / code",
+      "raw_lines": [
+        "25.2",
+        "Unauthorized access of falsify the charging",
+        "parameters, such as charging voltage, charging",
+        "power, battery temperature, etc."
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 23,
+        "section": "Annex 5 Part A - 25.2",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "26.1",
+      "title": "Combination of short encryption keys and long period of validity enables attacker to break encryption",
+      "description": "Combination of short encryption keys and long period of validity enables attacker to break encryption",
+      "examples": [],
+      "category": "Vulnerability",
+      "raw_lines": [
+        "26.1",
+        "Combination of short encryption keys and long",
+        "period of validity enables attacker to break",
+        "encryption"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 23,
+        "section": "Annex 5 Part A - 26.1",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "26.2",
+      "title": "Insufficient use of cryptographic algorithms to protect sensitive systems",
+      "description": "Insufficient use of cryptographic algorithms to protect sensitive systems",
+      "examples": [],
+      "category": "Cryptography",
+      "raw_lines": [
+        "26.2",
+        "Insufficient use of cryptographic algorithms to",
+        "protect sensitive systems"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 23,
+        "section": "Annex 5 Part A - 26.2",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "26.3",
+      "title": "Using already or soon to be deprecated cryptographic algorithms",
+      "description": "Using already or soon to be deprecated cryptographic algorithms",
+      "examples": [],
+      "category": "Cryptography",
+      "raw_lines": [
+        "26.3",
+        "Using already or soon to be deprecated",
+        "cryptographic algorithms"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 23,
+        "section": "Annex 5 Part A - 26.3",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "27.1",
+      "title": "Hardware or software, engineered to enable an attack or fails to meet design criteria to stop an attack",
+      "description": "Hardware or software, engineered to enable an attack or fails to meet design criteria to stop an attack",
+      "examples": [],
+      "category": "Vulnerability",
+      "raw_lines": [
+        "27.1",
+        "Hardware or software, engineered to enable an",
+        "attack or fails to meet design criteria to stop an",
+        "attack"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 23,
+        "section": "Annex 5 Part A - 27.1",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "28.1",
+      "title": "Software bugs. The presence of software bugs can be a basis for potential exploitable vulnerabilities. This is particularly true if software has not been tested to verify that known bad code/bugs is not present and reduce the risk of unknown bad code/bugs being present",
+      "description": "Software bugs. The presence of software bugs can be a basis for potential exploitable vulnerabilities. This is particularly true if software has not been tested to verify that known bad code/bugs is not present and reduce the risk of unknown bad code/bugs being present",
+      "examples": [],
+      "category": "Vulnerability",
+      "raw_lines": [
+        "28.1",
+        "Software bugs. The presence of software bugs can",
+        "be a basis for potential exploitable vulnerabilities.",
+        "This is particularly true if software has not been",
+        "tested to verify that known bad code/bugs is not",
+        "present and reduce the risk of unknown bad",
+        "code/bugs being present"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 23,
+        "section": "Annex 5 Part A - 28.1",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "28.2",
+      "title": "Using remainders from development (e.g. debug ports, JTAG ports, microprocessors, development certificates, developer passwords, …) can permit access to ECUs or permit attackers to gain higher privileges",
+      "description": "Using remainders from development (e.g. debug ports, JTAG ports, microprocessors, development certificates, developer passwords, …) can permit access to ECUs or permit attackers to gain higher privileges",
+      "examples": [
+        "debug ports",
+        "JTAG ports",
+        "microprocessors",
+        "development certificates",
+        "developer passwords",
+        "…) can permit access to ECUs or permit attackers to gain higher privileges"
+      ],
+      "category": "Cryptography",
+      "raw_lines": [
+        "28.2",
+        "Using remainders from development (e.g. debug",
+        "ports, JTAG ports, microprocessors, development",
+        "certificates, developer passwords, …) can permit",
+        "access to ECUs or permit attackers to gain higher",
+        "privileges"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 23,
+        "section": "Annex 5 Part A - 28.2",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "29.1",
+      "title": "Superfluous internet ports left open, providing access to network systems",
+      "description": "Superfluous internet ports left open, providing access to network systems",
+      "examples": [],
+      "category": "Vulnerability",
+      "raw_lines": [
+        "29.1",
+        "Superfluous internet ports left open, providing",
+        "access to network systems"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 23,
+        "section": "Annex 5 Part A - 29.1",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "29.2",
+      "title": "Circumvent network separation to gain control. Specific example is the use of unprotected gateways, or access points (such as truck-trailer gateways), to circumvent protections and gain access to other network segments to perform malicious acts, such as sending arbitrary CAN bus messages",
+      "description": "Circumvent network separation to gain control. Specific example is the use of unprotected gateways, or access points (such as truck-trailer gateways), to circumvent protections and gain access to other network segments to perform malicious acts, such as sending arbitrary CAN bus messages",
+      "examples": [
+        "truck-trailer gateways)",
+        "to circumvent protections and gain access to other network segments to perform malicious acts",
+        "such as sending arbitrary CAN bus messages"
+      ],
+      "category": "Vehicle interface",
+      "raw_lines": [
+        "29.2",
+        "Circumvent network separation to gain control.",
+        "Specific example is the use of unprotected gateways,",
+        "or access points (such as truck-trailer gateways), to",
+        "circumvent protections and gain access to other",
+        "network segments to perform malicious acts, such as",
+        "sending arbitrary CAN bus messages"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 23,
+        "section": "Annex 5 Part A - 29.2",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "31.1",
+      "title": "Information breach. Personal data may be leaked when the car changes user (e.g. is sold or is used as hire vehicle with new hirers)",
+      "description": "Information breach. Personal data may be leaked when the car changes user (e.g. is sold or is used as hire vehicle with new hirers)",
+      "examples": [
+        "is sold or is used as hire vehicle with new hirers)"
+      ],
+      "category": "Data / code",
+      "raw_lines": [
+        "31.1",
+        "Information breach. Personal data may be leaked",
+        "when the car changes user (e.g. is sold or is used as",
+        "hire vehicle with new hirers)"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 23,
+        "section": "Annex 5 Part A - 31.1",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "id": "32.1",
+      "title": "Manipulation of electronic hardware, e.g. unauthorized electronic hardware added to a vehicle to enable \"man-in-the-middle\" attack Replacement of authorized electronic hardware (e.g., sensors) with unauthorized electronic hardware Manipulation of the information collected by a sensor (for example, using a magnet to tamper with the Hall effect sensor connected to the gearbox)",
+      "description": "Manipulation of electronic hardware, e.g. unauthorized electronic hardware added to a vehicle to enable \"man-in-the-middle\" attack Replacement of authorized electronic hardware (e.g., sensors) with unauthorized electronic hardware Manipulation of the information collected by a sensor (for example, using a magnet to tamper with the Hall effect sensor connected to the gearbox)",
+      "examples": [
+        "unauthorized electronic hardware added to a vehicle to enable \"man-in-the-middle\" attack Replacement of authorized electronic hardware (e",
+        "using a magnet to tamper with the Hall effect sensor connected to the gearbox)"
+      ],
+      "category": "Physical",
+      "raw_lines": [
+        "32.1",
+        "Manipulation of electronic hardware, e.g.",
+        "unauthorized electronic hardware added to a vehicle",
+        "to enable \"man-in-the-middle\" attack",
+        "Replacement of authorized electronic hardware",
+        "(e.g., sensors) with unauthorized electronic hardware",
+        "Manipulation of the information collected by a",
+        "sensor (for example, using a magnet to tamper with",
+        "the Hall effect sensor connected to the gearbox)"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 23,
+        "section": "Annex 5 Part A - 32.1",
+        "extraction_method": "pdf_parsing"
+      }
+    }
+  ],
+  "mitigations": [
+    {
+      "mitigation_id": "M1",
+      "description": "Security Controls are applied to back-end systems to minimise the risk of insider attack 1.2 & 3.3 Unauthorised internet access to the server (enabled for example by backdoors, unpatched system software vulnerabilities, SQL attacks or other means)",
+      "protects_against": [
+        "1.2",
+        "3.3"
+      ],
+      "raw_lines": [
+        "M1",
+        "Security Controls are applied to back-end systems to",
+        "minimise the risk of insider attack",
+        "1.2 & 3.3",
+        "Unauthorised internet access to the",
+        "server (enabled for example by",
+        "backdoors, unpatched system",
+        "software vulnerabilities, SQL attacks",
+        "or other means)"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 29,
+        "section": "Annex 5 Part B/C - M1",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "mitigation_id": "M2",
+      "description": "Security Controls are applied to back-end systems to minimise unauthorised access. Example Security Controls can be found in OWASP 1.3 & 3.4 Unauthorised physical access to the server (conducted by for example USB sticks or other media connecting to the server)",
+      "protects_against": [
+        "1.3",
+        "3.4"
+      ],
+      "raw_lines": [
+        "M2",
+        "Security Controls are applied to back-end systems to",
+        "minimise unauthorised access. Example Security",
+        "Controls can be found in OWASP",
+        "1.3 & 3.4",
+        "Unauthorised physical access to the",
+        "server (conducted by for example",
+        "USB sticks or other media connecting",
+        "to the server)"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 29,
+        "section": "Annex 5 Part B/C - M2",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "mitigation_id": "M3",
+      "description": "Security Controls shall be applied to back-end systems. Where back-end servers are critical to the provision of services there are recovery measures in case of system outage. Example Security Controls can be found in OWASP 3. Mitigations for \"Unintended human actions facilitating a cyber attack\" Mitigations to the threats which are related to \"Unintended human actions facilitating a cyber attack\" are listed in Table B3. Mitigations to the threats which are related to \"Unintended human actions facilitating a cyber attack\" reference Threats relating to \"Unintended human actions\"",
+      "protects_against": [],
+      "raw_lines": [
+        "M3",
+        "Security Controls shall be applied to back-end",
+        "systems.  Where back-end servers are critical to",
+        "the provision of services there are recovery",
+        "measures in case of system outage. Example",
+        "Security Controls can be found in OWASP",
+        "3.",
+        "Mitigations for \"Unintended human actions facilitating a cyber attack\"",
+        "Mitigations to the threats which are related to \"Unintended human actions facilitating",
+        "a cyber attack\" are listed in Table B3.",
+        "Mitigations to the threats which are related to \"Unintended human actions facilitating",
+        "a cyber attack\"",
+        "reference",
+        "Threats relating to \"Unintended human actions\""
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 25,
+        "section": "Annex 5 Part B/C - M3",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "mitigation_id": "M4",
+      "description": "Security Controls are applied to minimise risks associated with cloud computing. Example Security Controls can be found in OWASP and NCSC cloud computing guidance 3.5 Information breach by unintended sharing of data (e.g. admin errors, storing data in servers in garages)",
+      "protects_against": [
+        "3.5"
+      ],
+      "raw_lines": [
+        "M4",
+        "Security Controls are applied to minimise risks",
+        "associated with cloud computing. Example Security",
+        "Controls can be found in OWASP and NCSC cloud",
+        "computing guidance",
+        "3.5",
+        "Information breach by unintended",
+        "sharing of data (e.g. admin errors,",
+        "storing data in servers in garages)"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 29,
+        "section": "Annex 5 Part B/C - M4",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "mitigation_id": "M5",
+      "description": "Security Controls are applied to back-end systems to prevent data breaches. Example Security Controls can be found in OWASP 2. Mitigations for \"Unintended human actions\" Mitigations to the threats which are related to \"Unintended human actions\" are listed in Table C2. Mitigations to the threats which are related to \"Unintended human actions\" reference Threats relating to \"Unintended human actions\" Ref 15.1 Innocent victim (e.g. owner, operator or",
+      "protects_against": [
+        "15.1"
+      ],
+      "raw_lines": [
+        "M5",
+        "Security Controls are applied to back-end systems to",
+        "prevent data breaches. Example Security Controls",
+        "can be found in OWASP",
+        "2.",
+        "Mitigations for \"Unintended human actions\"",
+        "Mitigations to the threats which are related to \"Unintended human actions\" are listed",
+        "in Table C2.",
+        "Mitigations to the threats which are related to \"Unintended human actions\"",
+        "reference",
+        "Threats relating to \"Unintended human actions\"",
+        "Ref",
+        "15.1",
+        "Innocent victim (e.g. owner, operator or"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 29,
+        "section": "Annex 5 Part B/C - M5",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "mitigation_id": "M6",
+      "description": "The vehicle shall verify the authenticity and integrity of messages it receives Systems shall implement security by design to minimize risks 5.2 Communication channels permit manipulation of vehicle held data/code",
+      "protects_against": [
+        "5.2"
+      ],
+      "raw_lines": [
+        "M6",
+        "The vehicle shall verify the authenticity and",
+        "integrity of messages it receives",
+        "Systems shall implement security by design to",
+        "minimize risks",
+        "5.2",
+        "Communication channels permit",
+        "manipulation of vehicle held data/code"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 24,
+        "section": "Annex 5 Part B/C - M6",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "mitigation_id": "M7",
+      "description": "Access control techniques and designs shall be applied to protect system data/code 5.3 Communication channels permit overwrite of vehicle held data/code 5.4 21.1 Communication channels permit erasure of vehicle held data/code 5.5 Communication channels permit introduction of data/code to vehicle systems (write data code)",
+      "protects_against": [
+        "5.3",
+        "5.4",
+        "5.5",
+        "21.1"
+      ],
+      "raw_lines": [
+        "M7",
+        "Access control techniques and designs shall be",
+        "applied to protect system data/code",
+        "5.3",
+        "Communication channels permit",
+        "overwrite of vehicle held data/code",
+        "5.4",
+        "21.1",
+        "Communication channels permit erasure",
+        "of vehicle held data/code",
+        "5.5",
+        "Communication channels permit",
+        "introduction of data/code to vehicle",
+        "systems (write data code)"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 24,
+        "section": "Annex 5 Part B/C - M7",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "mitigation_id": "M8",
+      "description": "Through system design and access control it should not be possible for unauthorized personnel to access personal or system critical data. Example of Security Controls can be found in OWASP 8.1 Sending a large number of garbage data to vehicle information system, so that it is unable to provide services in the normal manner",
+      "protects_against": [
+        "8.1"
+      ],
+      "raw_lines": [
+        "M8",
+        "Through system design and access control it",
+        "should not be possible for unauthorized personnel",
+        "to access personal or system critical data.",
+        "Example of Security Controls can be found in",
+        "OWASP",
+        "8.1",
+        "Sending a large number of garbage data",
+        "to vehicle information system, so that it",
+        "is unable to provide services in the",
+        "normal manner"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 24,
+        "section": "Annex 5 Part B/C - M8",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "mitigation_id": "M9",
+      "description": "Measures to prevent and detect unauthorized access shall be employed 10.1 Virus embedded in communication media infects vehicle systems",
+      "protects_against": [
+        "10.1"
+      ],
+      "raw_lines": [
+        "M9",
+        "Measures to prevent and detect unauthorized",
+        "access shall be employed",
+        "10.1",
+        "Virus embedded in communication",
+        "media infects vehicle systems"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 25,
+        "section": "Annex 5 Part B/C - M9",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "mitigation_id": "M10",
+      "description": "The vehicle shall verify the authenticity and integrity of messages it receives 4.2 Sybil attack (in order to spoof other vehicles as if there are many vehicles on the road)",
+      "protects_against": [
+        "4.2"
+      ],
+      "raw_lines": [
+        "M10",
+        "The vehicle shall verify the authenticity and",
+        "integrity of messages it receives",
+        "4.2",
+        "Sybil attack (in order to spoof other",
+        "vehicles as if there are many vehicles on",
+        "the road)"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 24,
+        "section": "Annex 5 Part B/C - M10",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "mitigation_id": "M11",
+      "description": "Security controls shall be implemented for storing cryptographic keys (e.g., use of Hardware Security Modules) 5.1 Communication channels permit code injection into vehicle held data/code, for example tampered software binary might be injected into the communication stream",
+      "protects_against": [
+        "5.1"
+      ],
+      "raw_lines": [
+        "M11",
+        "Security controls shall be implemented for",
+        "storing cryptographic keys (e.g., use of Hardware",
+        "Security Modules)",
+        "5.1",
+        "Communication channels permit code",
+        "injection into vehicle held data/code, for",
+        "example tampered software binary",
+        "might be injected into the",
+        "communication stream"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 24,
+        "section": "Annex 5 Part B/C - M11",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "mitigation_id": "M12",
+      "description": "Confidential data transmitted to or from the vehicle shall be protected 7.2 Gaining unauthorized access to files or data",
+      "protects_against": [
+        "7.2"
+      ],
+      "raw_lines": [
+        "M12",
+        "Confidential data transmitted to or from the",
+        "vehicle shall be protected",
+        "7.2",
+        "Gaining unauthorized access to files or",
+        "data"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 24,
+        "section": "Annex 5 Part B/C - M12",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "mitigation_id": "M13",
+      "description": "Measures to detect and recover from a denial of service attack shall be employed reference Threats to \"Vehicle communication channels\" Ref 8.2 Black hole attack, disruption of communication between vehicles by blocking the transfer of messages to other vehicles",
+      "protects_against": [
+        "8.2"
+      ],
+      "raw_lines": [
+        "M13",
+        "Measures to detect and recover from a denial of",
+        "service attack shall be employed",
+        "reference",
+        "Threats to \"Vehicle communication channels\"",
+        "Ref",
+        "8.2",
+        "Black hole attack, disruption of",
+        "communication between vehicles by",
+        "blocking the transfer of messages to",
+        "other vehicles"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 24,
+        "section": "Annex 5 Part B/C - M13",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "mitigation_id": "M14",
+      "description": "Measures to protect systems against embedded viruses/malware should be considered 11.1 Malicious internal (e.g. CAN) messages",
+      "protects_against": [
+        "11.1"
+      ],
+      "raw_lines": [
+        "M14",
+        "Measures to protect systems against embedded",
+        "viruses/malware should be considered",
+        "11.1",
+        "Malicious internal (e.g. CAN) messages"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 25,
+        "section": "Annex 5 Part B/C - M14",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "mitigation_id": "M15",
+      "description": "Measures to detect malicious internal messages or activity should be considered 11.2 Malicious V2X messages, e.g. infrastructure to vehicle or vehicle- vehicle messages (e.g. CAM, DENM)",
+      "protects_against": [
+        "11.2"
+      ],
+      "raw_lines": [
+        "M15",
+        "Measures to detect malicious internal messages or",
+        "activity should be considered",
+        "11.2",
+        "Malicious V2X messages, e.g.",
+        "infrastructure to vehicle or vehicle-",
+        "vehicle messages (e.g. CAM, DENM)"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 25,
+        "section": "Annex 5 Part B/C - M15",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "mitigation_id": "M16",
+      "description": "Secure software update procedures shall be employed 12.2 Compromise of local/physical software update procedures. This includes fabricating the system update program or firmware 12.3 The software is manipulated before the update process (and is therefore corrupted), although the update process is intact 12.4 Compromise of cryptographic keys of the software provider to allow invalid update",
+      "protects_against": [
+        "12.2",
+        "12.3",
+        "12.4"
+      ],
+      "raw_lines": [
+        "M16",
+        "Secure software update procedures shall be",
+        "employed",
+        "12.2",
+        "Compromise of local/physical software",
+        "update procedures. This includes fabricating",
+        "the system update program or firmware",
+        "12.3",
+        "The software is manipulated before the",
+        "update process (and is therefore corrupted),",
+        "although the update process is intact",
+        "12.4",
+        "Compromise of cryptographic keys of the",
+        "software provider to allow invalid update"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 25,
+        "section": "Annex 5 Part B/C - M16",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "mitigation_id": "M18",
+      "description": "Measures shall be implemented for defining and controlling user roles and access privileges, based on the principle of least access privilege 15.2 Defined security procedures are not followed",
+      "protects_against": [
+        "15.2"
+      ],
+      "raw_lines": [
+        "M18",
+        "Measures shall be implemented for defining and",
+        "controlling user roles and access privileges,",
+        "based on the principle of least access privilege",
+        "15.2",
+        "Defined security procedures are not",
+        "followed"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 26,
+        "section": "Annex 5 Part B/C - M18",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "mitigation_id": "M19",
+      "description": "Organizations shall ensure security procedures are defined and followed including logging of actions and access related to the management of the security functions 4. Mitigations for \"External connectivity and connections\" Mitigations to the threats which are related to \"external connectivity and connections\" are listed in Table B4. Mitigation to the threats which are related to \"external connectivity and connections\" reference Threats to \"External connectivity and connections\" Ref 16.1",
+      "protects_against": [
+        "16.1"
+      ],
+      "raw_lines": [
+        "M19",
+        "Organizations shall ensure security procedures",
+        "are defined and followed including logging of",
+        "actions and access related to the management of",
+        "the security functions",
+        "4.",
+        "Mitigations for \"External connectivity and connections\"",
+        "Mitigations to the threats which are related to \"external connectivity and connections\"",
+        "are listed in Table B4.",
+        "Mitigation to the threats which are related to \"external connectivity and connections\"",
+        "reference",
+        "Threats to \"External connectivity and connections\"",
+        "Ref",
+        "16.1"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 26,
+        "section": "Annex 5 Part B/C - M19",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "mitigation_id": "M20",
+      "description": "Security controls shall be applied to systems that have remote access 16.2 Manipulation of vehicle telematics (e.g. manipulate temperature measurement of sensitive goods, remotely unlock cargo doors) 16.3 Interference with short range wireless systems or sensors 17.1 Corrupted applications, or those with poor software security, used as a method to",
+      "protects_against": [
+        "16.2",
+        "16.3",
+        "17.1"
+      ],
+      "raw_lines": [
+        "M20",
+        "Security controls shall be applied to systems",
+        "that have remote access",
+        "16.2",
+        "Manipulation of vehicle telematics (e.g.",
+        "manipulate temperature measurement of",
+        "sensitive goods, remotely unlock cargo",
+        "doors)",
+        "16.3",
+        "Interference with short range wireless",
+        "systems or sensors",
+        "17.1",
+        "Corrupted applications, or those with poor",
+        "software security, used as a method to"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 26,
+        "section": "Annex 5 Part B/C - M20",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "mitigation_id": "M21",
+      "description": "Software shall be security assessed, authenticated and integrity protected. Security controls shall be applied to minimise the risk from third party software that is intended or foreseeable to be hosted on the vehicle 18.1 External interfaces such as USB or other ports used as a point of attack, for example through code injection",
+      "protects_against": [
+        "18.1"
+      ],
+      "raw_lines": [
+        "M21",
+        "Software shall be security assessed,",
+        "authenticated and integrity protected.",
+        "Security controls shall be applied to minimise",
+        "the risk from third party software that is",
+        "intended or foreseeable to be hosted on the",
+        "vehicle",
+        "18.1",
+        "External interfaces such as USB or other",
+        "ports used as a point of attack, for example",
+        "through code injection"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 26,
+        "section": "Annex 5 Part B/C - M21",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "mitigation_id": "M22",
+      "description": "Security controls shall be applied to external interfaces 18.2 Media infected with viruses connected to the vehicle 18.3 Diagnostic access (e.g. dongles in OBD port) used to facilitate an attack, e.g. manipulate vehicle parameters (directly or indirectly)",
+      "protects_against": [
+        "18.2",
+        "18.3"
+      ],
+      "raw_lines": [
+        "M22",
+        "Security controls shall be applied to external",
+        "interfaces",
+        "18.2",
+        "Media infected with viruses connected to",
+        "the vehicle",
+        "18.3",
+        "Diagnostic access (e.g.  dongles in OBD",
+        "port) used to facilitate an attack, e.g.",
+        "manipulate vehicle parameters (directly or",
+        "indirectly)"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 26,
+        "section": "Annex 5 Part B/C - M22",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "mitigation_id": "M23",
+      "description": "Cybersecurity best practices for software and hardware development shall be followed 26.2 Insufficient use of cryptographic algorithms to protect sensitive systems 26.3 Using deprecated cryptographic algorithms 27.1 Hardware or software, engineered to enable an attack or fail to meet design criteria to stop an attack",
+      "protects_against": [
+        "26.2",
+        "26.3",
+        "27.1"
+      ],
+      "raw_lines": [
+        "M23",
+        "Cybersecurity best practices for software and",
+        "hardware development shall be followed",
+        "26.2",
+        "Insufficient use of cryptographic algorithms",
+        "to protect sensitive systems",
+        "26.3",
+        "Using deprecated cryptographic algorithms",
+        "27.1",
+        "Hardware or software, engineered to enable",
+        "an attack or fail to meet design criteria to",
+        "stop an attack"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 28,
+        "section": "Annex 5 Part B/C - M23",
+        "extraction_method": "pdf_parsing"
+      }
+    },
+    {
+      "mitigation_id": "M24",
+      "description": "Best practices for the protection of data integrity and confidentiality shall be followed for storing personal data. 8. Mitigations for \"Physical manipulation of systems to enable an attack\" Mitigation to the threats which are related to \"Physical manipulation of systems to enable an attack\" are listed in Table B8. Mitigations to the threats which are related to \"Physical manipulation of systems to enable an attack\" reference Threats to \"Physical manipulation of systems to enable an attack\" Ref",
+      "protects_against": [],
+      "raw_lines": [
+        "M24",
+        "Best practices for the protection of data",
+        "integrity and confidentiality shall be",
+        "followed for storing personal data.",
+        "8.",
+        "Mitigations for \"Physical manipulation of systems to enable an attack\"",
+        "Mitigation to the threats which are related to \"Physical manipulation of systems to",
+        "enable an attack\" are listed in Table B8.",
+        "Mitigations to the threats which are related to \"Physical manipulation of systems to",
+        "enable an attack\"",
+        "reference",
+        "Threats to \"Physical manipulation of systems to",
+        "enable an attack\"",
+        "Ref"
+      ],
+      "provenance": {
+        "source": "UNECE R155",
+        "document": "UN Regulation No. 155",
+        "page": 28,
+        "section": "Annex 5 Part B/C - M24",
+        "extraction_method": "pdf_parsing"
+      }
+    }
+  ],
+  "threat_categories": [
+    {
+      "name": "Back-end server",
+      "occurrences": [
+        "Back-end servers used as a ",
+        "back-end server ",
+        "back-end server stops it functioning, "
+      ]
+    },
+    {
+      "name": "Communication channel",
+      "occurrences": [
+        "Communication channels ",
+        "communication channels to ",
+        "Communication channels used "
+      ]
+    },
+    {
+      "name": "Update procedure",
+      "occurrences": [
+        "update procedures. This includes fabricating ",
+        "update procedures ",
+        "update procedures shall be "
+      ]
+    },
+    {
+      "name": "Human action",
+      "occurrences": [
+        "human actions facilitating ",
+        "human actions facilitating a cyber attack\" "
+      ]
+    },
+    {
+      "name": "External connectivity",
+      "occurrences": [
+        "External connectivity and connections\" ",
+        "external connectivity and connections\" "
+      ]
+    },
+    {
+      "name": "Vehicle data",
+      "occurrences": [
+        "vehicle data/code ",
+        "vehicle data and vehicle logs. This capability ",
+        "vehicle data plate affixed "
+      ]
+    },
+    {
+      "name": "Vulnerability",
+      "occurrences": [
+        "vulnerability with a list of corresponding mitigation measures. ",
+        "Vulnerability\" means a weakness of an asset or mitigation that can be ",
+        "vulnerability and its corresponding examples have been indexed in Part "
+      ]
+    },
+    {
+      "name": "Physical",
+      "occurrences": [
+        "physical and digital, with ",
+        "physical access to the server "
+      ]
+    }
+  ],
+  "attack_examples": [
+    {
+      "example": "replay attack",
+      "context": "hijacking/replay attacks"
+    },
+    {
+      "example": "Sybil attack",
+      "context": "Sybil attack (in order to spoof other vehicles as if"
+    },
+    {
+      "example": "malicious diagnostic",
+      "context": "Malicious diagnostic messages"
+    },
+    {
+      "example": "session hijacking",
+      "context": "Man in the middle attack/ session hijacking"
+    },
+    {
+      "example": "man-in-the-middle",
+      "context": "to enable \"man-in-the-middle\" attack"
+    },
+    {
+      "example": "denial of service",
+      "context": "Denial of service attacks via"
+    },
+    {
+      "example": "spoofing",
+      "context": "Spoofing of messages or data"
+    }
+  ],
+  "attack_impacts": [
+    "Vehicle functions stop",
+    "Software modified",
+    "Data integrity",
+    "Data confidentiality",
+    "Criminality"
+  ],
+  "section_73": {
+    "7.3.3": ". The vehicle manufacturer shall identify the critical elements of the vehicle type and perform an exhaustive risk assessment for the vehicle type and shall treat/manage the identified risks appropriately. The risk assessment shall consider the individual elements of the vehicle type and their interactions. The risk assessment shall further consider interactions with any external systems. While assessing the risks, the vehicle manufacturer shall consider the risks related to all the threats referred to in Annex 5, Part A, as well as any other relevant risk.",
+    "7.3.4": ". The vehicle manufacturer shall protect the vehicle type against risks identified in the vehicle manufacturer’s risk assessment. Proportionate mitigations shall be implemented to protect the vehicle type. The mitigations implemented shall include all mitigations referred to in Annex 5, Part B and C which are relevant for the risks identified. However, if a mitigation referred to in Annex 5, Part B or C, is not relevant or not sufficient for the risk identified, the vehicle manufacturer shall ensure that another appropriate mitigation is implemented. In particular, for type approvals prior to 1 July 2024, the vehicle manufacturer shall ensure that another appropriate mitigation is implemented if a mitigation measure referred to in Annex 5, Part B or C is technically not feasible. The respective assessment of the technical feasibility shall be provided by the manufacturer to the approval authority. 7.3.5. The vehicle manufacturer shall put in place appropriate and proportionate measures to secure dedicated environments on the vehicle type (if provided) for the storage and execution of aftermarket software, services, applications or data.",
+    "7.3.6": ". The vehicle manufacturer shall perform, prior to type approval, appropriate and sufficient testing to verify the effectiveness of the security measures implemented.",
+    "7.3.7": ". The vehicle manufacturer shall implement measures for the vehicle type to: (a) Detect and prevent cyber-attacks against vehicles of the vehicle type; (b) Support the monitoring capability of the vehicle manufacturer with regards to detecting threats, vulnerabilities and cyber-attacks relevant to the vehicle type; (c) Provide data forensic capability to enable analysis of attempted or successful cyber-attacks. 7.3.8. Cryptographic modules used for the purpose of this Regulation shall be in line with consensus standards. If the cryptographic modules used are not in line with consensus standards, then the vehicle manufacturer shall justify their use. 7.4. Reporting provisions 7.4.1. The vehicle manufacturer shall report at least once a year, or more frequently if relevant, to the Approval Authority or the Technical Service the outcome of their monitoring activities, as defined in paragraph 7.2.2.2.(g)), this shall include relevant information on new cyber-attacks. The vehicle manufacturer shall also report and confirm to the Approval Authority or the Technical Service that the cyber security mitigations implemented for their vehicle types are still effective and any additional actions taken. 7.4.2 The Approval Authority or the Technical Service shall verify the provided information and, if necessary, require the vehicle manufacturer to remedy any detected ineffectiveness. If the reporting or response is not sufficient the Approval Authority may decide to withdraw the CSMS in compliance with paragraph 6.8. E/ECE/TRANS/505/Rev.3/Add.154 12 8. Modification and extension of the vehicle type 8.1. Every modification of the vehicle type which affects its technical performance with respect to cybersecurity and/or documentation required in this Regulation shall be notified to the approval authority which approved the vehicle type. The Approval Authority may then either: 8.1.1. Consider that the modifications made still comply with the requirements and documentation of existing type approval; or 8.1.2. Proceed to necessary complementary assessment pursuant to paragraph 5, and require, where relevant, a further test report from the Technical Service responsible for conducting the tests. 8.1.3. Confirmation or extension or refusal of approval, specifying the alterations, shall be communicated by means of a communication form conforming to the model in Annex 2 to this Regulation. The Approval Authority issuing the extension of approval shall assign a series number for such an extension and inform there of the other Parties to the 1958 Agreement applying this Regulation by means of a communication form conforming to the model in Annex 2 to this Regulation. 9. Conformity of production 9.1. The Conformity of Production Procedures shall comply with those set out in the 1958 Agreement, Schedule 1 (E/ECE/TRANS/505/Rev.3) with the following requirements: 9.1.1. The holder of the approval shall ensure that results of the conformity of production tests are recorded and that the annexed documents remain available for a period determined in agreement with the Approval Authority or its Technical Service. This period shall not exceed 10 years counted from the time when production is definitively discontinued; 9.1.2. The Approval Authority which has granted type approval may at any time verify the conformity control methods applied in each production facility. The normal frequency of these verifications shall be once every three years. 10. Penalties for non-conformity of production 10.1. The approval granted in respect of a vehicle type pursuant to this Regulation may be withdrawn if the requirements laid down in this Regulation are not complied with or if sample vehicles fail to comply with the requirements of this Regulation. 10.2. If an Approval Authority withdraws an approval it has previously granted, it shall forthwith so notify the Contracting Parties applying this Regulation, by means of a communication form conforming to the model in Annex 2 to this Regulation. 11. Production definitively discontinued 11.1. If the holder of the approval completely ceases to manufacture a type of vehicle approved in accordance with this Regulation, he shall so inform the authority which granted the approval. Upon receiving the relevant communication that authority shall inform thereof the other Contracting Parties to the Agreement applying this Regulation by means of a copy of the approval form bearing at the end, in large letters, the signed and dated annotation \"PRODUCTION DISCONTINUED\". E/ECE/TRANS/505/Rev.3/Add.154 13 12. Names and addresses of Technical Services responsible for conducting approval test, and of Type Approval Authorities 12.1. The Contracting Parties to the Agreement which apply this Regulation shall communicate to the United Nations Secretariat the names and addresses of the Technical Services responsible for conducting approval tests and of the Type Approval Authorities which grant approval and to which forms certifying approval or extension or refusal or withdrawal of approval, issued in other countries, are to be sent. E/ECE/TRANS/505/Rev.3/Add.154 Annex 1 14 Annex 1 Information document The following information, if applicable, shall be supplied in triplicate and include a list of contents. Any drawings shall be supplied in appropriate scale and in sufficient detail on size A4 or on a folder of A4 format. Photographs, if any, shall show sufficient detail. 1. Make (trade name of manufacturer): ........................................................................... 2. Type and general commercial description(s): ............................................................... 3. Means of identification of type, if marked on the vehicle: ........................................... 4. Location of that marking: ............................................................................................. 5. Category(ies) of vehicle: ............................................................................................... 6. Name and address of manufacturer/ manufacturer's representative: ............................. 7. Name(s) and Address(es) of assembly plant(s): ........................................................... 8. Photograph(s) and/or drawing(s) of a representative vehicle: ...................................... 9. Cyber Security 9.1. General construction characteristics of the vehicle type, including: (a) The vehicle systems which are relevant to the cyber security of the vehicle type; (b) The components of those systems that are relevant to cyber security; (c) The interactions of those systems with other systems within the vehicle type and external interfaces. 9.2. Schematic representation of the vehicle type 9.3. The number of the Certificate of Compliance for CSMS: ............................................ 9.4. Documents for the vehicle type to be approved describing the outcome of its risk assessment and the identified risks: .............................................................................. 9.5 Documents for the vehicle type to be approved describing the mitigations that have been implemented on the systems listed, or to the vehicle type, and how they address the stated risks: ............................................................................................................. 9.6. Documents for the vehicle type to be approved describing protection of dedicated environments for aftermarket software, services, applications or data: ........................ 9.7. Documents for the vehicle type to be approved describing what tests have been used to verify the cyber security of the vehicle type and its systems and the outcome of those tests: ..................................................................................................................... 9.8. Description of the consideration of the supply chain with respect to cyber security: ... E/ECE/TRANS/505/Rev.3/Add.154 Annex 1 – Appendix 1 15 Annex 1 - Appendix 1 Model of Manufacturer’s Declaration of Compliance for CSMS Manufacturer’s declaration of compliance with the requirements for the Cyber Security Management System Manufacturer Name: ................................................................................................................ Manufacturer Address: ............................................................................................................. …………………..(Manufacturer Name) attests that the necessary processes to comply with the requirements for the Cyber Security Management System laid down in paragraph 7.2 of UN Regulation 155 are installed and will be maintained. Done at: …………………… (place) Date: ...................................................................................................................................... Name of the signatory: ............................................................................................................ Function of the signatory: ........................................................................................................ .......................................................... (Stamp and signature of the manufacturer’s representative) E/ECE/TRANS/505/Rev.3/Add.154 Annex 2 16 Annex 2 Communication (Maximum format: A4 (210 x 297 mm)) 7 Concerning:8 Approval granted Approval extended Approval withdrawn with effect from dd/mm/yyyy Approval refused Production definitively discontinued of a vehicle type, pursuant to UN Regulation No. 155 Approval No.: .......................................................................................................................... Extension No.: ......................................................................................................................... Reason for extension: .............................................................................................................. 1. Make (trade name of manufacturer): ............................................................................ 2. Type and general commercial description(s) ............................................................... 3. Means of identification of type, if marked on the vehicle: ........................................... 3.1. Location of that marking: ............................................................................................. 4. Category(ies) of vehicle: ............................................................................................... 5. Name and address of manufacturer / manufacturer’s representative: .......................... 6. Name(s) and Address(es) of the production plant(s) .................................................... 7. Number of the certificate of compliance for cyber security management system: ...... 8. Technical Service responsible for carrying out the tests: ............................................. 9. Date of test report: ....................................................................................................... 10. Number of test report: .................................................................................................. 11. Remarks: (if any). ....................................................................................................... 12. Place: ............................................................................................................................. 13. Date: ............................................................................................................................. 14. Signature: ..................................................................................................................... 15. The index to the information package lodged with the Approval Authority, which may be obtained on request is attached: 7 Distinguishing number of the country which has granted/extended/refused/withdrawn approval (see approval provisions in the Regulation). 8 Strike out what does not apply. issued by: Name of administration: ...................................... ...................................... ...................................... 1 E/ECE/TRANS/505/Rev.3/Add.154 Annex 3 17 Annex 3 Arrangement of approval mark Model A (See paragraph 4.2 of this Regulation) a = 8 mm min. The above approval mark affixed to a vehicle shows that the road vehicle type concerned has been approved in the Netherlands (E 4), pursuant to Regulation No. 155, and under the approval number 001234. The first two digits of the approval number indicate that the approval was granted in accordance with the requirements of this Regulation in its original form (00). 155 E/ECE/TRANS/505/Rev.3/Add.154 Annex 4 18 Annex 4 Model of Certificate of Compliance for CSMS Certificate of compliance for cyber security management system With UN Regulation No. [This Regulation] Certificate Number [Reference number] [……. Approval Authority] Certifies that Manufacturer: .................................................................................................................................. Address of the manufacturer: .......................................................................................................... complies with the provisions of paragraph 7.2 of Regulation No. 155 Checks have been performed on: ...................................................................................................... by (name and address of the Approval Authority or Technical Service): ........................................ Number of report: ........................ The certificate is valid until […..Date] Done at [……Place] On […….Date] [………….Signature] Attachments: description of the Cyber Security Management System by the manufacturer. E/ECE/TRANS/505/Rev.3/Add.154 Annex 5 19 Annex 5 List of threats and corresponding mitigations 1. This annex consists of three parts. Part A of this annex describes the baseline for threats, vulnerabilities and attack methods. Part B of this annex describes mitigations to the threats which are intended for vehicle types. Part C describes mitigations to the threats which are intended for areas outside of vehicles, e.g. on IT backends. 2. Part A, Part B, and Part C shall be considered for risk assessment and mitigations to be implemented by vehicle manufacturers. 3. The high-level vulnerability and its corresponding examples have been indexed in Part A. The same indexing has been referenced in the tables in Parts B and C to link each of the attack/vulnerability with a list of corresponding mitigation measures. 4. The threat analysis shall also consider possible attack impacts. These may help ascertain the severity of a risk and identify additional risks. Possible attack impacts may include: (a) Safe operation of vehicle affected; (b) Vehicle functions stop working; (c) Software modified, performance altered; (d) Software altered but no operational effects; (e) Data integrity breach; (f) Data confidentiality breach; (g) Loss of data availability; (h) Other, including criminality. Part A. Vulnerability or attack method related to the threats 1. High level descriptions of threats and relating vulnerability or attack method are listed in Table A1. E/ECE/TRANS/505/Rev.3/Add.154 Annex 5 20 Table A1 List of vulnerability or attack method related to the threats High level and sub-level descriptions of vulnerability/ threat Example of vulnerability or attack method 4.3.1 Threats regarding back-end servers related to vehicles in the field 1 Back-end servers used as a means to attack a vehicle or extract data 1.1 Abuse of privileges by staff (insider attack) 1.2 Unauthorized internet access to the server (enabled for example by backdoors, unpatched system software vulnerabilities, SQL attacks or other means) 1.3 Unauthorized physical access to the server (conducted by for example USB sticks or other media connecting to the server) 2 Services from back-end server being disrupted, affecting the operation of a vehicle 2.1 Attack on back-end server stops it functioning, for example it prevents it from interacting with vehicles and providing services they rely on 3 Vehicle related data held on back-end servers being lost or compromised (\"data breach\") 3.1 Abuse of privileges by staff (insider attack) 3.2 Loss of information in the cloud. Sensitive data may be lost due to attacks or accidents when data is stored by third-party cloud service providers 3.3 Unauthorized internet access to the server (enabled for example by backdoors, unpatched system software vulnerabilities, SQL attacks or other means) 3.4 Unauthorized physical access to the server (conducted for example by USB sticks or other media connecting to the server) 3.5 Information breach by unintended sharing of data (e.g. admin errors) 4.3.2 Threats to vehicles regarding their communication channels 4 Spoofing of messages or data received by the vehicle 4.1 Spoofing of messages by impersonation (e.g. 802.11p V2X during platooning, GNSS messages, etc.) 4.2 Sybil attack (in order to spoof other vehicles as if there are many vehicles on the road) 5 Communication channels used to conduct unauthorized manipulation, deletion or other amendments to vehicle held code/data 5.1 Communications channels permit code injection, for example tampered software binary might be injected into the communication stream 5.2 Communications channels permit manipulate of vehicle held data/code 5.3 Communications channels permit overwrite of vehicle held data/code 5.4 Communications channels permit erasure of vehicle held data/code 5.5 Communications channels permit introduction of data/code to the vehicle (write data code) 6 Communication channels permit untrusted/unreliable messages to be accepted or are 6.1 Accepting information from an unreliable or untrusted source 6.2 Man in the middle attack/ session hijacking E/ECE/TRANS/505/Rev.3/Add.154 Annex 5 21 High level and sub-level descriptions of vulnerability/ threat Example of vulnerability or attack method vulnerable to session hijacking/replay attacks 6.3 Replay attack, for example an attack against a communication gateway allows the attacker to downgrade software of an ECU or firmware of the gateway 7 Information can be readily disclosed. For example, through eavesdropping on communications or through allowing unauthorized access to sensitive files or folders 7.1 Interception of information / interfering radiations / monitoring communications 7.2 Gaining unauthorized access to files or data 8 Denial of service attacks via communication channels to disrupt vehicle functions 8.1 Sending a large number of garbage data to vehicle information system, so that it is unable to provide services in the normal manner 8.2 Black hole attack, in order to disrupt communication between vehicles the attacker is able to block messages between the vehicles 9 An unprivileged user is able to gain privileged access to vehicle systems 9.1 An unprivileged user is able to gain privileged access, for example root access 10 Viruses embedded in communication media are able to infect vehicle systems 10.1 Virus embedded in communication media infects vehicle systems 11 Messages received by the vehicle (for example X2V or diagnostic messages), or transmitted within it, contain malicious content 11.1 Malicious internal (e.g. CAN) messages 11.2 Malicious V2X messages, e.g. infrastructure to vehicle or vehicle-vehicle messages (e.g. CAM, DENM) 11.3 Malicious diagnostic messages 11.4 Malicious proprietary messages (e.g. those normally sent from OEM or component/system/function supplier) 4.3.3. Threats to vehicles regarding their update procedures 12 Misuse or compromise of update procedures 12.1 Compromise of over the air software update procedures. This includes fabricating the system update program or firmware 12.2 Compromise of local/physical software update procedures. This includes fabricating the system update program or firmware 12.3 The software is manipulated before the update process (and is therefore corrupted), although the update process is intact 12.4 Compromise of cryptographic keys of the software provider to allow invalid update 13 It is possible to deny legitimate updates 13.1 Denial of Service attack against update server or network to prevent rollout of critical software updates and/or unlock of customer specific features 4.3.4 Threats to vehicles regarding unintended human actions facilitating a cyber attack 15 Legitimate actors are able to take actions that would unwittingly facilitate a cyber- attack 15.1 Innocent victim (e.g. owner, operator or maintenance engineer) being tricked into taking an action to unintentionally load malware or enable an attack 15.2 Defined security procedures are not followed E/ECE/TRANS/505/Rev.3/Add.154 Annex 5 22 High level and sub-level descriptions of vulnerability/ threat Example of vulnerability or attack method 4.3.5 Threats to vehicles regarding their external connectivity and connections 16 Manipulation of the connectivity of vehicle functions enables a cyber- attack, this can include telematics; systems that permit remote operations; and systems using short range wireless communications 16.1 Manipulation of functions designed to remotely operate systems, such as remote key, immobilizer, and charging pile 16.2 Manipulation of vehicle telematics (e.g. manipulate temperature measurement of sensitive goods, remotely unlock cargo doors) 16.3 Interference with short range wireless systems or sensors 17 Hosted 3rd party software, e.g. entertainment applications, used as a means to attack vehicle systems 17.1 Corrupted applications, or those with poor software security, used as a method to attack vehicle systems 18 Devices connected to external interfaces e.g. USB ports, OBD port, used as a means to attack vehicle systems 18.1 External interfaces such as USB or other ports used as a point of attack, for example through code injection 18.2 Media infected with a virus connected to a vehicle system 18.3 Diagnostic access (e.g. dongles in OBD port) used to facilitate an attack, e.g. manipulate vehicle parameters (directly or indirectly) 4.3.6 Threats to vehicle data/code 19 Extraction of vehicle data/code 19.1 Extraction of copyright or proprietary software from vehicle systems (product piracy) 19.2 Unauthorized access to the owner’s privacy information such as personal identity, payment account information, address book information, location information, vehicle’s electronic ID, etc. 19.3 Extraction of cryptographic keys 20 Manipulation of vehicle data/code 20.1 Illegal/unauthorized changes to vehicle’s electronic ID 20.2 Identity fraud. For example, if a user wants to display another identity when communicating with toll systems, manufacturer backend 20.3 Action to circumvent monitoring systems (e.g. hacking/ tampering/ blocking of messages such as ODR Tracker data, or number of runs) 20.4 Data manipulation to falsify vehicle’s driving data (e.g. mileage, driving speed, driving directions, etc.) 20.5 Unauthorized changes to system diagnostic data 21 Erasure of data/code 21.1 Unauthorized deletion/manipulation of system event logs 22 Introduction of malware 22.2 Introduce malicious software or malicious software activity 23 Introduction of new software or overwrite existing software 23.1 Fabrication of software of the vehicle control system or information system E/ECE/TRANS/505/Rev.3/Add.154 Annex 5 23 High level and sub-level descriptions of vulnerability/ threat Example of vulnerability or attack method 24 Disruption of systems or operations 24.1 Denial of service, for example this may be triggered on the internal network by flooding a CAN bus, or by provoking faults on an ECU via a high rate of messaging 25 Manipulation of vehicle parameters 25.1 Unauthorized access of falsify the configuration parameters of vehicle’s key functions, such as brake data, airbag deployed threshold, etc. 25.2 Unauthorized access of falsify the charging parameters, such as charging voltage, charging power, battery temperature, etc. 4.3.7 Potential vulnerabilities that could be exploited if not sufficiently protected or hardened 26 Cryptographic technologies can be compromised or are insufficiently applied 26.1 Combination of short encryption keys and long period of validity enables attacker to break encryption 26.2 Insufficient use of cryptographic algorithms to protect sensitive systems 26.3 Using already or soon to be deprecated cryptographic algorithms 27 Parts or supplies could be compromised to permit vehicles to be attacked 27.1 Hardware or software, engineered to enable an attack or fails to meet design criteria to stop an attack 28 Software or hardware development permits vulnerabilities 28.1 Software bugs. The presence of software bugs can be a basis for potential exploitable vulnerabilities. This is particularly true if software has not been tested to verify that known bad code/bugs is not present and reduce the risk of unknown bad code/bugs being present 28.2 Using remainders from development (e.g. debug ports, JTAG ports, microprocessors, development certificates, developer passwords, …) can permit access to ECUs or permit attackers to gain higher privileges 29 Network design introduces vulnerabilities 29.1 Superfluous internet ports left open, providing access to network systems 29.2 Circumvent network separation to gain control. Specific example is the use of unprotected gateways, or access points (such as truck-trailer gateways), to circumvent protections and gain access to other network segments to perform malicious acts, such as sending arbitrary CAN bus messages 31 Unintended transfer of data can occur 31.1 Information breach. Personal data may be leaked when the car changes user (e.g. is sold or is used as hire vehicle with new hirers) 32 Physical manipulation of systems can enable an attack 32.1 Manipulation of electronic hardware, e.g. unauthorized electronic hardware added to a vehicle to enable \"man-in-the-middle\" attack Replacement of authorized electronic hardware (e.g., sensors) with unauthorized electronic hardware Manipulation of the information collected by a sensor (for example, using a magnet to tamper with the Hall effect sensor connected to the gearbox) E/ECE/TRANS/505/Rev.3/Add.154 Annex 5 24 Part B. Mitigations to the threats intended for vehicles 1. Mitigations for \"Vehicle communication channels\" Mitigations to the threats which are related to \"Vehicle communication channels\" are listed in Table B1. Table B1 Mitigation to the threats which are related to \"Vehicle communication channels\" Table A1 reference Threats to \"Vehicle communication channels\" Ref Mitigation 4.1 Spoofing of messages (e.g. 802.11p V2X during platooning, GNSS messages, etc.) by impersonation M10 The vehicle shall verify the authenticity and integrity of messages it receives 4.2 Sybil attack (in order to spoof other vehicles as if there are many vehicles on the road) M11 Security controls shall be implemented for storing cryptographic keys (e.g., use of Hardware Security Modules) 5.1 Communication channels permit code injection into vehicle held data/code, for example tampered software binary might be injected into the communication stream M10 M6 The vehicle shall verify the authenticity and integrity of messages it receives Systems shall implement security by design to minimize risks 5.2 Communication channels permit manipulation of vehicle held data/code M7 Access control techniques and designs shall be applied to protect system data/code 5.3 Communication channels permit overwrite of vehicle held data/code 5.4 21.1 Communication channels permit erasure of vehicle held data/code 5.5 Communication channels permit introduction of data/code to vehicle systems (write data code) 6.1 Accepting information from an unreliable or untrusted source M10 The vehicle shall verify the authenticity and integrity of messages it receives 6.2 Man in the middle attack / session hijacking M10 The vehicle shall verify the authenticity and integrity of messages it receives 6.3 Replay attack, for example an attack against a communication gateway allows the attacker to downgrade software of an ECU or firmware of the gateway 7.1 Interception of information / interfering radiations / monitoring communications M12 Confidential data transmitted to or from the vehicle shall be protected 7.2 Gaining unauthorized access to files or data M8 Through system design and access control it should not be possible for unauthorized personnel to access personal or system critical data. Example of Security Controls can be found in OWASP 8.1 Sending a large number of garbage data to vehicle information system, so that it is unable to provide services in the normal manner M13 Measures to detect and recover from a denial of service attack shall be employed E/ECE/TRANS/505/Rev.3/Add.154 Annex 5 25 Table A1 reference Threats to \"Vehicle communication channels\" Ref Mitigation 8.2 Black hole attack, disruption of communication between vehicles by blocking the transfer of messages to other vehicles M13 Measures to detect and recover from a denial of service attack shall be employed 9.1 An unprivileged user is able to gain privileged access, for example root access M9 Measures to prevent and detect unauthorized access shall be employed 10.1 Virus embedded in communication media infects vehicle systems M14 Measures to protect systems against embedded viruses/malware should be considered 11.1 Malicious internal (e.g. CAN) messages M15 Measures to detect malicious internal messages or activity should be considered 11.2 Malicious V2X messages, e.g. infrastructure to vehicle or vehicle- vehicle messages (e.g. CAM, DENM) M10 The vehicle shall verify the authenticity and integrity of messages it receives 11.3 Malicious diagnostic messages 11.4 Malicious proprietary messages (e.g. those normally sent from OEM or component/system/function supplier) 2. Mitigations for \"Update process\" Mitigations to the threats which are related to \"Update process\" are listed in Table B2. Table B2 Mitigations to the threats which are related to \"Update process\" Table A1 reference Threats to \"Update process\" Ref Mitigation 12.1 Compromise of over the air software update procedures. This includes fabricating the system update program or firmware M16 Secure software update procedures shall be employed 12.2 Compromise of local/physical software update procedures. This includes fabricating the system update program or firmware 12.3 The software is manipulated before the update process (and is therefore corrupted), although the update process is intact 12.4 Compromise of cryptographic keys of the software provider to allow invalid update M11 Security controls shall be implemented for storing cryptographic keys 13.1 Denial of Service attack against update server or network to prevent rollout of critical software updates and/or unlock of customer specific features M3 Security Controls shall be applied to back-end systems. Where back-end servers are critical to the provision of services there are recovery measures in case of system outage. Example Security Controls can be found in OWASP 3. Mitigations for \"Unintended human actions facilitating a cyber attack\" Mitigations to the threats which are related to \"Unintended human actions facilitating a cyber attack\" are listed in Table B3. E/ECE/TRANS/505/Rev.3/Add.154 Annex 5 26 Table B3 Mitigations to the threats which are related to \"Unintended human actions facilitating a cyber attack\" Table A1 reference Threats relating to \"Unintended human actions\" Ref Mitigation 15.1 Innocent victim (e.g. owner, operator or maintenance engineer) is tricked into taking an action to unintentionally load malware or enable an attack M18 Measures shall be implemented for defining and controlling user roles and access privileges, based on the principle of least access privilege 15.2 Defined security procedures are not followed M19 Organizations shall ensure security procedures are defined and followed including logging of actions and access related to the management of the security functions 4. Mitigations for \"External connectivity and connections\" Mitigations to the threats which are related to \"external connectivity and connections\" are listed in Table B4. Table B4 Mitigation to the threats which are related to \"external connectivity and connections\" Table A1 reference Threats to \"External connectivity and connections\" Ref Mitigation 16.1 Manipulation of functions designed to remotely operate vehicle systems, such as remote key, immobiliser, and charging pile M20 Security controls shall be applied to systems that have remote access 16.2 Manipulation of vehicle telematics (e.g. manipulate temperature measurement of sensitive goods, remotely unlock cargo doors) 16.3 Interference with short range wireless systems or sensors 17.1 Corrupted applications, or those with poor software security, used as a method to attack vehicle systems M21 Software shall be security assessed, authenticated and integrity protected. Security controls shall be applied to minimise the risk from third party software that is intended or foreseeable to be hosted on the vehicle 18.1 External interfaces such as USB or other ports used as a point of attack, for example through code injection M22 Security controls shall be applied to external interfaces 18.2 Media infected with viruses connected to the vehicle 18.3 Diagnostic access (e.g. dongles in OBD port) used to facilitate an attack, e.g. manipulate vehicle parameters (directly or indirectly) M22 Security controls shall be applied to external interfaces 5. Mitigations for \"Potential targets of, or motivations for, an attack \" Mitigations to the threats which are related to \"Potential targets of, or motivations for, an attack \" are listed in Table B5. E/ECE/TRANS/505/Rev.3/Add.154 Annex 5 27 Table B5 Mitigations to the threats which are related to \"Potential targets of, or motivations for, an attack\" Table A1 reference Threats to \"Potential targets of, or motivations for, an attack\" Ref Mitigation 19.1 Extraction of copyright or proprietary software from vehicle systems (product piracy / stolen software) M7 Access control techniques and designs shall be applied to protect system data/code. Example Security Controls can be found in OWASP 19.2 Unauthorized access to the owner’s privacy information such as personal identity, payment account information, address book information, location information, vehicle’s electronic ID, etc. M8 Through system design and access control it should not be possible for unauthorized personnel to access personal or system critical data. Examples of Security Controls can be found in OWASP 19.3 Extraction of cryptographic keys M11 Security controls shall be implemented for storing cryptographic keys e.g. Security Modules 20.1 Illegal/unauthorised changes to vehicle’s electronic ID M7 Access control techniques and designs shall be applied to protect system data/code. Example Security Controls can be found in OWASP 20.2 Identity fraud. For example, if a user wants to display another identity when communicating with toll systems, manufacturer backend 20.3 Action to circumvent monitoring systems (e.g. hacking/ tampering/ blocking of messages such as ODR Tracker data, or number of runs) M7 Access control techniques and designs shall be applied to protect system data/code. Example Security Controls can be found in OWASP. Data manipulation attacks on sensors or transmitted data could be mitigated by correlating the data from different sources of information 20.4 Data manipulation to falsify vehicle’s driving data (e.g. mileage, driving speed, driving directions, etc.) 20.5 Unauthorised changes to system diagnostic data 21.1 Unauthorized deletion/manipulation of system event logs M7 Access control techniques and designs shall be applied to protect system data/code. Example Security Controls can be found in OWASP. 22.2 Introduce malicious software or malicious software activity M7 Access control techniques and designs shall be applied to protect system data/code. Example Security Controls can be found in OWASP. 23.1 Fabrication of software of the vehicle control system or information system 24.1 Denial of service, for example this may be triggered on the internal network by flooding a CAN bus, or by provoking faults on an ECU via a high rate of messaging M13 Measures to detect and recover from a denial of service attack shall be employed 25.1 Unauthorized access to falsify configuration parameters of vehicle’s key functions, such as brake data, airbag deployed threshold, etc. M7 Access control techniques and designs shall be applied to protect system data/code. Example Security Controls can be found in OWASP 25.2 Unauthorized access to falsify charging parameters, such as charging voltage, charging power, battery temperature, etc. E/ECE/TRANS/505/Rev.3/Add.154 Annex 5 28 6. Mitigations for \"Potential vulnerabilities that could be exploited if not sufficiently protected or hardened\" Mitigations to the threats which are related to \"Potential vulnerabilities that could be exploited if not sufficiently protected or hardened\" are listed in Table B6. Table B6 Mitigations to the threats which are related to \"Potential vulnerabilities that could be exploited if not sufficiently protected or hardened\" Table A1 reference Threats to \"Potential vulnerabilities that could be exploited if not sufficiently protected or hardened\" Ref Mitigation 26.1 Combination of short encryption keys and long period of validity enables attacker to break encryption M23 Cybersecurity best practices for software and hardware development shall be followed 26.2 Insufficient use of cryptographic algorithms to protect sensitive systems 26.3 Using deprecated cryptographic algorithms 27.1 Hardware or software, engineered to enable an attack or fail to meet design criteria to stop an attack M23 Cybersecurity best practices for software and hardware development shall be followed 28.1 The presence of software bugs can be a basis for potential exploitable vulnerabilities. This is particularly true if software has not been tested to verify that known bad code/bugs is not present and reduce the risk of unknown bad code/bugs being present M23 Cybersecurity best practices for software and hardware development shall be followed. Cybersecurity testing with adequate coverage 28.2 Using remainders from development (e.g. debug ports, JTAG ports, microprocessors, development certificates, developer passwords, …) can permit an attacker to access ECUs or gain higher privileges 29.1 Superfluous internet ports left open, providing access to network systems 29.2 Circumvent network separation to gain control. Specific example is the use of unprotected gateways, or access points (such as truck-trailer gateways), to circumvent protections and gain access to other network segments to perform malicious acts, such as sending arbitrary CAN bus messages M23 Cybersecurity best practices for software and hardware development shall be followed. Cybersecurity best practices for system design and system integration shall be followed 7. Mitigations for \"Data loss / data breach from vehicle\" Mitigations to the threats which are related to \"Data loss / data breach from vehicle\" are listed in Table B7. Table B7 Mitigations to the threats which are related to \"Data loss / data breach from vehicle\" Table A1 reference Threats of \"Data loss / data breach from vehicle\" Ref Mitigation 31.1 Information breach. Personal data may be breached when the car changes user (e.g. is sold or is used as hire vehicle with new hirers) M24 Best practices for the protection of data integrity and confidentiality shall be followed for storing personal data. E/ECE/TRANS/505/Rev.3/Add.154 Annex 5 29 8. Mitigations for \"Physical manipulation of systems to enable an attack\" Mitigation to the threats which are related to \"Physical manipulation of systems to enable an attack\" are listed in Table B8. Table B8 Mitigations to the threats which are related to \"Physical manipulation of systems to enable an attack\" Table A1 reference Threats to \"Physical manipulation of systems to enable an attack\" Ref Mitigation 32.1 Manipulation of OEM hardware, e.g. unauthorised hardware added to a vehicle to enable \"man-in-the-middle\" attack M9 Measures to prevent and detect unauthorized access shall be employed Part C. Mitigations to the threats outside of vehicles 1. Mitigations for \"Back-end servers\" Mitigations to the threats which are related to \"Back-end servers\" are listed in Table C1. Table C1 Mitigations to the threats which are related to \"Back-end servers\" Table A1 reference Threats to \"Back-end servers\" Ref Mitigation 1.1 & 3.1 Abuse of privileges by staff (insider attack) M1 Security Controls are applied to back-end systems to minimise the risk of insider attack 1.2 & 3.3 Unauthorised internet access to the server (enabled for example by backdoors, unpatched system software vulnerabilities, SQL attacks or other means) M2 Security Controls are applied to back-end systems to minimise unauthorised access. Example Security Controls can be found in OWASP 1.3 & 3.4 Unauthorised physical access to the server (conducted by for example USB sticks or other media connecting to the server) M8 Through system design and access control it should not be possible for unauthorised personnel to access personal or system critical data 2.1 Attack on back-end server stops it functioning, for example it prevents it from interacting with vehicles and providing services they rely on M3 Security Controls are applied to back-end systems. Where back-end servers are critical to the provision of services there are recovery measures in case of system outage. Example Security Controls can be found in OWASP 3.2 Loss of information in the cloud. Sensitive data may be lost due to attacks or accidents when data is stored by third-party cloud service providers M4 Security Controls are applied to minimise risks associated with cloud computing. Example Security Controls can be found in OWASP and NCSC cloud computing guidance 3.5 Information breach by unintended sharing of data (e.g. admin errors, storing data in servers in garages) M5 Security Controls are applied to back-end systems to prevent data breaches. Example Security Controls can be found in OWASP E/ECE/TRANS/505/Rev.3/Add.154 Annex 5 30 2. Mitigations for \"Unintended human actions\" Mitigations to the threats which are related to \"Unintended human actions\" are listed in Table C2. Table C2 Mitigations to the threats which are related to \"Unintended human actions\" Table A1 reference Threats relating to \"Unintended human actions\" Ref Mitigation 15.1 Innocent victim (e.g. owner, operator or maintenance engineer) is tricked into taking an action to unintentionally load malware or enable an attack M18 Measures shall be implemented for defining and controlling user roles and access privileges, based on the principle of least access privilege 15.2 Defined security procedures are not followed M19 Organizations shall ensure security procedures are defined and followed including logging of actions and access related to the management of the security functions 3. Mitigations for \"Physical loss of data\" Mitigations to the threats which are related to \"Physical loss of data\" are listed in Table C3. Table C3 Mitigations to the threats which are related to \"Physical loss of data loss\" Table A1 reference Threats of \"Physical loss of data\" Ref Mitigation 30.1 Damage caused by a third party. Sensitive data may be lost or compromised due to physical damages in cases of traffic accident or theft M24 Best practices for the protection of data integrity and confidentiality shall be followed for storing personal data. Example Security Controls can be found in ISO/SC27/WG5 30.2 Loss from DRM (digital right management) conflicts. User data may be deleted due to DRM issues 30.3 The (integrity of) sensitive data may be lost due to IT components wear and tear, causing potential cascading issues (in case of key alteration, for example)"
+  },
+  "provenance": {
+    "source": "UNECE R155",
+    "document": "UN Regulation No. 155",
+    "url": "https://unece.org/sites/default/files/2021-03/R155e.pdf",
+    "extraction_method": "pdf_parsing"
+  }
+}
